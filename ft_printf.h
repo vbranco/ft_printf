@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/12 20:30:31 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/10 20:20:10 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,13 +18,18 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-int		ft_printf(const char * format, ...);
-char		**ft_recup_params(const char *format);
-char		**ft_format_spec(char **recup);
-int		ft_is_string(char *param);
-int		ft_is_numb(char *param);
-int		ft_is_char(char *param);
-void		ft_free(char **tmp);
-int		ft_count_args(const char *format);
+typedef struct		s_form
+{
+	int				is_positif;
+	char			type;
+	int				intire;
+}					t_form;
+
+int					ft_printf(const char * format, ...);
+int					ft_format_spec(const char *format);
+int					ft_is_string(char *param);
+int					ft_is_numb(char *param);
+int					ft_is_char(char *param);
+void				ft_free(char **tmp);
 
 #endif

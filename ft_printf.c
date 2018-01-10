@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/12 20:30:28 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/10 20:24:10 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,51 +14,33 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int		ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	char		*form;
-	int		i;
-	int		j;
 	char		**tmp;
 	char		**param;
-	int		nb_args;
 
-	nb_args = ft_count_args(format);//ca sert a connaitre le nombre d'arguments attendus.
-	ft_putnbr(nb_args);
-	i = 0;
-	j = 0;
-	form = (char*)format;
 	va_start(ap, format);
-	while (form)
-		form = va_arg(ap, char*);
-	va_end(ap);
-	va_start(ap, format);
-	tmp = ft_recup_params(format);
-	free(form);
-	param = ft_format_spec(tmp);
-	ft_free(tmp);
-	while (format[j] != '\n' && format[j])
+	if (ft_strchr(format, '%') == 0)
 	{
-		while (format[j] != '%')
-		{
-			ft_putchar(format[j]);
-			j++;
-		}
-		if (ft_is_string(param[i]) == 1)
-			ft_putstr(va_arg(ap, char *));
-//		if (ft_is_char(param[i]) == 1)
-//			ft_putchar(va_arg(ap, char));
-//		if (ft_is_numb(param[i]) == 1);
-//			ft_putstr(va_arg(ap, char *));
-		j = j + ft_strlen(param[i]) + 1;
+		ft_putstr(format);
+		return (ft_strlen(format));
 	}
-	va_end(ap);
-	if (format[j] == '\n')
-		ft_putchar('\n');
-	ft_free(param);
-	return (1);
+	else
+	{
+		ft_format_spec(format);
+	}
+	/*
+	   while (form)
+	   form = va_arg(ap, char*);
+	   va_end(ap);
+   */	return (1);
 }
+
+
+
+
+
 
 int		main(int ac, char **av)
 {
@@ -68,9 +50,10 @@ int		main(int ac, char **av)
 	char	cara = 'z';
 	int	nb = 10;
 
-	ft_printf("%s, e mon nom est %s; %s\n",bonjour,  merde, encore);
-	ft_printf("%c\n", cara);
-	ft_printf("%d\n", nb);
-//	sleep(1500);
+	//	ft_printf("E mon nom est bien.");
+		ft_printf("%s, e mon nom est %d; %U",bonjour,  merde, encore);
+	//	ft_printf("%c", cara);
+	//	ft_printf("%d\n", nb);
+	//	sleep(1500);
 	return (0);
 }
