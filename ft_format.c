@@ -25,7 +25,7 @@ void		ft_format(const char *format)
 		{
 			format++;
 			if (*format == '%')
-			while ((format[i] != 's' && format[i] != 'S' && format[i] != 'p' &&
+/*			while ((format[i] != 's' && format[i] != 'S' && format[i] != 'p' &&
 				format[i] != 'd' && format[i] != 'D' && format[i] != 'i' &&
 				format[i] != 'o' && format[i] != 'O' && format[i] != 'u' &&
 				format[i] != 'U' && format[i] != 'x' && format[i] != 'X' &&
@@ -36,6 +36,7 @@ void		ft_format(const char *format)
 		}
 		form.type = format[i];
 		ft_putchar(form.type);
-		format += i + 1;
+		format += i + 1;*/
+			ft_recup_type(format);
 	}
 }

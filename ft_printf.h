@@ -27,6 +27,9 @@ typedef struct		s_form
 
 int					ft_printf(const char * format, ...);
 void					ft_format(const char *format);
-void				ft_free(char **tmp);
+int					ft_recup_type(const char *format);
+
+
+void					ft_free(char **tmp);
 
 #endif
