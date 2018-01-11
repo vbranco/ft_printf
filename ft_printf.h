@@ -26,10 +26,7 @@ typedef struct		s_form
 }					t_form;
 
 int					ft_printf(const char * format, ...);
-int					ft_format_spec(const char *format);
-int					ft_is_string(char *param);
-int					ft_is_numb(char *param);
-int					ft_is_char(char *param);
+void					ft_format(const char *format);
 void				ft_free(char **tmp);
 
 #endif
