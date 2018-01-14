@@ -28,7 +28,6 @@ int				ft_printf(const char *format, ...)
 	}
 	else
 	{
-		ft_putstr("ici2");
 		ft_format(format);
 	}
 	/*
@@ -51,8 +50,9 @@ int		main(int ac, char **av)
 	char	cara = 'z';
 	int	nb = 10;
 
+		ft_printf("bon %zu jour %#hX et  %#lD et %llxet %%");
 	//	ft_printf("E mon nom est bien.");
-		ft_printf("ici %s, e mon nom est %d; %U",bonjour,  merde, encore);
+	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);
 	//	ft_printf("%c", cara);
 	//	ft_printf("%d\n", nb);
 	//	sleep(1500);

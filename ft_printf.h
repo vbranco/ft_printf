@@ -20,14 +20,17 @@
 
 typedef struct		s_form
 {
-	int				is_positif;
 	char			type;
-	int				intire;
+	char			flag;
+	char			length;
+	char			elength;
 }					t_form;
 
 int					ft_printf(const char * format, ...);
 void					ft_format(const char *format);
-int					ft_recup_type(const char *format);
+int					ft_recup_type(const char *format, t_form form);
+int					ft_recup_flag(const char *format, t_form form);
+int					ft_recup_length(const char *format, t_form form);
 
 
 void					ft_free(char **tmp);

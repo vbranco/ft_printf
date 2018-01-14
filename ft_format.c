@@ -15,28 +15,30 @@
 
 void		ft_format(const char *format)
 {
+	int	i;
 	t_form	form;
-	int		i;
 
-	i = 1;
 	while (*format)
 	{
-		while (*format != '%')
+		if (*format == '%' && *(format + 1) == '%')
 		{
-			format++;
-			if (*format == '%')
-/*			while ((format[i] != 's' && format[i] != 'S' && format[i] != 'p' &&
-				format[i] != 'd' && format[i] != 'D' && format[i] != 'i' &&
-				format[i] != 'o' && format[i] != 'O' && format[i] != 'u' &&
-				format[i] != 'U' && format[i] != 'x' && format[i] != 'X' &&
-				format[i] != 'c' && format[i] != 'C') && format[i])
-			{
-				i++;
-			}
+			ft_putchar('%');
+			format += 2;
 		}
-		form.type = format[i];
-		ft_putchar(form.type);
-		format += i + 1;*/
-			ft_recup_type(format);
+		if (*format == '%')
+		{
+			format ++;
+			i = (ft_recup_flag(format, form));
+			format += i;
+			i = (ft_recup_length(format, form));
+			format += i;
+			i = (ft_recup_type(format, form));
+			format += i;
+		}
+		else
+		{
+			while (*format != '%' && *format)
+				format++;
+		}
 	}
 }
