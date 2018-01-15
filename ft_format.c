@@ -1,12 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_format.c                                 .::    .:/ .      .::   */
+/*   ft_format.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/10 17:32:21 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/10 20:24:13 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/15 18:11:59 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/15 20:24:20 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_format.c                                      .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/01/15 17:22:45 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/15 17:47:08 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +28,6 @@
 
 void		ft_format(const char *format)
 {
-	int	i;
 	t_form	form;
 
 	while (*format)
@@ -27,13 +39,11 @@ void		ft_format(const char *format)
 		}
 		if (*format == '%')
 		{
+			ft_init_struct(&form);
 			format ++;
-			i = (ft_recup_flag(format, form));
-			format += i;
-			i = (ft_recup_length(format, form));
-			format += i;
-			i = (ft_recup_type(format, form));
-			format += i;
+			ft_recup_flag(format, &form);
+			ft_recup_length(format, &form);
+			ft_recup_type(format, &form);
 		}
 		else
 		{

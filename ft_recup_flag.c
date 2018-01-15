@@ -1,23 +1,64 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_recup_flag.c                                  .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/01/15 17:19:56 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/15 20:24:24 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_recup_flag(const char *format, t_form form)
+void	ft_recup_flag(const char *format, t_form *form)
 {
 	int	i;
 
 	i = 0;
-	if (format[i] == '#' || format[i] == '0' || format[i] == '-' ||
-		format[i] == '+' || format[i] == ' ')
+/*	ft_putstr("form.size = ");
+	ft_putnbr(form->size);
+	ft_putchar('\n');
+*/	while ((i <= form->size + 1) && format[i])
 	{
-		form.flag = format[i];
-		ft_putchar(form.flag);
-		return (1);
+		if (format[i] == '#')
+		{
+			form->is_h = 1;
+		//	ft_putendl("j'ai un #");
+		}
+		else if (format[i] == '0')
+		{
+			form->is_z = 1;
+		//	ft_putendl("j'ai un 0");
+		}
+		else if (format[i] == '-')
+		{
+			form->is_n = 1;
+		//	ft_putendl("j'ai un -");
+		}
+		else if (format[i] == '+')
+		{
+			form->is_p = 1;
+		//	ft_putendl("j'ai un +");
+		}
+		else if (format[i] == ' ')
+		{
+			form->is_s = 1;
+		//	ft_putendl("j'ai un ' '");
+		}
+		i++;
 	}
-	else
-	{
-		form.flag = 'n';
-//		ft_putchar(form.flag);
-		return (0);
-	}
+
+	if (form->is_h == 1)
+		ft_putchar('#');
+	if (form->is_z == 1)
+		ft_putchar('0');
+	if (form->is_n == 1)
+		ft_putchar('-');
+	if (form->is_p == 1)
+		ft_putchar('+');
+	if (form->is_s == 1)
+		ft_putchar(' ');
 }

@@ -1,8 +1,19 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_recup_type.c                                  .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/01/15 17:19:43 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/15 20:24:17 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_recup_type(const char *format, t_form form)
+void	ft_recup_type(const char *format, t_form *form)
 {
 	int	i;
 
@@ -13,7 +24,12 @@ int	ft_recup_type(const char *format, t_form form)
 		format[i] != 'U' && format[i] != 'x' && format[i] != 'X' &&
 		format[i] != 'c' && format[i] != 'C') && format[i])
 		i++;
-	form.type = format[i];
-	ft_putchar(form.type);
-	return (i);
+	form->type = format[i];
+	ft_putchar(form->type);
+	form->size = i + 1;
+	ft_putchar('\n');
+	ft_putstr("form.size = ");
+	ft_putnbr(form->size);
+	ft_putchar('\n');
+//	return (i);
 }

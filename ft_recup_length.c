@@ -1,49 +1,59 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_recup_length.c                                .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/01/15 17:20:03 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/15 20:24:22 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_recup_length(const char *format, t_form form)
+void	ft_recup_length(const char *format, t_form *form)
 {
 	int	i;
 
 	i = 0;
-	while ((format[i] != 'h' && format[i] != 'l' && format[i] != 'j' &&
-		format[i] != 'z') && format[i])
+	while ((i <= form->size) && format[i])
+	{
+		if (format[i] == 'h')
+		{
+			form->length = 'h';
+			if (format[i + 1] == 'h')
+			{
+				form->elength = 'h';
+				ft_putchar(form->length);
+				ft_putchar(form->elength);
+			}
+			else
+				ft_putchar(form->length);
+		}
+		else if (format[i] == 'l')
+		{
+			form->length = 'l';
+			if (format[i + 1] == 'l')
+			{
+				form->elength = 'l';
+				ft_putchar(form->length);
+				ft_putchar(form->elength);
+			}
+			else
+				ft_putchar(form->length);
+		}
+		else if (format[i] == 'j')
+		{
+			form->length = 'j';
+			ft_putchar(form->length);
+		}
+		else if (format[i] == 'z')
+		{
+			form->length = 'z';
+			ft_putchar(form->length);
+		}
 		i++;
-	(format[i] == '\0') ? i = 0 : 0;
-	if (format[i] == 'h')
-	{
-		form.length = 'h';
-		if (format[i + 1] == 'h')
-		{
-			form.elength = 'h';
-			ft_putchar(form.length);
-			ft_putchar(form.elength);
-			return (i + 1);
-		}
-		ft_putchar(form.length);
 	}
-	if (format[i] == 'l')
-	{
-		form.length = 'l';
-		if (format[i + 1] == 'l')
-		{
-			form.elength = 'l';
-			ft_putchar(form.length);
-			ft_putchar(form.elength);
-			return (i + 1);
-		}
-		ft_putchar(form.length);
-	}
-	if (format[i] == 'j')
-	{
-		form.length = 'j';
-		ft_putchar(form.length);
-	}
-	if (format[i] == 'z')
-	{
-		form.length = 'z';
-		ft_putchar(form.length);
-	}
-	return (i);
 }

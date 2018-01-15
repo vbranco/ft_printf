@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/10 20:24:10 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/15 20:24:30 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,10 +47,12 @@ int		main(int ac, char **av)
 	char	merde[] = "vitor";
 	char	bonjour[] = "bonjour";
 	char	encore[] = "et je suis dans le bon chemin :)";
-	char	cara = 'z';
+	char	cara = 'f';
 	int	nb = 10;
 
-		ft_printf("bon %zu jour %#hX et  %#lD et %llxet %%");
+//	printf("%10d\n", 12);
+	//	ft_printf("%0 i merde");
+		ft_printf("%+ i bon %hu jour %+jX et  %#zD et %llxet %%");
 	//	ft_printf("E mon nom est bien.");
 	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);
 	//	ft_printf("%c", cara);
