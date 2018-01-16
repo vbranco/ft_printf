@@ -51,8 +51,8 @@ int		main(int ac, char **av)
 	int	nb = 10;
 
 //	printf("%10d\n", 12);
-	//	ft_printf("%0 i merde");
-		ft_printf("%+ i bon %hu jour %+jX et  %#zD et %llxet %%");
+		ft_printf("%-015i merde %1000d");
+	//	ft_printf("%+ 0i bon %hu jour %+jX et  %#zD et %llxet %%");
 	//	ft_printf("E mon nom est bien.");
 	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);
 	//	ft_printf("%c", cara);

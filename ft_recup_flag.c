@@ -21,33 +21,22 @@ void	ft_recup_flag(const char *format, t_form *form)
 /*	ft_putstr("form.size = ");
 	ft_putnbr(form->size);
 	ft_putchar('\n');
-*/	while ((i <= form->size + 1) && format[i])
+*/	while ((i <= form->size) && format[i])//j'ai un souci, la variable form->size vaut 0 alors que quand j'affiche depuis la fonction recup_type elle affiche bien la bonne valeur
 	{
 		if (format[i] == '#')
-		{
 			form->is_h = 1;
-		//	ft_putendl("j'ai un #");
-		}
 		else if (format[i] == '0')
 		{
-			form->is_z = 1;
-		//	ft_putendl("j'ai un 0");
+			if ((format[i - 1] < '0' || format[i - 1] > '9') &&
+				(format[i + 1] < '0' ||  format[i + 1] > '9'))
+				form->is_z = 1;
 		}
 		else if (format[i] == '-')
-		{
 			form->is_n = 1;
-		//	ft_putendl("j'ai un -");
-		}
 		else if (format[i] == '+')
-		{
 			form->is_p = 1;
-		//	ft_putendl("j'ai un +");
-		}
 		else if (format[i] == ' ')
-		{
 			form->is_s = 1;
-		//	ft_putendl("j'ai un ' '");
-		}
 		i++;
 	}
 

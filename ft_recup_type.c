@@ -26,10 +26,10 @@ void	ft_recup_type(const char *format, t_form *form)
 		i++;
 	form->type = format[i];
 	ft_putchar(form->type);
-	form->size = i + 1;
-	ft_putchar('\n');
+	form->size = i;
+/*	ft_putchar('\n');
 	ft_putstr("form.size = ");
 	ft_putnbr(form->size);
 	ft_putchar('\n');
-//	return (i);
+*///	return (i);
 }
