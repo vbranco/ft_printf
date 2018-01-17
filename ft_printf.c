@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/15 20:24:30 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/17 19:53:46 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ int				ft_printf(const char *format, ...)
 	}
 	else
 	{
-		ft_format(format);
+		ft_format(format, ap);
 	}
 	/*
 	   while (form)
@@ -38,20 +38,17 @@ int				ft_printf(const char *format, ...)
 }
 
 
-
-
-
-
 int		main(int ac, char **av)
 {
 	char	merde[] = "vitor";
 	char	bonjour[] = "bonjour";
 	char	encore[] = "et je suis dans le bon chemin :)";
-	char	cara = 'f';
+	char	cara = 'V';
 	int	nb = 10;
 
 //	printf("%10d\n", 12);
-		ft_printf("%-015i merde %1000d");
+		ft_printf("%s", encore);
+	//	ft_printf("%-01.9i merde %1000.5d");
 	//	ft_printf("%+ 0i bon %hu jour %+jX et  %#zD et %llxet %%");
 	//	ft_printf("E mon nom est bien.");
 	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);

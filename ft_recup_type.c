@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/15 17:19:43 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/15 20:24:17 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/17 19:53:44 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,11 +25,6 @@ void	ft_recup_type(const char *format, t_form *form)
 		format[i] != 'c' && format[i] != 'C') && format[i])
 		i++;
 	form->type = format[i];
-	ft_putchar(form->type);
+//	ft_putchar(form->type);
 	form->size = i;
-/*	ft_putchar('\n');
-	ft_putstr("form.size = ");
-	ft_putnbr(form->size);
-	ft_putchar('\n');
-*///	return (i);
 }

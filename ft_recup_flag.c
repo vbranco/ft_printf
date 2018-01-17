@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/15 17:19:56 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/15 20:24:24 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/17 19:01:33 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,10 +18,7 @@ void	ft_recup_flag(const char *format, t_form *form)
 	int	i;
 
 	i = 0;
-/*	ft_putstr("form.size = ");
-	ft_putnbr(form->size);
-	ft_putchar('\n');
-*/	while ((i <= form->size) && format[i])//j'ai un souci, la variable form->size vaut 0 alors que quand j'affiche depuis la fonction recup_type elle affiche bien la bonne valeur
+	while ((i <= form->size) && format[i])//j'ai un souci, la variable form->size vaut 0 alors que quand j'affiche depuis la fonction recup_type elle affiche bien la bonne valeur
 	{
 		if (format[i] == '#')
 			form->is_h = 1;
