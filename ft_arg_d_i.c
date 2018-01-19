@@ -13,7 +13,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_arg_d_i(va_list ap)
+char	*ft_arg_d_i(va_list ap, t_form *form)
 {
 	int		nb;
 	char	*str;

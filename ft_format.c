@@ -33,10 +33,10 @@ void		ft_format(const char *format, va_list ap)
 			ft_recup_length(format, &form);
 			ft_recup_min(format, &form);
 			ft_recup_prec(format, &form);
+			ft_args(&form, ap);
 		}
 		else
 			while (*format != '%' && *format)
 				format++;
 	}
-	ft_args(&form, ap);
 }

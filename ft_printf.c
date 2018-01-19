@@ -47,7 +47,8 @@ int		main(int ac, char **av)
 	int	nb = 10;
 
 //	printf("%10d\n", 12);
-		ft_printf("%s", encore);
+		ft_printf("%c, %s", cara, encore);
+	//	ft_printf("%s", encore);
 	//	ft_printf("%-01.9i merde %1000.5d");
 	//	ft_printf("%+ 0i bon %hu jour %+jX et  %#zD et %llxet %%");
 	//	ft_printf("E mon nom est bien.");
