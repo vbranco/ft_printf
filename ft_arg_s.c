@@ -13,16 +13,17 @@
 
 #include "ft_printf.h"
 
-char	*ft_arg_s(va_list ap, t_form *form)
+void	ft_arg_s(va_list ap, t_form *form)
 {
 	char	*str;
 
 	if (form->type == 's')
 	{
 		str = va_arg(ap, char*);
-		return (str);
+//		return (str);
 	}
 	else
 	{
 	}
+//	return (str);
 }

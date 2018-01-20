@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "libft/libft.h"
+#include "ft_printf.h"
 
 /*
 int	main()
@@ -47,20 +48,29 @@ int	main()
 	int	reste;
 	char	*str;
 
-	nb = 1000;
+	nb = 10;
 	res = nb;
-	while (res > 16)
+//	str = ft_memalloc(1);
+/*	while (res > 16)
 	{
 		reste = res % 16;
 		res /= 16;
+		if (reste > 9)
+			str = ft_strjoin(str, ft_modif(reste));
+		else
+			str = ft_strjoin(str, ft_itoa(reste));
 	}
 	if (res > 9)
-		str = ft_modif(res);
+	{
+		str = ft_strjoin(str, ft_modif(res));
+	}
 	else
-		str = ft_itoa(res);
-	if (reste > 9)
-		str = ft_modif(reste);
-	str = ft_strjoin(str, ft_itoa(reste));
+	{
+		str = ft_strjoin(str, ft_itoa(res));
+	}
+	str = ft_reverse(str);
+*/	str = ft_convert_base(nb, 8);
 	ft_putstr(str);
+	free(str);
 	return (0);
 }

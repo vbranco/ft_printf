@@ -13,7 +13,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_arg_c(va_list ap, t_form *form)
+void	ft_arg_c(va_list ap, t_form *form)
 {
 	char	c;
 	char	*str;
@@ -23,9 +23,10 @@ char	*ft_arg_c(va_list ap, t_form *form)
 		str = ft_memalloc(2);
 		c = (char) va_arg(ap, int);
 		str[0] = c;
-		return (str);
+//		return (str);
 	}
 	if (form->type == 'C')
 	{
 	}
+//	return (str);
 }

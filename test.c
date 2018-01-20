@@ -2,6 +2,6 @@
 
 int main()
 {
-	printf("%x", 2147483640);
+	printf("%O", 10);
 	return (0);
 }

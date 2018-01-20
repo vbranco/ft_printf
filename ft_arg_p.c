@@ -2,7 +2,8 @@
 
 #include "ft_printf.h"
 
-char	*ft_arg_p(va_list ap)
+void	ft_arg_p(va_list ap)
 {
 	char	*str;
+//	return (str);
 }
