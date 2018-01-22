@@ -52,8 +52,8 @@ void				ft_arg_c(va_list ap, t_form *form);
 void				ft_arg_s(va_list ap, t_form *form);
 void				ft_arg_d_i(va_list ap, t_form *form);
 void				ft_arg_x_o(va_list ap, t_form *form);
-void				ft_arg_p(va_list ap);
-void				ft_convert_base(int nb, int base, t_form *form, char **str);
+void				ft_arg_p(va_list ap, t_form *form);
+void				ft_convert_base(long nb, int base, t_form *form, char **str);
 
 void					ft_free(char **tmp);
 

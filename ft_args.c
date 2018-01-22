@@ -30,5 +30,5 @@ void	ft_args(t_form *form, va_list ap)
 		form->type == 'O')
 		ft_arg_x_o(ap, form);
 	if (form->type == 'p')
-		ft_arg_p(ap);;
+		ft_arg_p(ap, form);;
 }

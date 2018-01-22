@@ -29,5 +29,4 @@ void	ft_arg_d_i(va_list ap, t_form *form)
 		nb2 = va_arg(ap, unsigned int);
 		str = ft_itoa(nb2);
 	}
-//	return (str);
 }

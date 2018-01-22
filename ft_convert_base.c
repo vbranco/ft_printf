@@ -1,7 +1,7 @@
 //en tete
 
 #include "ft_printf.h"
-
+//j'ai des fuites de memoire dans une de ces fonctions.
 static char	*ft_modif(int nb, t_form *form)
 {
 	char	c;
@@ -16,17 +16,14 @@ static char	*ft_modif(int nb, t_form *form)
 	return (str);
 }
 
-void		ft_convert_base(int nb, int base, t_form *form, char **str)
+void		ft_convert_base(long nb, int base, t_form *form, char **str)
 {
 	char	*tmp;
 	long	reste;
 	long	limit;
 
 	tmp = ft_memalloc(10);
-	if (base == 16)
-		limit = 9;
-	if (base == 8)
-		limit = 8;
+	base == 16 ? (limit = 9) : (limit = 8);
 	while (nb > base)
 	{
 		reste = nb % base;

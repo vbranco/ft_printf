@@ -44,12 +44,16 @@ int		main(int ac, char **av)
 	char	bonjour[] = "bonjour";
 	char	encore[] = "et je suis dans le bon chemin :)";
 	char	cara = 'V';
-//	int	nb = 10508;
-	int	nb = -18;
+//	int	nb = 0;
+	int	nb = 167;
+	int	*ptr;
+	wchar_t c = 167;//unicode
 
+	ptr = &nb;
 //	printf("%10d\n", 12);
-		printf("%x\n", nb);
-		ft_printf("%x", nb);
+		printf("%lc\n", c);
+//		ft_printf("%C", nb);
+	//	ft_printf("%o", nb);
 	//	ft_printf("%c, %s", cara, encore);
 	//	ft_printf("%s", encore);
 	//	ft_printf("%-01.9i merde %1000.5d");
