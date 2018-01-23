@@ -22,7 +22,7 @@ void		ft_convert_base(long nb, int base, t_form *form, char **str)
 	long	reste;
 	long	limit;
 
-	tmp = ft_memalloc(10);
+	tmp = ft_memalloc(17);
 	base == 16 ? (limit = 9) : (limit = 8);
 	while (nb > base)
 	{

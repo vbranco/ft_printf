@@ -17,8 +17,8 @@
 int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	char		**tmp;
-	char		**param;
+//	char		**tmp;
+//	char		**param;
 
 	va_start(ap, format);
 	if (ft_strchr(format, '%') == 0)
@@ -38,20 +38,22 @@ int				ft_printf(const char *format, ...)
 }
 
 
-int		main(int ac, char **av)
+int		main(void)
 {
-	char	merde[] = "vitor";
-	char	bonjour[] = "bonjour";
-	char	encore[] = "et je suis dans le bon chemin :)";
-	char	cara = 'V';
+//	char	merde[] = "vitor";
+//	char	bonjour[] = "bonjour";
+//	char	encore[] = "et je suis dans le bon chemin :)";
+//	char	cara = 'V';
 //	int	nb = 0;
-	int	nb = 167;
-	int	*ptr;
-	wchar_t c = 167;//unicode
+//	int	nb = 167;
+//	int	*ptr;
+//	wchar_t c = 167;//unicode
+//	wchar_t	c = 'ç';
 
-	ptr = &nb;
+//	ptr = &nb;
 //	printf("%10d\n", 12);
-		printf("%lc\n", c);
+//		printf("%C\n", L'ç');
+		ft_printf("%C", L'ç');
 //		ft_printf("%C", nb);
 	//	ft_printf("%o", nb);
 	//	ft_printf("%c, %s", cara, encore);
@@ -62,6 +64,6 @@ int		main(int ac, char **av)
 	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);
 	//	ft_printf("%c", cara);
 	//	ft_printf("%d\n", nb);
-	//	sleep(1500);
+		sleep(1500);
 	return (0);
 }

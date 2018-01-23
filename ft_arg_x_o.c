@@ -5,7 +5,6 @@
 void	ft_arg_x_o(va_list ap, t_form *form)
 {
 	long		nb;
-	int		reste;
 	char		*str;
 	long		max;
 
