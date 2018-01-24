@@ -37,9 +37,11 @@ static void	ft_put4wchar(wchar_t wc, char *str)
 void		ft_wchar(wchar_t wc, char *str)
 {
 	if (wc <= 127)
-		ft_putchar(wc);
+		str[0] = wc;
+//		ft_putchar(wc);
 	else if (wc <= 255 && MB_CUR_MAX == 1)
-		ft_putchar((char)wc);
+		str[0] = (char)wc;
+//		ft_putchar((char)wc);
 	else if (wc > 127 && MB_CUR_MAX > 1)
 	{
 		if (wc < 0x800)

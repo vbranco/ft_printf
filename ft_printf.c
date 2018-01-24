@@ -50,7 +50,7 @@ int		main(void)
 //	int	nb = 167;
 //	int	*ptr;
 //	wchar_t c = 167;//unicode
-	wchar_t	*c = L"éç";
+	wchar_t	*c = L"la mérde ça";
 
 //	ptr = &nb;
 //	printf("%10d\n", 12);
