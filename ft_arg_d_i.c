@@ -6,18 +6,18 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:45:58 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/17 19:51:35 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 20:28:15 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_arg_d_i(va_list ap, t_form *form)
+void			ft_arg_d_i(va_list ap, t_form *form)
 {
-	int		nb;
+	int				nb;
 	unsigned int	nb2;
-	char	*str;
+	char			*str;
 
 	if (form->type == 'd' || form->type == 'i' || form->type == 'D')
 	{

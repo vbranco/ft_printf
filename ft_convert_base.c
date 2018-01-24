@@ -1,7 +1,20 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_convert_base.c                                .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/01/24 20:30:35 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/24 20:32:07 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
+
 //j'ai des fuites de memoire dans une de ces fonctions.
+
 static char	*ft_modif(int nb, t_form *form)
 {
 	char	c;
@@ -23,7 +36,8 @@ void		ft_convert_base(long nb, int base, t_form *form, char **str)
 	long	limit;
 
 	tmp = ft_memalloc(17);
-	base == 16 ? (limit = 9) : (limit = 8);
+	limit = 8;
+	base == 16 ? (limit = 9) : 0;
 	while (nb > base)
 	{
 		reste = nb % base;

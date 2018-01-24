@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 19:05:54 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 20:24:52 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,6 +56,7 @@ int		main(void)
 //	printf("%10d\n", 12);
 //		printf("%C\n", L'ç');
 		ft_printf("%S", c);
+//		printf("%S", c);
 //		ft_printf("%C", nb);
 	//	ft_printf("%o", nb);
 	//	ft_printf("%c, %s", cara, encore);
@@ -66,6 +67,6 @@ int		main(void)
 	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);
 	//	ft_printf("%c", cara);
 	//	ft_printf("%d\n", nb);
-	//	sleep(1500);
+		sleep(1500);
 	return (0);
 }

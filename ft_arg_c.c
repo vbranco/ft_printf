@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:22:22 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 18:47:06 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 20:30:15 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ void	ft_arg_c(va_list ap, t_form *form)
 	str = ft_memalloc(5);
 	if (form->type == 'c' || (form->type == 'C' && form->length == 'h'))
 	{
-		c = (char) va_arg(ap, int);
+		c = (char)va_arg(ap, int);
 		str[0] = c;
 	}
 	if (form->type == 'C' || (form->type == 'c' && form->length == 'l'))
