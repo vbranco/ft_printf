@@ -6,7 +6,7 @@
 #    By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/23 16:47:01 by vbranco      #+#   ##    ##    #+#        #
-#    Updated: 2017/12/01 16:17:34 by tle-coza    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/24 20:02:24 by vbranco     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -18,9 +18,9 @@ LIB_DIR     =   ./lib
 HEADER      =   ft_printf.h
 
 FILENAMES   =   ft_arg_c.c ft_arg_d_i.c ft_arg_p.c ft_arg_s.c ft_arg_x_o.c \
-ft_convert_base.c ft_format.c ft_get_bit.c ft_init_struct.c ft_printf.c \
+ft_convert_base.c ft_format.c ft_wchar.c ft_init_struct.c ft_printf.c \
 ft_args.c ft_recup_flag.c ft_recup_length.c ft_recup_min.c ft_recup_prec.c \
-ft_recup_type.c ft_trans_bi_dc.c ft_trans_dc_bi.c
+ft_recup_type.c ft_wstr.c ft_count_size.c
 
 SOURCES     =   $(addprefix ./, $(FILENAMES))
 

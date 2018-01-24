@@ -6,13 +6,14 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/17 20:06:50 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 19:05:54 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <locale.h>
 
 int				ft_printf(const char *format, ...)
 {
@@ -40,6 +41,7 @@ int				ft_printf(const char *format, ...)
 
 int		main(void)
 {
+	setlocale(LC_ALL, "");
 //	char	merde[] = "vitor";
 //	char	bonjour[] = "bonjour";
 //	char	encore[] = "et je suis dans le bon chemin :)";
@@ -48,22 +50,22 @@ int		main(void)
 //	int	nb = 167;
 //	int	*ptr;
 //	wchar_t c = 167;//unicode
-//	wchar_t	c = 'ç';
+	wchar_t	*c = L"éç";
 
 //	ptr = &nb;
 //	printf("%10d\n", 12);
 //		printf("%C\n", L'ç');
-		ft_printf("%C", L'ç');
+		ft_printf("%S", c);
 //		ft_printf("%C", nb);
 	//	ft_printf("%o", nb);
 	//	ft_printf("%c, %s", cara, encore);
-	//	ft_printf("%s", encore);
+//		ft_printf("%s", encore);
 	//	ft_printf("%-01.9i merde %1000.5d");
 	//	ft_printf("%+ 0i bon %hu jour %+jX et  %#zD et %llxet %%");
 	//	ft_printf("E mon nom est bien.");
 	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);
 	//	ft_printf("%c", cara);
 	//	ft_printf("%d\n", nb);
-		sleep(1500);
+	//	sleep(1500);
 	return (0);
 }

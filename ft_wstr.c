@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_arg_s.c                                       .::    .:/ .      .::   */
+/*   ft_wstr.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/17 19:51:43 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 19:50:55 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/24 18:44:46 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/24 20:02:03 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_arg_s(va_list ap, t_form *form)
+void		ft_wstr(wchar_t *wstr, char *str)
 {
-	char	*str;
-	wchar_t	*wstr;
-	int		size;
+	size_t	i;
+	char	*tmp;
 
-	str = ft_memalloc(100);
-	if (form->type == 's' || (form->type == 'S' && form->length == 'h'))
+//	ft_putendl("la");
+	tmp = ft_memalloc(50);
+	i = 0;
+	while (wstr[i])
 	{
-		str = va_arg(ap, char*);
+		ft_putendl("la");
+		ft_putendl("la");
+		ft_wchar(wstr[i], tmp);
+		ft_strjoin(str, tmp);
+		i++;
 	}
-	else
-	{
-		wstr = va_arg(ap, wchar_t*);
-		size = ft_count_size(wstr);
-		wstr = ft_memalloc(size + 1);
-		ft_wstr(wstr, str);
-	}
-	write(1, str, ft_strlen(str));
-	free(str);
 }

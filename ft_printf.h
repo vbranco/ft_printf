@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/17 20:06:53 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 19:40:59 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "libft/libft.h"
+# include <wchar.h>
 
 typedef struct		s_form
 {
@@ -54,9 +55,9 @@ void				ft_arg_d_i(va_list ap, t_form *form);
 void				ft_arg_x_o(va_list ap, t_form *form);
 void				ft_arg_p(va_list ap, t_form *form);
 void				ft_convert_base(long nb, int base, t_form *form, char **str);
-void				ft_get_bit(long nb, char **str, char **mask);
-int				ft_trans_bi_dc(char ***mask);
-void				ft_trans_dc_bi(long nb, char ***str);
+void				ft_wchar(wchar_t wc, char *str);
+void				ft_wstr(wchar_t *wstr, char *str);
+int					ft_count_size(wchar_t *wstr);
 
 void					ft_free(char **tmp);
 
