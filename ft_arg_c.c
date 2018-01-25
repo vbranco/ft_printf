@@ -13,7 +13,7 @@
 
 #include "ft_printf.h"
 
-void	ft_arg_c(va_list ap, t_form *form)
+int	ft_arg_c(va_list ap, t_form *form)
 {
 	char	c;
 	char	*str;
@@ -32,4 +32,5 @@ void	ft_arg_c(va_list ap, t_form *form)
 	}
 	write(1, str, ft_strlen(str));
 	free(str);
+	return (ft_strlen(str));
 }

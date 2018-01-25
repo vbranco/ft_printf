@@ -13,22 +13,26 @@
 
 #include "ft_printf.h"
 
-void	ft_args(t_form *form, va_list ap)
+int	ft_args(t_form *form, va_list ap)
 {
+	int	len;
+
+	len = 0;
 	if (form->type == 'c' || (form->type == 'C' && form->length == 'h'))
-		ft_arg_c(ap, form);
+		len = ft_arg_c(ap, form);
 	if (form->type == 'C' || (form->type == 'c' && form->length == 'l'))
-		ft_arg_c(ap, form);
+		len = ft_arg_c(ap, form);
 	if (form->type == 's' || (form->type == 'S' && form->length == 'h'))
-		ft_arg_s(ap, form);
+		len = ft_arg_s(ap, form);
 	if (form->type == 'S' || (form->type == 's' && form->length == 'l'))
-		ft_arg_s(ap, form);
+		len = ft_arg_s(ap, form);
 	if (form->type == 'd' || form->type == 'D' || form->type == 'i' ||
 		form->type == 'u' || form->type == 'U')
-		ft_arg_d_i(ap, form);
+		len = ft_arg_d_i(ap, form);
 	if (form->type == 'x' || form->type == 'X' || form->type == 'o' ||
 		form->type == 'O')
-		ft_arg_x_o(ap, form);
+		len = ft_arg_x_o(ap, form);
 	if (form->type == 'p')
-		ft_arg_p(ap, form);;
+		len = ft_arg_p(ap, form);
+	return (len);
 }

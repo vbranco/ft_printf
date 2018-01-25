@@ -15,27 +15,53 @@
 
 //j'ai des fuites de memoire dans une de ces fonctions.
 
-static char	*ft_modif(int nb, t_form *form)
+/*static void	ft_my_itoa(int nb, char *tmp)
+{
+	char	*s;
+	size_t	i;
+
+	i = 0;
+	s = ft_memalloc(ft_size_nb(nb) + 1);
+	if (nb < 0)
+	{
+		s[i] = '-';
+		nb = nb * -1;
+		i++;
+	}
+	while (nb > 9)
+	{
+		s[i] = ((nb % 10) + '0');
+		nb /= 10;
+		i++;
+	}
+	s[i] = ((nb % 10) + '0');
+	s = ft_reverse(s);
+	ft_strcat(tmp, s);
+	free(s);
+}*/
+
+static void	ft_modif(int nb, char *tmp, t_form *form)
 {
 	char	c;
-	char	*str;
+	char	*s;
 
-	str = ft_memalloc(2);
+	s = ft_memalloc(2);
 	if (nb >= 10 && form->type == 'X')
 		c = 'A' + (nb - 10);
 	else
 		c = 'a' + (nb - 10);
-	str[0] = c;
-	return (str);
+	s[0] = c;
+	ft_strcat(tmp, s);
+	free(s);
 }
 
-void		ft_convert_base(long nb, int base, t_form *form, char **str)
+void		ft_convert_base(long nb, int base, t_form *form, char *str)
 {
 	char	*tmp;
 	long	reste;
 	long	limit;
 
-	tmp = ft_memalloc(17);
+	tmp = ft_memalloc(100);
 	limit = 8;
 	base == 16 ? (limit = 9) : 0;
 	while (nb > base)
@@ -43,15 +69,15 @@ void		ft_convert_base(long nb, int base, t_form *form, char **str)
 		reste = nb % base;
 		nb /= base;
 		if (reste > limit)
-			tmp = ft_strcat(tmp, ft_modif(reste, form));
+			ft_modif(reste, tmp, form);
 		else
-			tmp = ft_strcat(tmp, ft_itoa(reste));
+			ft_my_itoa(reste, tmp);
 	}
 	if (nb > limit)
-		tmp = ft_strcat(tmp, ft_modif(nb, form));
+		ft_modif(nb, tmp, form);
 	else
-		tmp = ft_strcat(tmp, ft_itoa(nb));
+		ft_my_itoa(nb, tmp);
 	tmp = ft_reverse(tmp);
-	ft_strcat(*(str), tmp);
+	ft_strcat(str, tmp);
 	free(tmp);
 }

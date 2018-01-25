@@ -20,7 +20,9 @@ HEADER      =   ft_printf.h
 FILENAMES   =   ft_arg_c.c ft_arg_d_i.c ft_arg_p.c ft_arg_s.c ft_arg_x_o.c \
 ft_convert_base.c ft_format.c ft_wchar.c ft_init_struct.c ft_printf.c \
 ft_args.c ft_recup_flag.c ft_recup_length.c ft_recup_min.c ft_recup_prec.c \
-ft_recup_type.c ft_wstr.c ft_count_size.c
+ft_recup_type.c ft_wstr.c ft_count_size.c ft_my_itoa.c ft_add_str_begin.c\
+ft_buffer.c\
+main.c
 
 SOURCES     =   $(addprefix ./, $(FILENAMES))
 

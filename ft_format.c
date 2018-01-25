@@ -13,30 +13,32 @@
 
 #include "ft_printf.h"
 
-void		ft_format(const char *format, va_list ap)
+int		ft_format(const char *format, va_list ap, int *size)
 {
 	t_form	form;
+	int	len;
 
-	while (*format)
+	len = 0;
+	if (*format == '%' && *(format + 1) == '%')
 	{
-		if (*format == '%' && *(format + 1) == '%')
-		{
-			ft_putchar('%');
-			format += 2;
-		}
-		if (*format == '%')
-		{
-			ft_init_struct(&form);
-			format++;
-			ft_recup_type(format, &form);
-			ft_recup_flag(format, &form);//jetter un oeil pas bon
-			ft_recup_length(format, &form);
-			ft_recup_min(format, &form);
-			ft_recup_prec(format, &form);
-			ft_args(&form, ap);
-		}
-		else
-			while (*format != '%' && *format)
-				format++;
+		ft_putchar('%');
+		format += 2;
 	}
+	if (*format == '%')
+	{
+		ft_init_struct(&form);
+		format++;
+		ft_recup_type(format, &form);
+		ft_recup_flag(format, &form);//jetter un oeil pas bon
+		ft_recup_length(format, &form);
+		ft_recup_min(format, &form);
+		ft_recup_prec(format, &form);
+		len = ft_args(&form, ap);
+	}
+	else
+		while (*format != '%' && *format)
+			format++;
+	ft_putnbr(form.size);
+	*(size) = form.size;
+	return (len);
 }

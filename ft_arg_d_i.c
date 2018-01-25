@@ -13,7 +13,7 @@
 
 #include "ft_printf.h"
 
-void			ft_arg_d_i(va_list ap, t_form *form)
+int			ft_arg_d_i(va_list ap, t_form *form)
 {
 	int				nb;
 	unsigned int	nb2;
@@ -22,11 +22,18 @@ void			ft_arg_d_i(va_list ap, t_form *form)
 	if (form->type == 'd' || form->type == 'i' || form->type == 'D')
 	{
 		nb = va_arg(ap, int);
-		str = ft_itoa(nb);
+		str = ft_memalloc(ft_size_nb(nb) + 1);
+		ft_my_itoa(nb, str);
+		ft_buffer(str, form);
 	}
-	else if (form->type == 'u' || form->type == 'U')
+	else
 	{
 		nb2 = va_arg(ap, unsigned int);
-		str = ft_itoa(nb2);
+		str = ft_memalloc(ft_size_nb(nb2) + 1);
+		ft_my_itoa(nb2, str);
+		ft_buffer(str, form);
 	}
+	write(1, str, ft_strlen(str));
+	free(str);
+	return (ft_strlen(str));
 }

@@ -25,6 +25,5 @@ void	ft_recup_type(const char *format, t_form *form)
 		format[i] != 'c' && format[i] != 'C') && format[i])
 		i++;
 	form->type = format[i];
-//	ft_putchar(form->type);
 	form->size = i;
 }

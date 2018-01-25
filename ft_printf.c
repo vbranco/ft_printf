@@ -12,61 +12,45 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <locale.h>
 
 int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
-//	char		**tmp;
-//	char		**param;
+	int		len;
+	int		size;
 
+	len = 0; //a supprime
+	size = 0;
 	va_start(ap, format);
 	if (ft_strchr(format, '%') == 0)
 	{
-		ft_putstr(format);
+		write(1, format, ft_strlen(format));
 		return (ft_strlen(format));
 	}
 	else
 	{
-		ft_format(format, ap);
+		while (*format)
+		{
+			if (*format != '%')
+			{
+				write(1, format, 1);
+				format++;
+			}
+			else
+			{
+				len = ft_format(format, ap, &size);
+			/*	while ((*format != 'c' || *format != 'C' ||
+					*format != 's' || *format != 'S' ||
+					*format != 'd' || *format != 'D' ||
+					*format != 'o' || *format != 'O' ||
+					*format != 'u' || *format != 'U' ||
+					*format != 'x' || *format != 'X' ||
+					*format != 'i' || *format != 'p') && *format)
+			*/	ft_putstr("size : ");
+				ft_putnbr(size);
+				format += size;
+			}
+		}
 	}
-	/*
-	   while (form)
-	   form = va_arg(ap, char*);
-	   va_end(ap);
-   */	return (1);
-}
-
-
-int		main(void)
-{
-	setlocale(LC_ALL, "");
-//	char	merde[] = "vitor";
-//	char	bonjour[] = "bonjour";
-//	char	encore[] = "et je suis dans le bon chemin :)";
-//	char	cara = 'V';
-//	int	nb = 0;
-//	int	nb = 167;
-//	int	*ptr;
-//	wchar_t c = 167;//unicode
-	wchar_t	*c = L"la mérde ça";
-
-//	ptr = &nb;
-//	printf("%10d\n", 12);
-//		printf("%C\n", L'ç');
-		ft_printf("%S", c);
-//		printf("%S", c);
-//		ft_printf("%C", nb);
-	//	ft_printf("%o", nb);
-	//	ft_printf("%c, %s", cara, encore);
-//		ft_printf("%s", encore);
-	//	ft_printf("%-01.9i merde %1000.5d");
-	//	ft_printf("%+ 0i bon %hu jour %+jX et  %#zD et %llxet %%");
-	//	ft_printf("E mon nom est bien.");
-	//	ft_printf("ici %-s, e mon nom est %+d; % U",bonjour,  merde, encore);
-	//	ft_printf("%c", cara);
-	//	ft_printf("%d\n", nb);
-		sleep(1500);
-	return (0);
+	return (len);
 }
