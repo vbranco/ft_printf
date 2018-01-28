@@ -34,11 +34,15 @@ int		ft_format(const char *format, va_list ap, int *size)
 		ft_recup_min(format, &form);
 		ft_recup_prec(format, &form);
 		len = ft_args(&form, ap);
+		*size = form.size;
 	}
 	else
 		while (*format != '%' && *format)
-			format++;
-	ft_putnbr(form.size);
-	*(size) = form.size;
+//		{
+//			write(1, format, 1);
+			format ++;
+//		}
+//	ft_putnbr(form.size);
+//	*(size) = form.size;
 	return (len);
 }

@@ -54,6 +54,7 @@ int				ft_arg_s(va_list ap, t_form *form);
 int				ft_arg_d_i(va_list ap, t_form *form);
 int				ft_arg_x_o(va_list ap, t_form *form);
 int				ft_arg_p(va_list ap, t_form *form);
+int				ft_arg_b(va_list ap, t_form *form);
 /*
 ** fonctions de modif pour recuperer une chaine de caracteres
 */
@@ -63,8 +64,10 @@ void				ft_wstr(wchar_t *wstr, char *str);
 int					ft_count_size(wchar_t *wstr);
 void				ft_my_itoa(int nb, char *tmp);
 void				ft_add_str_begin(char *s1, char *s2);
+void				ft_add_str_end(char *s1, char *s2);
 /*
 ** Buffer
 */
-void				ft_buffer(char *str, t_form *form);
+void				ft_buffer_d(char *str, t_form *form);
+void				ft_buffer_x_o(char *str, t_form *form);
 #endif

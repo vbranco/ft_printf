@@ -34,5 +34,7 @@ int	ft_args(t_form *form, va_list ap)
 		len = ft_arg_x_o(ap, form);
 	if (form->type == 'p')
 		len = ft_arg_p(ap, form);
+	if (form->type == 'b')
+		len = ft_arg_b(ap, form);
 	return (len);
 }

@@ -22,8 +22,9 @@ void	ft_recup_type(const char *format, t_form *form)
 		format[i] != 'd' && format[i] != 'D' && format[i] != 'i' &&
 		format[i] != 'o' && format[i] != 'O' && format[i] != 'u' &&
 		format[i] != 'U' && format[i] != 'x' && format[i] != 'X' &&
-		format[i] != 'c' && format[i] != 'C') && format[i])
+		format[i] != 'c' && format[i] != 'C' && format[i] != 'b') &&
+		format[i])
 		i++;
 	form->type = format[i];
-	form->size = i;
+	form->size = i + 2;
 }

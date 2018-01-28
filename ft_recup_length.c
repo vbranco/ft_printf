@@ -26,11 +26,11 @@ void	ft_recup_length(const char *format, t_form *form)
 			if (format[i + 1] == 'h')
 			{
 				form->elength = 'h';
-				ft_putchar(form->length);
-				ft_putchar(form->elength);
+//				ft_putchar(form->length);
+//				ft_putchar(form->elength);
 			}
-			else
-				ft_putchar(form->length);
+//			else
+//				ft_putchar(form->length);
 		}
 		else if (format[i] == 'l')
 		{
@@ -38,21 +38,21 @@ void	ft_recup_length(const char *format, t_form *form)
 			if (format[i + 1] == 'l')
 			{
 				form->elength = 'l';
-				ft_putchar(form->length);
-				ft_putchar(form->elength);
+//				ft_putchar(form->length);
+//				ft_putchar(form->elength);
 			}
-			else
-				ft_putchar(form->length);
+//			else
+//				ft_putchar(form->length);
 		}
 		else if (format[i] == 'j')
 		{
 			form->length = 'j';
-			ft_putchar(form->length);
+	//		ft_putchar(form->length);
 		}
 		else if (format[i] == 'z')
 		{
 			form->length = 'z';
-			ft_putchar(form->length);
+	//		ft_putchar(form->length);
 		}
 		i++;
 	}

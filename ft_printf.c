@@ -19,8 +19,8 @@ int				ft_printf(const char *format, ...)
 	int		len;
 	int		size;
 
-	len = 0; //a supprime
 	size = 0;
+	len = 0; //a supprimer
 	va_start(ap, format);
 	if (ft_strchr(format, '%') == 0)
 	{
@@ -31,26 +31,21 @@ int				ft_printf(const char *format, ...)
 	{
 		while (*format)
 		{
-			if (*format != '%')
+			while (*format != '%' && *format)
 			{
 				write(1, format, 1);
 				format++;
 			}
-			else
+			if (*format == '%')
 			{
 				len = ft_format(format, ap, &size);
-			/*	while ((*format != 'c' || *format != 'C' ||
-					*format != 's' || *format != 'S' ||
-					*format != 'd' || *format != 'D' ||
-					*format != 'o' || *format != 'O' ||
-					*format != 'u' || *format != 'U' ||
-					*format != 'x' || *format != 'X' ||
-					*format != 'i' || *format != 'p') && *format)
-			*/	ft_putstr("size : ");
-				ft_putnbr(size);
-				format += size;
+				format = format + size;
+//				ft_putendl("la size :  ");
+//				ft_putnbr(size);
 			}
 		}
+
+//		return(ft_format(format, ap));
 	}
 	return (len);
 }

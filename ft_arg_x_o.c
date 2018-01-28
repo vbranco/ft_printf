@@ -34,6 +34,7 @@ int	ft_arg_x_o(va_list ap, t_form *form)
 		else
 			ft_convert_base(nb, 8, form, str);
 	}
+	ft_buffer_x_o(str, form);
 	write(1, str, ft_strlen(str));
 	free(str);
 	return (ft_strlen(str));

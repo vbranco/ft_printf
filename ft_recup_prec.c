@@ -24,7 +24,7 @@ void	ft_recup_prec(const char *format, t_form *form)
 		{
 			format += i + 1;
 			form->prec = ft_atoi(format);
-			ft_putnbr(form->prec);
+		//	ft_putnbr(form->prec);
 			break ;
 		}
 		i++;
