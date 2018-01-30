@@ -9,7 +9,7 @@ int	main(void)
 	setlocale(LC_ALL, "");
 //	char	bonjour[] = "bonjour";
 //	char	c = 'a';
-	int	nb = 19;
+//	int	nb = 19;
 //	int	*ptr = &nb;;
 //	wchar_t	ca = L'é';
 //	wchar_t	str[] = L"la mérde ça mec";
@@ -20,11 +20,11 @@ int	main(void)
 	printf("%c\n", c);
 	ft_printf("%c\n", c);
 */
-//	printf("je suis printf %100d\n", nb);
-//	ft_printf("je suis ft_printf %100d\n", nb);
+	printf("je suis printf %.0d\n", 0)0
+	ft_printf("je suis trintf %.0d\n", 0);
 
-	printf("%#X\n", nb);
-	ft_printf("%#X", nb);
+//	printf("%#x\n", nb);
+//	ft_printf("%#x\n", nb);
 
 /*	ft_printf("%b\n", nb);
 
@@ -38,7 +38,7 @@ int	main(void)
 	ft_printf("%S\n", str);
 
 	ft_printf("je n'ai pas de parametres\n");
-
-	//sleep(1500);
-*/	return (0);
+*/
+//	sleep(1500);
+	return (0);
 }

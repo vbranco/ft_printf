@@ -22,10 +22,9 @@ void	ft_recup_flag(const char *format, t_form *form)
 	{
 		if (format[i] == '#')
 			form->is_h = 1;
-		else if (format[i] == '0')//trouver la bonne condition!!!
+		else if (format[i] == '0')
 		{
-//			ft_putstr("j ai trouve un '0'");
-			if (format[i - 1] < '0' && format[i - 1] > '9')
+			if (format[i - 1] < '0' || format[i - 1] > '9')
 				form->is_z = 1;
 		}
 		else if (format[i] == '-')
