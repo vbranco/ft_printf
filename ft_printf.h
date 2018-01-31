@@ -68,6 +68,8 @@ void				ft_add_str_end(char *s1, char *s2);
 /*
 ** Buffer
 */
-void				ft_buffer_d(char *str, t_form *form);
+void				ft_buffer_d_i(char *str, t_form *form);
 void				ft_buffer_x_o(char *str, t_form *form);
+void				ft_buffer_b(char *str, t_form *form);
+void				ft_buffer_p_c_s(char *str, t_form *form);
 #endif

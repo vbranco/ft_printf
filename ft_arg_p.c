@@ -19,11 +19,12 @@ int		ft_arg_p(va_list ap, t_form *form)
 	void	*ptr;
 	long	nb;
 
-	str = ft_memalloc(20);
 	ptr = va_arg(ap, void*);
 	nb = (long)ptr;
+	str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
 	ft_convert_base(nb, 16, form, str);
 	ft_add_str_begin(str, "0x");
+	ft_buffer_p_c_s(str, form);
 	write(1, str, ft_strlen(str));
 	free(str);
 	return (ft_strlen(str));

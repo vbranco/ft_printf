@@ -19,7 +19,7 @@ int	ft_arg_c(va_list ap, t_form *form)
 	char	*str;
 	wchar_t	ca;
 
-	str = ft_memalloc(5);
+	str = ft_memalloc(4 + form->min + 1);
 	if (form->type == 'c' || (form->type == 'C' && form->length == 'h'))
 	{
 		c = (char)va_arg(ap, int);
@@ -30,6 +30,7 @@ int	ft_arg_c(va_list ap, t_form *form)
 		ca = (wchar_t)va_arg(ap, wint_t);
 		ft_wchar(ca, str);
 	}
+	ft_buffer_p_c_s(str, form);
 	write(1, str, ft_strlen(str));
 	free(str);
 	return (ft_strlen(str));

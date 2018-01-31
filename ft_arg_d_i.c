@@ -24,14 +24,14 @@ int			ft_arg_d_i(va_list ap, t_form *form)
 		nb = va_arg(ap, int);
 		str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
 		ft_my_itoa(nb, str);
-		ft_buffer_d(str, form);
+		ft_buffer_d_i(str, form);
 	}
 	else
 	{
 		nb2 = va_arg(ap, unsigned int);
 		str = ft_memalloc(ft_size_nb(nb2) + form->min + 1);
 		ft_my_itoa(nb2, str);
-		ft_buffer_d(str, form);
+		ft_buffer_d_i(str, form);
 	}
 	write(1, str, ft_strlen(str));
 	free(str);
