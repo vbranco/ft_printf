@@ -60,7 +60,7 @@ int				ft_arg_b(va_list ap, t_form *form);
 */
 void				ft_convert_base(long nb, int base, t_form *form, char *str);
 void				ft_wchar(wchar_t wc, char *str);
-void				ft_wstr(wchar_t *wstr, char *str);
+void				ft_wstr(wchar_t *wstr, char *str, t_form *form);
 int					ft_count_size(wchar_t *wstr);
 void				ft_my_itoa(int nb, char *tmp);
 void				ft_add_str_begin(char *s1, char *s2);
@@ -72,4 +72,5 @@ void				ft_buffer_d_i(char *str, t_form *form);
 void				ft_buffer_x_o(char *str, t_form *form);
 void				ft_buffer_b(char *str, t_form *form);
 void				ft_buffer_p_c_s(char *str, t_form *form);
+int				ft_precision(char *str, t_form *form);
 #endif

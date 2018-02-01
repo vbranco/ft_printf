@@ -18,6 +18,7 @@ int	ft_arg_s(va_list ap, t_form *form)
 	char	*str;
 	char	*tmp;
 	wchar_t	*wstr;
+	int	len;
 
 	if (form->type == 's' || (form->type == 'S' && form->length == 'h'))
 	{
@@ -25,14 +26,15 @@ int	ft_arg_s(va_list ap, t_form *form)
 		str = ft_memalloc(ft_strlen(tmp));
 		ft_strcat(str, tmp);
 	}
-	else
+	else if (form->type == 'S' || (form->type == 's' && form->length == 'l'))
 	{
 		wstr = va_arg(ap, wchar_t*);
 		str = ft_memalloc(ft_count_size(wstr) + form->min + 1);
-		ft_wstr(wstr, str);
+		ft_wstr(wstr, str, form);
 	}
 	ft_buffer_p_c_s(str, form);
-	write(1, str, ft_strlen(str));
+	len = ft_strlen(str);
+	write(1, str, len);
 	free(str);
-	return (ft_strlen(str));
+	return (len);
 }

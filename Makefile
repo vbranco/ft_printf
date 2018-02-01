@@ -22,7 +22,7 @@ ft_convert_base.c ft_format.c ft_wchar.c ft_init_struct.c ft_printf.c \
 ft_args.c ft_recup_flag.c ft_recup_length.c ft_recup_min.c ft_recup_prec.c \
 ft_recup_type.c ft_wstr.c ft_count_size.c ft_my_itoa.c ft_add_str_begin.c\
 ft_add_str_end.c ft_buffer_d_i.c ft_arg_b.c ft_buffer_x_o.c ft_buffer_b.c\
-ft_buffer_p_c_s.c\
+ft_buffer_p_c_s.c ft_precision.c\
 main.c
 
 SOURCES     =   $(addprefix ./, $(FILENAMES))
@@ -34,6 +34,8 @@ L_FT        =   ./libft
 LIB_LNK     =   -L $(L_FT) -l ft
 
 LIB_INC     =   -I $(L_FT)/libft.h
+
+FLAGS	    =  -Wall -Wextra -Werror
 
 .PHONY: all clean fclean re
 
@@ -60,7 +62,7 @@ build:
 $(NAME): $(OBJECTS)
 	    @$(MAKE) -C $(L_FT)
 		@echo "\033[32m"
-		gcc -Wall -Wextra -Werror -I $(HEADER) $(OBJECTS) $(LIB_LNK) -o $@
+		gcc $(fLAGS) -I $(HEADER) $(OBJECTS) $(LIB_LNK) -o $@
 
 build/%.o: ./%.c | build
-	    gcc -Wall -Wextra -Werror $(LIB_INC) -I $(HEADER) -c $< -o $@
+	    gcc $(FLAGS) $(LIB_INC) -I $(HEADER) -c $< -o $@

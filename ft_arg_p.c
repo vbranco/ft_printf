@@ -18,6 +18,7 @@ int		ft_arg_p(va_list ap, t_form *form)
 	char	*str;
 	void	*ptr;
 	long	nb;
+	int	len;
 
 	ptr = va_arg(ap, void*);
 	nb = (long)ptr;
@@ -25,7 +26,8 @@ int		ft_arg_p(va_list ap, t_form *form)
 	ft_convert_base(nb, 16, form, str);
 	ft_add_str_begin(str, "0x");
 	ft_buffer_p_c_s(str, form);
-	write(1, str, ft_strlen(str));
+	len = ft_strlen(str);
+	write(1, str, len);
 	free(str);
-	return (ft_strlen(str));
+	return (len);
 }

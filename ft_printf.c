@@ -40,12 +40,9 @@ int				ft_printf(const char *format, ...)
 			{
 				len = ft_format(format, ap, &size);
 				format = format + size;
-//				ft_putendl("la size :  ");
-//				ft_putnbr(size);
 			}
 		}
 
-//		return(ft_format(format, ap));
 	}
 	return (len);
 }

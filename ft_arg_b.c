@@ -23,12 +23,15 @@ int	ft_arg_b(va_list ap, t_form *form)
 {
 	char	*str;
 	long	nb;
+	int	len;
 
 	(void)form;
 	nb = va_arg(ap, long);
 	str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
 	ft_binaire(str, nb);
 	ft_buffer_b(str, form);
-	write(1, str, ft_strlen(str));
-	return (ft_strlen(str));
+	len = ft_strlen(str);
+	write(1, str, len);
+	free(str);
+	return (len);
 }

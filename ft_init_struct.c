@@ -25,5 +25,5 @@ void	ft_init_struct(t_form *form)
 	form->is_p = 0;
 	form->is_s = 0;
 	form->min = 0;
-	form->prec = 0;
+	form->prec = -1;
 }

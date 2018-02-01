@@ -29,7 +29,7 @@ int		ft_format(const char *format, va_list ap, int *size)
 		ft_init_struct(&form);
 		format++;
 		ft_recup_type(format, &form);
-		ft_recup_flag(format, &form);//jetter un oeil pas bon
+		ft_recup_flag(format, &form);
 		ft_recup_length(format, &form);
 		ft_recup_min(format, &form);
 		ft_recup_prec(format, &form);
@@ -38,11 +38,6 @@ int		ft_format(const char *format, va_list ap, int *size)
 	}
 	else
 		while (*format != '%' && *format)
-//		{
-//			write(1, format, 1);
 			format ++;
-//		}
-//	ft_putnbr(form.size);
-//	*(size) = form.size;
 	return (len);
 }

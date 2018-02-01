@@ -18,6 +18,8 @@ void	ft_buffer_x_o(char *str, t_form *form)
 		else
 			ft_add_str_begin(str, "0X");
 	}
+	if (form->prec > len)
+		len = ft_precision(str, form);
 	if (form->min > len)
 	{
 		if (form->is_n == 1)

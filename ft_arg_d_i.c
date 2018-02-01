@@ -18,22 +18,24 @@ int			ft_arg_d_i(va_list ap, t_form *form)
 	int				nb;
 	unsigned int	nb2;
 	char			*str;
+	int		len;
 
 	if (form->type == 'd' || form->type == 'i' || form->type == 'D')
 	{
 		nb = va_arg(ap, int);
-		str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
+		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
 		ft_my_itoa(nb, str);
 		ft_buffer_d_i(str, form);
 	}
 	else
 	{
 		nb2 = va_arg(ap, unsigned int);
-		str = ft_memalloc(ft_size_nb(nb2) + form->min + 1);
+		str = ft_memalloc(ft_size_nb(nb2) + form->min + form->prec + 2);
 		ft_my_itoa(nb2, str);
 		ft_buffer_d_i(str, form);
 	}
-	write(1, str, ft_strlen(str));
+	len = ft_strlen(str);
+	write(1, str, len);
 	free(str);
-	return (ft_strlen(str));
+	return (len);
 }
