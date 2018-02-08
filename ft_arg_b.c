@@ -1,4 +1,15 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_arg_b.c                                       .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/02/08 16:58:08 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 16:58:39 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -19,11 +30,11 @@ static void	ft_binaire(char *str, long nb)
 	str = ft_reverse(str);
 }
 
-int	ft_arg_b(va_list ap, t_form *form)
+int			ft_arg_b(va_list ap, t_form *form)
 {
 	char	*str;
 	long	nb;
-	int	len;
+	int		len;
 
 	(void)form;
 	nb = va_arg(ap, long);

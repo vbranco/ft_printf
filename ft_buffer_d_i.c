@@ -1,13 +1,22 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_buffer_d_i.c                                  .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/02/08 16:54:27 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 16:54:49 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-
 
 void		ft_buffer_d_i(char *str, t_form *form)
 {
 	char	*s1;
-	int	len;
+	int		len;
 
 	len = ft_strlen(str);
 	s1 = ft_memalloc(form->min);

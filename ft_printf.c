@@ -6,18 +6,18 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:24:52 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:49:59 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	int		len;
-	int		size;
+	int			len;
+	int			size;
 
 	size = 0;
 	len = 0; //a supprimer
@@ -42,7 +42,6 @@ int				ft_printf(const char *format, ...)
 				format = format + size;
 			}
 		}
-
 	}
 	return (len);
 }

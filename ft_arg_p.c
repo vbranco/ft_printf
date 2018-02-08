@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:26:50 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:27:27 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:58:58 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ int		ft_arg_p(va_list ap, t_form *form)
 	char	*str;
 	void	*ptr;
 	long	nb;
-	int	len;
+	int		len;
 
 	ptr = va_arg(ap, void*);
 	nb = (long)ptr;

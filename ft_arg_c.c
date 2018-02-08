@@ -6,19 +6,19 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:22:22 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:30:15 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:57:56 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_arg_c(va_list ap, t_form *form)
+int		ft_arg_c(va_list ap, t_form *form)
 {
 	char	c;
 	char	*str;
 	wchar_t	ca;
-	int	len;
+	int		len;
 
 	str = ft_memalloc(4 + form->min + 1);
 	if (form->type == 'c' || (form->type == 'C' && form->length == 'h'))

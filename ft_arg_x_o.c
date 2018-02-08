@@ -6,23 +6,23 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:28:25 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:28:37 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:56:19 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_arg_x_o(va_list ap, t_form *form)
+int		ft_arg_x_o(va_list ap, t_form *form)
 {
-	long		nb;
-	char		*str;
-	long		max;
+	long	nb;
+	char	*str;
+	long	max;
 	int		len;
 
 	max = 4294967295;
 	nb = va_arg(ap, long);
-	str = ft_memalloc(ft_size_nb(nb) + form->min+ form->prec + 2);
+	str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
 	if (nb < 0 || nb > max)
 	{
 		if (form->type == 'x' || form->type == 'X')

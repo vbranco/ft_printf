@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:19:45 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:39:09 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:55:43 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,9 +22,7 @@ int	ft_args(t_form *form, va_list ap)
 		len = ft_arg_c(ap, form);
 	else if (form->type == 'C' || (form->type == 'c' && form->length == 'l'))
 		len = ft_arg_c(ap, form);
-	else if (form->type == 's' || (form->type == 'S' && form->length == 'h'))
-		len = ft_arg_s(ap, form);
-	else if (form->type == 'S' || (form->type == 's' && form->length == 'l'))
+	else if (form->type == 's' || form->type == 'S')
 		len = ft_arg_s(ap, form);
 	else if (form->type == 'd' || form->type == 'D' || form->type == 'i' ||
 		form->type == 'u' || form->type == 'U')

@@ -6,7 +6,7 @@
 #    By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/23 16:47:01 by vbranco      #+#   ##    ##    #+#        #
-#    Updated: 2018/02/08 19:49:20 by vbranco     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/08 19:46:10 by vbranco     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -41,6 +41,7 @@ FLAGS	    =  -Wall -Wextra -Werror
 all: $(NAME)
 
 clean:
+	    @echo "\033[31m"
 		rm -rf build/
 		@$(MAKE) -C $(L_FT) clean
 
@@ -60,8 +61,7 @@ build:
 $(NAME): $(OBJECTS)
 	    @$(MAKE) -C $(L_FT)
 		@echo "\033[32m"
-		libtool -v -static -o $@ $^ libft/libft.a
-		ranlib $(NAME)
+		gcc $(FLAGS) -I $(HEADER) $(OBJECTS) $(LIB_LNK) -o $@
 
 build/%.o: ./%.c | build
 	    gcc $(FLAGS) $(LIB_INC) -I $(HEADER) -c $< -o $@

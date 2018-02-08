@@ -6,39 +6,12 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:30:35 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:32:07 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:51:05 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-//j'ai des fuites de memoire dans une de ces fonctions.
-
-/*static void	ft_my_itoa(int nb, char *tmp)
-{
-	char	*s;
-	size_t	i;
-
-	i = 0;
-	s = ft_memalloc(ft_size_nb(nb) + 1);
-	if (nb < 0)
-	{
-		s[i] = '-';
-		nb = nb * -1;
-		i++;
-	}
-	while (nb > 9)
-	{
-		s[i] = ((nb % 10) + '0');
-		nb /= 10;
-		i++;
-	}
-	s[i] = ((nb % 10) + '0');
-	s = ft_reverse(s);
-	ft_strcat(tmp, s);
-	free(s);
-}*/
 
 static void	ft_modif(int nb, char *tmp, t_form *form)
 {

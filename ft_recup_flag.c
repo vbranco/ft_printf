@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/15 17:19:56 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/17 19:01:33 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:49:08 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,4 @@ void	ft_recup_flag(const char *format, t_form *form)
 			form->is_s = 1;
 		i++;
 	}
-//	ft_putendl("form->size : ");
-//	ft_putnbr(form->is_z);
 }

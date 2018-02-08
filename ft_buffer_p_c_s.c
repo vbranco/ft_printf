@@ -1,10 +1,21 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_buffer_p_c_s.c                                .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/02/08 16:45:44 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 16:55:23 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
 void	ft_precision_s(char *str, t_form *form)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i < form->prec)
@@ -15,7 +26,7 @@ void	ft_precision_s(char *str, t_form *form)
 void	ft_buffer_p_c_s(char *str, t_form *form)
 {
 	char	*s1;
-	int	len;
+	int		len;
 
 	len = ft_strlen(str);
 	s1 = ft_memalloc(form->min);

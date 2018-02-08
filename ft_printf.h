@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:29:26 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:47:19 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,11 +34,11 @@ typedef struct		s_form
 	int				prec;
 }					t_form;
 
-int					ft_printf(const char * format, ...);
+int					ft_printf(const char *format, ...);
 /*
 ** Parsing
 */
-int				ft_format(const char *format, va_list ap, int *size);
+int					ft_format(const char *format, va_list ap, int *size);
 void				ft_init_struct(t_form *form);
 void				ft_recup_type(const char *format, t_form *form);
 void				ft_recup_flag(const char *format, t_form *form);
@@ -48,13 +48,13 @@ void				ft_recup_prec(const char *format, t_form *form);
 /*
 ** Recup type
 */
-int				ft_args(t_form *form, va_list ap);
-int				ft_arg_c(va_list ap, t_form *form);
-int				ft_arg_s(va_list ap, t_form *form);
-int				ft_arg_d_i(va_list ap, t_form *form);
-int				ft_arg_x_o(va_list ap, t_form *form);
-int				ft_arg_p(va_list ap, t_form *form);
-int				ft_arg_b(va_list ap, t_form *form);
+int					ft_args(t_form *form, va_list ap);
+int					ft_arg_c(va_list ap, t_form *form);
+int					ft_arg_s(va_list ap, t_form *form);
+int					ft_arg_d_i(va_list ap, t_form *form);
+int					ft_arg_x_o(va_list ap, t_form *form);
+int					ft_arg_p(va_list ap, t_form *form);
+int					ft_arg_b(va_list ap, t_form *form);
 /*
 ** fonctions de modif pour recuperer une chaine de caracteres
 */
@@ -72,5 +72,5 @@ void				ft_buffer_d_i(char *str, t_form *form);
 void				ft_buffer_x_o(char *str, t_form *form);
 void				ft_buffer_b(char *str, t_form *form);
 void				ft_buffer_p_c_s(char *str, t_form *form);
-int				ft_precision(char *str, t_form *form);
+int					ft_precision(char *str, t_form *form);
 #endif

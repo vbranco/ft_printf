@@ -1,10 +1,21 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_precision.c                                   .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/02/08 16:51:53 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 16:52:15 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_precision(char *str, t_form *form)
+int		ft_precision(char *str, t_form *form)
 {
-	int	len;
+	int		len;
 	char	*s1;
 
 	len = ft_strlen(str);

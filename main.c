@@ -7,14 +7,14 @@
 int	main(void)
 {
 	setlocale(LC_ALL, "");
-	char	bonjour[] = "bonjour";
+/*	char	bonjour[] = "bonjour";
 	char	c = 'a';
 	int	nb = 19;
 	int	*ptr = &nb;;
 	wchar_t	ca = L'é';
 	wchar_t	str[] = L"la mérdasd";
 	wchar_t	str1[] = L"la mérde ça mec";
-
+*/
 	printf("%4.1ls\n", L"Jambon");
 	ft_printf("%4.1s\n", "Jambon");
 

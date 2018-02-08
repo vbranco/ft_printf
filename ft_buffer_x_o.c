@@ -1,10 +1,21 @@
-//en tete
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_buffer_x_o.c                                  .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/02/08 16:53:24 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 16:54:09 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
 void	ft_buffer_x_o(char *str, t_form *form)
 {
-	int	len;
+	int		len;
 	char	*s1;
 
 	s1 = ft_memalloc(form->min);
@@ -18,8 +29,7 @@ void	ft_buffer_x_o(char *str, t_form *form)
 		else
 			ft_add_str_begin(str, "0X");
 	}
-	if (form->prec > len)
-		len = ft_precision(str, form);
+	form->prec > len ? len = ft_precision(str, form) : 0;
 	if (form->min > len)
 	{
 		if (form->is_n == 1)
