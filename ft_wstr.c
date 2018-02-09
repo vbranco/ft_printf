@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 18:44:46 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:46:30 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 19:48:05 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,12 +21,15 @@ void		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 
 	prec = form->prec;
 	i = 0;
-	while (wstr[i] && prec >= 0)
+	while (wstr[i])
 	{
 		tmp = ft_memalloc(65);
 		ft_wchar(wstr[i], tmp);
-		if ((int)ft_strlen(tmp) > prec)
+		if ((int)ft_strlen(tmp) > prec && prec > -1)
+		{
 			ft_strcat(str, "\0");
+			break;
+		}
 		else
 			ft_strcat(str, tmp);
 		prec--;

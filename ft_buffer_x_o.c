@@ -6,12 +6,14 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:53:24 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:54:09 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 19:52:29 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+//probleme sur buffer
 
 void	ft_buffer_x_o(char *str, t_form *form)
 {
@@ -22,6 +24,7 @@ void	ft_buffer_x_o(char *str, t_form *form)
 	len = ft_strlen(str);
 	if (form->is_h == 1)
 	{
+		ft_putendl("je suis la!!!!!!");
 		if (form->type == 'o')
 			ft_add_str_begin(str, "0");
 		else if (form->type == 'x')
@@ -32,15 +35,13 @@ void	ft_buffer_x_o(char *str, t_form *form)
 	form->prec > len ? len = ft_precision(str, form) : 0;
 	if (form->min > len)
 	{
+		ft_putendl("je suis la dans le if !!!!!!");
 		if (form->is_n == 1)
-			ft_add_str_end(str, ft_memset(s1, ' ',
-			(form->min - len)));
+			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
 		else if (form->is_z == 1)
-			ft_add_str_begin(str, ft_memset(s1, '0',
-			(form->min - len)));
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
 		else if (form->is_n == 0)
-			ft_add_str_begin(str, ft_memset(s1, ' ',
-			(form->min - len)));
+			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 	}
 	free(s1);
 }

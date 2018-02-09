@@ -6,7 +6,7 @@
 #    By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/23 16:47:01 by vbranco      #+#   ##    ##    #+#        #
-#    Updated: 2018/02/08 20:10:45 by vbranco     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/09 16:19:24 by vbranco     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -61,7 +61,6 @@ $(NAME): $(OBJECTS)
 	    @$(MAKE) -C $(L_FT)
 		@echo "\033[32m"
 		libtool -v -static -o $@ $^ libft/libft.a
-		ranlib $(NAME)
 
 build/%.o: ./%.c | build
 	    gcc $(FLAGS) $(LIB_INC) -I $(HEADER) -c $< -o $@

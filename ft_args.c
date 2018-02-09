@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:19:45 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 20:10:33 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 17:42:38 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,20 +19,41 @@ int	ft_args(t_form *form, va_list ap)
 
 	len = 0;
 	if (form->type == 'c' || (form->type == 'C' && form->length == 'h'))
+	{
 		len = ft_arg_c(ap, form);
+	//	ft_putstr("LA");
+	}
 	else if (form->type == 'C' || (form->type == 'c' && form->length == 'l'))
+	{
 		len = ft_arg_c(ap, form);
+	//	ft_putstr("LA");
+	}
 	else if (form->type == 's' || form->type == 'S')
+	{
 		len = ft_arg_s(ap, form);
+	//	ft_putstr("LA");
+	}
 	else if (form->type == 'd' || form->type == 'D' || form->type == 'i' ||
 		form->type == 'u' || form->type == 'U')
+	{
 		len = ft_arg_d_i(ap, form);
+	//	ft_putstr("LA");
+	}
 	else if (form->type == 'x' || form->type == 'X' || form->type == 'o' ||
 		form->type == 'O')
+	{
 		len = ft_arg_x_o(ap, form);
+	//	ft_putstr("LA");
+	}
 	else if (form->type == 'p')
+	{
 		len = ft_arg_p(ap, form);
+	//	ft_putstr("LA");
+	}
 	else if (form->type == 'b')
+	{
 		len = ft_arg_b(ap, form);
+	//	ft_putstr("LA");
+	}
 	return (len);
 }

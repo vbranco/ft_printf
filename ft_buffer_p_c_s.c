@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:45:44 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 20:10:26 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 19:38:20 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,17 +30,11 @@ void	ft_buffer_p_c_s(char *str, t_form *form)
 
 	len = ft_strlen(str);
 	s1 = ft_memalloc(form->min);
-//	if (form->prec >= 0 && (form->type == 's' || form->type == 'S')) INDEDINE BEHAVIOR
-//		ft_precision_s(str, form);
-	if (form->min > len && form->min > 0)//je ne rentre pas dans ce "if" pourquoi??
-	{
-		ft_putendl("je suis dans le if");
-		if (form->is_n == 1)
-			ft_add_str_end(str, ft_memset(s1, ' ',
-			(form->min - len)));
-		else if (form->is_n == 0)
-			ft_add_str_begin(str, ft_memset(s1, ' ',
-			(form->min - len)));
-	}
+	if (form->is_n == 1 && form->min > len)
+		ft_add_str_end(str, ft_memset(s1, ' ',
+					(form->min - len)));
+	else if (form->is_n == 0 && form->min > len)
+		ft_add_str_begin(str, ft_memset(s1, ' ',
+					(form->min - len)));
 	free(s1);
 }

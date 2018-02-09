@@ -12,14 +12,14 @@ int	main(void)
 	int	nb = 19;
 	int	*ptr = &nb;;
 	wchar_t	ca = L'é';
-*/	wchar_t	str[] = L"la mérdasd";
+*/	wchar_t	str[] = L"Jambon";
 //	wchar_t	str1[] = L"la mérde ça mec";
 
-//	printf("%4.1ls\n", L"Jambon");
-//	ft_printf("%4.1ls\n", "Jambon");
+	printf("%4.1ls\n", L"Jambon");
+	ft_printf("%4.1ls\n", L"Jambon");
 
-	printf("je suis printf %ls\n", str);
-	ft_printf("je suis trintf %ls\n", str);
+	printf("%4.1ls\n", str);
+	ft_printf("%4.1ls\n", str);
 
 /*	printf("printf %.1s vitor, %.1S, %.1p\n", bonjour, str, ptr);
 	ft_printf("trintf %.1s vitor, %.1S, %.1p\n", bonjour, str, ptr);
