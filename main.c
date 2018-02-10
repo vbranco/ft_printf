@@ -27,8 +27,8 @@ int	main(void)
 //	printf(" len = %d\n", printf("t%04.2o%#2oet", 0, 0));
 //	printf(" len = %d\n\n", ft_printf("t%04.2o%#2oet", 0, 0));
 
-	printf(" len = %d\n", printf("%.5d\n", -421));
-	printf(" len = %d\n", ft_printf("%.5d\n", -421));
+	printf(" len = %d\n", printf("%08i\n", -71));
+	printf(" len = %d\n", ft_printf("%08i\n", -71));
 
 //	printf(" len = %d\n", printf("%+12.5d\n", 140));
 //	printf(" len = %d\n", ft_printf("%+12.5d\n", 140));
