@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/15 17:19:56 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 12:21:07 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 12:55:31 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,6 @@ void	ft_recup_flag(const char *format, t_form *form)
 	int	i;
 
 	i = 0;
-//	printf("la size :%d\n", form->size);
 	while ((i < form->size) && format[i])
 	{
 		if (format[i] == '#')

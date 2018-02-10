@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:47:19 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 15:10:48 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,7 +62,7 @@ void				ft_convert_base(long nb, int base, t_form *form, char *str);
 void				ft_wchar(wchar_t wc, char *str);
 void				ft_wstr(wchar_t *wstr, char *str, t_form *form);
 int					ft_count_size(wchar_t *wstr);
-void				ft_my_itoa(int nb, char *tmp);
+void				ft_my_itoa(long long nb, char *tmp);
 void				ft_add_str_begin(char *s1, char *s2);
 void				ft_add_str_end(char *s1, char *s2);
 /*

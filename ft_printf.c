@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:49:59 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 14:20:41 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,10 +23,7 @@ int		ft_printf(const char *format, ...)
 	len = 0; //a supprimer
 	va_start(ap, format);
 	if (ft_strchr(format, '%') == 0)
-	{
-		write(1, format, ft_strlen(format));
-		return (ft_strlen(format));
-	}
+		return (write(1, format, ft_strlen(format)));
 	else
 	{
 		while (*format)
@@ -34,11 +31,12 @@ int		ft_printf(const char *format, ...)
 			while (*format != '%' && *format)
 			{
 				write(1, format, 1);
+				len++;
 				format++;
 			}
 			if (*format == '%')
 			{
-				len = ft_format(format, ap, &size);
+				len += ft_format(format, ap, &size);
 				format = format + size;
 			}
 		}

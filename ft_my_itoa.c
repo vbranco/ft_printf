@@ -6,18 +6,18 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:50:10 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:50:32 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 15:45:19 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_my_itoa(int nb, char *tmp)
+void	ft_my_itoa(long long nb, char *tmp)
 {
-	char	*s;
-	size_t	i;
-	long	n;
+	char		*s;
+	size_t		i;
+	long long	n;
 
 	i = 0;
 	n = nb;

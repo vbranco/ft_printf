@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 16:42:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/17 16:58:49 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 13:31:55 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,8 +20,8 @@ void	ft_recup_min(const char *format, t_form *form)
 	i = 0;
 	while (format[i] && (i < form->size))
 	{
-		if (*format == '+' || *format == '-')
-			format++;
+		while (format[i] == '+' || format[i] == '-' || format[i] == '#')
+			i++;
 		if (format[i] == '0')
 		{
 			if (format[i + 1] >= '1' || format[i + 1] <= '9')

@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:54:27 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:54:49 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 15:53:57 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,10 +20,13 @@ void		ft_buffer_d_i(char *str, t_form *form)
 
 	len = ft_strlen(str);
 	s1 = ft_memalloc(form->min);
-	if (form->is_p == 1 && *str != '-')
-		ft_add_str_begin(str, "+");
 	if (form->prec > len)
 		len = ft_precision(str, form);
+	if (form->is_p == 1 && *str != '-')
+	{
+		ft_add_str_begin(str, "+");
+		len++;
+	}
 	if (form->min > len)
 	{
 		if (form->is_n == 1)

@@ -18,14 +18,23 @@ int	main(void)
 //	printf(" len = %d\n",        printf("t%04.2o", 0));
 //	printf(" len = %d\n\n", ft_printf("t%04.2o", 0));
 
-//	printf(" len = %d\n",        printf("t%04.2o%#2oet", 0, 0));
+//	printf(" len = %d\n",        printf("t%#2oet", 0));
+//	printf(" len = %d\n\n", ft_printf("t%#2oet", 0));
+
+//	printf(" len = %d\n",        printf("et %#-8.3o titi", 0));
+//	printf(" len = %d\n\n", ft_printf("et %#-8.3o titi", 0));
+
+//	printf(" len = %d\n", printf("t%04.2o%#2oet", 0, 0));
 //	printf(" len = %d\n\n", ft_printf("t%04.2o%#2oet", 0, 0));
 
-//	printf(" len = %d\n",        printf("et %-8.3o titi", 0));
-//	printf(" len = %d\n\n", ft_printf("et %-8.3o titi", 0));
+	printf(" len = %d\n", printf("%.5d\n", -421));
+	printf(" len = %d\n", ft_printf("%.5d\n", -421));
 
-	printf(" len = %d\n", printf("t%04.2o    %#2oet %-8.3o titi", 0, 0, 0));
-	printf(" len = %d\n\n", ft_printf("t%04.2o    %#2oet %-8.3o titi", 0, 0, 0));
+//	printf(" len = %d\n", printf("%+12.5d\n", 140));
+//	printf(" len = %d\n", ft_printf("%+12.5d\n", 140));
+
+//	printf(" len = %d\n", printf("t%04.2o %#2oet %#-8.3o titi", 0, 1, 0));
+//	printf(" len = %d\n\n", ft_printf("t%04.2o %#2oet %#-8.3o titi", 0, 1, 0));
 /*
 	printf("%4.1ls\n", L"Jambon");
 	ft_printf("%4.1ls\n", L"Jambon");
@@ -64,7 +73,8 @@ int	main(void)
 
 	printf("je suis printf>> %20s\n", bonjour);
 	ft_printf("je suis trintf>> %20s\n", bonjour);
-	ft_printf("je n'ai pas de parametres\n");
+	printf(" len = %d\n", printf("je n'ai pas de parametres"));
+	printf(" len = %d\n", ft_printf("je n'ai pas de parametres"));
 */
 //	sleep(1500);
 	return (0);

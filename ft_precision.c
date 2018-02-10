@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:51:53 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 11:43:32 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 14:43:53 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,23 +21,21 @@ int		ft_precision(char *str, t_form *form)
 
 	i = 0;
 	len = ft_strlen(str);
-	s1 = ft_memalloc(form->prec - len);
+	s1 = ft_memalloc(form->prec);
 	if (form->prec > len)
 	{
+//		printf("ici?\n");
 		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
 	}
-	else
+/*	else
 	{
-//		ft_putstr("ICI!!");
-//		ft_putstr("JE!!");
-//		s1 = ft_memalloc(len - form->prec);
-//		ft_add_str_begin(str, ft_memset(s1, ' ', (len - form->prec)));
-		while ((i < (len - form->prec)) && form->prec > -1)
+		while ((i < (len - form->prec)))// && form->prec > -1)
 		{
+//			printf("ici?\n");
 			str[i] = ' ';
 			i++;
 		}
 	}
-	free(s1);
+*/	free(s1);
 	return (ft_strlen(str));
 }
