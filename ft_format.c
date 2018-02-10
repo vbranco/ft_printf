@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/15 17:22:45 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 17:42:34 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 12:35:50 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,8 +36,8 @@ int		ft_format(const char *format, va_list ap, int *size)
 		len = ft_args(&form, ap);
 		*size = form.size;
 	}
-	else
-		while (*format != '%' && *format)
-			format++;
+//	else
+//		while (*format != '%' && *format)
+//			format++;
 	return (len);
 }

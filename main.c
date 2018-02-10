@@ -15,12 +15,24 @@ int	main(void)
 */	wchar_t	str[] = L"Jambon";
 //	wchar_t	str1[] = L"la mérde ça mec";
 
+//	printf(" len = %d\n",        printf("t%04.2o", 0));
+//	printf(" len = %d\n\n", ft_printf("t%04.2o", 0));
+
+//	printf(" len = %d\n",        printf("t%04.2o%#2oet", 0, 0));
+//	printf(" len = %d\n\n", ft_printf("t%04.2o%#2oet", 0, 0));
+
+//	printf(" len = %d\n",        printf("et %-8.3o titi", 0));
+//	printf(" len = %d\n\n", ft_printf("et %-8.3o titi", 0));
+
+	printf(" len = %d\n", printf("t%04.2o    %#2oet %-8.3o titi", 0, 0, 0));
+	printf(" len = %d\n\n", ft_printf("t%04.2o    %#2oet %-8.3o titi", 0, 0, 0));
+/*
 	printf("%4.1ls\n", L"Jambon");
 	ft_printf("%4.1ls\n", L"Jambon");
 
 	printf("%4.1ls\n", str);
 	ft_printf("%4.1ls\n", str);
-
+*/
 /*	printf("printf %.1s vitor, %.1S, %.1p\n", bonjour, str, ptr);
 	ft_printf("trintf %.1s vitor, %.1S, %.1p\n", bonjour, str, ptr);
 
