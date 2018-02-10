@@ -27,8 +27,29 @@ int	main(void)
 //	printf(" len = %d\n", printf("t%04.2o%#2oet", 0, 0));
 //	printf(" len = %d\n\n", ft_printf("t%04.2o%#2oet", 0, 0));
 
-	printf(" len = %d\n", printf("%08i\n", -71));
-	printf(" len = %d\n", ft_printf("%08i\n", -71));
+/*	printf(" len = %d\n", printf("%08i", -71));
+	printf(" len = %d\n", ft_printf("%08i", -71));
+
+	printf(" len = %d\n", printf("%5d", -741));
+	printf(" len = %d\n", ft_printf("%5d", -741));
+
+	printf(" len = %d\n", printf("%.5d", -421));
+	printf(" len = %d\n", ft_printf("%.5d", -421));
+
+	printf(" len = %d\n", printf("%.2i", -10));
+	printf(" len = %d\n", ft_printf("%.2i", -10));
+
+	printf(" len = %d\n", printf("%-2i", -7));
+	printf(" len = %d\n", ft_printf("%-2i", -7));
+
+*/
+	printf(" len = %d\n", printf("%00+10.4d", 0));
+	printf(" len = %d\n", ft_printf("%00+10.4d", 0));
+
+//	printf(" len = %d\n", printf("%0d", -579));
+//	printf(" len = %d\n", ft_printf("%0d", -579));
+
+
 
 //	printf(" len = %d\n", printf("%+12.5d\n", 140));
 //	printf(" len = %d\n", ft_printf("%+12.5d\n", 140));

@@ -24,7 +24,7 @@ void	ft_recup_flag(const char *format, t_form *form)
 			form->is_h = 1;
 		else if (format[i] == '0')
 		{
-			if (format[i - 1] < '0' || format[i - 1] > '9')
+			if( (format[i - 1] < '0' || format[i - 1] > '9') && (format[i + 1] != '0'))
 				form->is_z = 1;
 		}
 		else if (format[i] == '-')
