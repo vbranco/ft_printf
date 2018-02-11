@@ -18,13 +18,16 @@ void	ft_recup_flag(const char *format, t_form *form)
 	int	i;
 
 	i = 0;
-	while ((i < form->size) && format[i])
+	//jeter un oeil a la condition car des fois ca prend l'espace et d'autres fois non
+	//bien retester les differents cas de figure
+	while ((i < form->size - 1) && format[i])
 	{
 		if (format[i] == '#')
 			form->is_h = 1;
 		else if (format[i] == '0')
 		{
-			if( (format[i - 1] < '0' || format[i - 1] > '9') && (format[i + 1] != '0'))
+			if( (format[i - 1] < '0' || format[i - 1] > '9') &&
+				(format[i + 1] != '0'))
 				form->is_z = 1;
 		}
 		else if (format[i] == '-')

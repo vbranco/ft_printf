@@ -22,6 +22,7 @@ int		ft_precision(char *str, t_form *form)
 	i = 0;
 	len = ft_strlen(str);
 	s1 = ft_memalloc(form->prec);
+//	printf("prec : %d\n", form->prec);
 	if (form->prec > len)
 	{
 //		printf("ici?\n");

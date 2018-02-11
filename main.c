@@ -42,13 +42,14 @@ int	main(void)
 	printf(" len = %d\n", printf("%-2i", -7));
 	printf(" len = %d\n", ft_printf("%-2i", -7));
 
-*/
 	printf(" len = %d\n", printf("%00+10.4d", 0));
 	printf(" len = %d\n", ft_printf("%00+10.4d", 0));
 
-//	printf(" len = %d\n", printf("%0d", -579));
-//	printf(" len = %d\n", ft_printf("%0d", -579));
-
+	printf(" len = %d\n", printf("%0d", -579));
+	printf(" len = %d\n", ft_printf("%0d", -579));
+*/
+	printf(" len = %d\n", printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24,  (short)-2345));
+	printf(" len = %d\n", ft_printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24,  (short)-2345));
 
 
 //	printf(" len = %d\n", printf("%+12.5d\n", 140));
