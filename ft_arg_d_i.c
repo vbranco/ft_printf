@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:45:58 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 16:33:20 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 20:18:31 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,23 +15,35 @@
 
 int		ft_arg_d_i(va_list ap, t_form *form)
 {
-	int				nb;
-	long long		nb2;
-	char			*str;
-	int				len;
+	intmax_t			nb;
+	uintmax_t			nb2;
+	char				*str;
+	int					len;
 
 	if ((form->type == 'd' || form->type == 'i') && form->length != 'l' &&
 			form->elength != 'l')
 	{
-		nb = va_arg(ap, int);
+		nb = (int)va_arg(ap, int);
 		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
 		ft_my_itoa(nb, str);
 	}
+	else if ((form->type == 'u' && (form->length == 'z' || (form->length == 'l' && form->elength == 'l'))))
+	{
+		nb2 = (unsigned long long)va_arg(ap, unsigned long long);
+		str = ft_memalloc(ft_size_nb2(nb2) + form->min + form->prec + 2);
+		ft_my_itoa2(nb2, str);
+	}
+	else if (form->type == 'u' && form->length == 'l')
+	{
+		nb2 = (unsigned long)va_arg(ap, unsigned long);
+		str = ft_memalloc(ft_size_nb2(nb2) + form->min + form->prec + 2);
+		ft_my_itoa2(nb2, str);
+	}
 	else
 	{
-		nb2 = va_arg(ap, long long);
-		str = ft_memalloc(ft_size_nb(nb2) + form->min + form->prec + 2);
-		ft_my_itoa(nb2, str);
+		nb = (long long)va_arg(ap, long long);
+		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
+		ft_my_itoa(nb, str);
 	}
 	ft_buffer_d_i(str, form);
 	len = ft_strlen(str);

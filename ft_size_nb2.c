@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_recup_prec.c                                  .::    .:/ .      .::   */
+/*   ft_size_nb2.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/17 16:59:00 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 18:20:47 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/12 20:15:02 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/12 20:15:51 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_recup_prec(const char *format, t_form *form)
+int		ft_size_nb2(uintmax_t n)
 {
-	int		i;
+	int		size;
 
-	i = 0;
-	while ((i < form->size) && format[i])
+	size = 0;
+	while (n > 9)
 	{
-		if (format[i] == '.')
-		{
-			format += i + 1;
-			form->prec = ft_atoi(format);
-			break ;
-		}
-		i++;
+		size++;
+		n /= 10;
 	}
+	return (size + 1);
 }

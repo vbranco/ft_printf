@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 16:22:16 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 20:17:02 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,12 +62,14 @@ void				ft_convert_base(long nb, int base, t_form *form, char *str);
 void				ft_wchar(wchar_t wc, char *str);
 void				ft_wstr(wchar_t *wstr, char *str, t_form *form);
 int					ft_count_size(wchar_t *wstr);
-void				ft_my_itoa(long long nb, char *tmp);
+void				ft_my_itoa(intmax_t nb, char *tmp);
+void				ft_my_itoa2(uintmax_t nb, char *tmp);
 void				ft_add_str_begin(char *s1, char *s2);
 void				ft_add_str_end(char *s1, char *s2);
 /*
 ** Buffer
 */
+int					ft_size_nb2(uintmax_t nb);
 void				ft_buffer_d_i(char *str, t_form *form);
 void				ft_buffer_x_o(char *str, t_form *form);
 void				ft_buffer_b(char *str, t_form *form);

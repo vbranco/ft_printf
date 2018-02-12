@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/23 16:46:53 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/28 19:01:48 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 20:00:30 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -107,7 +107,7 @@ int					ft_isupper(int c);
 int					ft_isxdigit(int c);
 int					ft_isspace(int c);
 int					ft_islower(int c);
-int					ft_size_nb(int n);
+int					ft_size_nb(intmax_t n);
 char				*ft_reverse(char *str);
 int					ft_count_words(char const *s, char c);
 

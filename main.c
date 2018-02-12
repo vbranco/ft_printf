@@ -15,6 +15,11 @@ int	main(void)
 */	wchar_t	str[] = L"Jambon";
 //	wchar_t	str1[] = L"la mérde ça mec";
 
+	printf(" len = %d\n", printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
+	printf(" len = %d\n", ft_printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
+
+
+
 //	printf(" len = %d\n",        printf("t%04.2o", 0));
 //	printf(" len = %d\n\n", ft_printf("t%04.2o", 0));
 
@@ -47,10 +52,17 @@ int	main(void)
 
 	printf(" len = %d\n", printf("%0d", -579));
 	printf(" len = %d\n", ft_printf("%0d", -579));
-*/
+
 	printf(" len = %d\n", printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24,  (short)-2345));
 	printf(" len = %d\n", ft_printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24,  (short)-2345));
+*/
+//	printf(" len = %d\n", printf("% 05D", 24));
+//	printf(" len = %d\n", ft_printf("% 05D", 24));
 
+
+
+//	printf(" len = %d\n", printf("toto%.0d et %+.i et  %   .0D !!!", 0, 0, 0));
+//	printf(" len = %d\n", ft_printf("toto%.0d et %+.i et  %   .0D !!!", 0, 0, 0));
 
 //	printf(" len = %d\n", printf("%+12.5d\n", 140));
 //	printf(" len = %d\n", ft_printf("%+12.5d\n", 140));
