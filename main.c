@@ -15,8 +15,12 @@ int	main(void)
 */	wchar_t	str[] = L"Jambon";
 //	wchar_t	str1[] = L"la mérde ça mec";
 
-	printf(" len = %d\n", printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
-	printf(" len = %d\n", ft_printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
+//	printf(" len = %d\n", printf("%llo", (unsigned long long)-127));
+//	printf(" len = %d\n", ft_printf("%llo", (unsigned long long)-127));
+	printf(" len = %d\n", printf("%lc", 0x4e6));
+	printf(" len = %d\n", ft_printf("%lc", 0x4e6));
+
+
 
 
 

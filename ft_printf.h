@@ -58,7 +58,7 @@ int					ft_arg_b(va_list ap, t_form *form);
 /*
 ** fonctions de modif pour recuperer une chaine de caracteres
 */
-void				ft_convert_base(long nb, int base, t_form *form, char *str);
+void				ft_convert_base(intmax_t nb, int base, t_form *form, char *str);
 void				ft_wchar(wchar_t wc, char *str);
 void				ft_wstr(wchar_t *wstr, char *str, t_form *form);
 int					ft_count_size(wchar_t *wstr);

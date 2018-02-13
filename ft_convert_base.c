@@ -28,11 +28,11 @@ static void	ft_modif(int nb, char *tmp, t_form *form)
 	free(s);
 }
 
-void		ft_convert_base(long nb, int base, t_form *form, char *str)
+void		ft_convert_base(intmax_t nb, int base, t_form *form, char *str)
 {
-	char	*tmp;
-	long	reste;
-	long	limit;
+	char		*tmp;
+	intmax_t	reste;
+	intmax_t	limit;
 
 	tmp = ft_memalloc(100);
 	limit = 8;
