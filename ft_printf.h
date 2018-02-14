@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 20:17:02 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 17:22:23 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,7 +58,8 @@ int					ft_arg_b(va_list ap, t_form *form);
 /*
 ** fonctions de modif pour recuperer une chaine de caracteres
 */
-void				ft_convert_base(intmax_t nb, int base, t_form *form, char *str);
+void				ft_convert_base_uintmax(uintmax_t nb, int base, t_form *form, char *str);
+void				ft_convert_base_intmax(intmax_t nb, int base, t_form *form, char *str);
 void				ft_wchar(wchar_t wc, char *str);
 void				ft_wstr(wchar_t *wstr, char *str, t_form *form);
 int					ft_count_size(wchar_t *wstr);

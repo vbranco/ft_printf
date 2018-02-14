@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_convert_base.c                                .::    .:/ .      .::   */
+/*   ft_convert_base_uintmax.c                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/24 20:30:35 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:51:05 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/14 17:23:07 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/14 17:53:41 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,16 +28,16 @@ static void	ft_modif(int nb, char *tmp, t_form *form)
 	free(s);
 }
 
-void		ft_convert_base(intmax_t nb, int base, t_form *form, char *str)
+void		ft_convert_base_uintmax(uintmax_t nb, int base, t_form *form, char *str)
 {
 	char		*tmp;
-	intmax_t	reste;
-	intmax_t	limit;
+	uintmax_t	reste;
+	uintmax_t	limit;
 
 	tmp = ft_memalloc(100);
 	limit = 8;
 	base == 16 ? (limit = 9) : 0;
-	while (nb > base)
+	while (nb > (uintmax_t)base)
 	{
 		reste = nb % base;
 		nb /= base;

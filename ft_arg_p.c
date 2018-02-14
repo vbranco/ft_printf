@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:26:50 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:58:58 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 17:26:18 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,15 +15,15 @@
 
 int		ft_arg_p(va_list ap, t_form *form)
 {
-	char	*str;
-	void	*ptr;
-	long	nb;
-	int		len;
+	char		*str;
+	void		*ptr;
+	uintmax_t	nb;
+	int			len;
 
 	ptr = va_arg(ap, void*);
 	nb = (long)ptr;
 	str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
-	ft_convert_base(nb, 16, form, str);
+	ft_convert_base_uintmax(nb, 16, form, str);
 	ft_add_str_begin(str, "0x");
 	ft_buffer_p_c_s(str, form);
 	len = ft_strlen(str);

@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:51:53 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 17:02:44 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 19:28:43 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,9 @@ int		ft_precision(char *str, t_form *form)
 			i++;
 		}
 	}
-*/	free(s1);
+*/
+//	else if (form->prec == 0)
+//		str[0] = '\0';
+	free(s1);
 	return (ft_strlen(str));
 }

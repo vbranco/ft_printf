@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:22:22 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:57:56 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 16:40:42 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,8 +33,11 @@ int		ft_arg_c(va_list ap, t_form *form)
 		ft_wchar(ca, str);
 	}
 	ft_buffer_p_c_s(str, form);
-	if (str[0] == '\0')
+	if (str[0] == '\0' || str[0] == 0)
+	{
+		write(1, str, 1);
 		len = 1;
+	}
 	else
 		len = ft_strlen(str);
 	write(1, str, len);

@@ -6,12 +6,53 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:28:25 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 14:43:55 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 20:29:41 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_size_nbo(intmax_t nb, t_form *form)
+{
+	int		size;
+	int		div;
+
+	size = 0;
+	if (nb < 0)
+	{
+		nb = nb * -1;
+		size++;
+	}
+	if (form->type == 'o')
+		div = 8;
+	else
+		div = 10;
+	while (nb > 9)
+	{
+		size++;
+		nb /= div;
+	}
+	return (size + 1);
+}
+
+static int	ft_size_nbo2(uintmax_t nb, t_form *form)
+{
+	int		size;
+	int		div;
+
+	size = 0;
+	if (form->type == 'o')
+		div = 8;
+	else
+		div = 10;
+	while (nb > 9)
+	{
+		size++;
+		nb /= div;
+	}
+	return (size + 1);
+}
 
 int		ft_arg_x_o(va_list ap, t_form *form)
 {
@@ -22,36 +63,31 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 	int		len;
 
 	max = 4294967295;
-	if (form->type == 'o' && (form->elength == 'l' || form->length == 'j'))
+	if (((form->type == 'o' || form->type == 'X' || form->type == 'x') && (form->elength == 'l' || form->length == 'j' || form->length == 'z')) || ((form->type == 'x' || form->type == 'o' || form->type == 'X') && form->length == 'l'))
 	{
 		nb2 = (unsigned long long)va_arg(ap, unsigned long long);
-		str = ft_memalloc(ft_size_nb2(nb2) + form->min + form->prec + 2);
-		printf("i : %d\n", (ft_size_nb2(nb2)));// + form->min + form->prec + 2));
-//		printf("nb2 : %jo\n", nb2);
+		str = ft_memalloc(ft_size_nbo2(nb2, form) + form->min + form->prec + 2);
 	}
 	else
 	{
 		nb = (long long)va_arg(ap, long long);
-		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
-		printf("i : %d\n", (ft_size_nb(nb) + form->min + form->prec + 2));
-//		printf("nb : %jo\n", nb);
+		str = ft_memalloc(ft_size_nbo(nb, form) + form->min + form->prec + 2);
 	}
-	if (form->elength == 'l' || form->length == 'j')
+	if (form->elength == 'l' || form->length == 'j' || form->length == 'z' || form->length == 'l')
 	{
 		if (nb2 > (uintmax_t) max)
 		{
 			if (form->type == 'x' || form->type == 'X')
-				ft_convert_base(nb2, 16, form, str);
+				ft_convert_base_uintmax(nb2, 16, form, str);
 			else
-				ft_convert_base(nb2, 8, form, str);
+				ft_convert_base_uintmax(nb2, 8, form, str);
 		}
-		else// if (nb2 >= 0)
+		else
 		{
-//			printf("ici\n");
 			if (form->type == 'x' || form->type == 'X')
-				ft_convert_base(nb2, 16, form, str);
+				ft_convert_base_uintmax(nb2, 16, form, str);
 			else
-				ft_convert_base(nb2, 8, form, str);
+				ft_convert_base_uintmax(nb2, 8, form, str);
 		}
 	}
 	else
@@ -59,16 +95,19 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 		if (nb < 0 || nb > max)
 		{
 			if (form->type == 'x' || form->type == 'X')
-				ft_convert_base(nb, 16, form, str);
+				ft_convert_base_intmax(nb, 16, form, str);
 		}
 		else if (nb >= 0)
 		{
 			if (form->type == 'x' || form->type == 'X')
-				ft_convert_base(nb, 16, form, str);
+				ft_convert_base_intmax(nb, 16, form, str);
 			else
-				ft_convert_base(nb, 8, form, str);
+				ft_convert_base_intmax(nb, 8, form, str);
 		}
 	}
+//	printf("zero : %d\n", form->is_z);
+//	printf("min : %d\n", form->min);
+//	printf("prec : %d\n", form->prec);
 	ft_buffer_x_o(str, form);
 	len = ft_strlen(str);
 	write(1, str, len);
