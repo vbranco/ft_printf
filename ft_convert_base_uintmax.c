@@ -37,7 +37,7 @@ void		ft_convert_base_uintmax(uintmax_t nb, int base, t_form *form, char *str)
 	tmp = ft_memalloc(100);
 	limit = 8;
 	base == 16 ? (limit = 9) : 0;
-	while (nb > (uintmax_t)base)
+	while (nb >= (uintmax_t)base)
 	{
 		reste = nb % base;
 		nb /= base;
