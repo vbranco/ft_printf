@@ -105,9 +105,6 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 				ft_convert_base_intmax(nb, 8, form, str);
 		}
 	}
-//	printf("zero : %d\n", form->is_z);
-//	printf("min : %d\n", form->min);
-//	printf("prec : %d\n", form->prec);
 	ft_buffer_x_o(str, form);
 	len = ft_strlen(str);
 	write(1, str, len);

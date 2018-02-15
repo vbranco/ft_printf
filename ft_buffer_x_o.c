@@ -17,8 +17,14 @@
 
 static void	ft_h(char *str, t_form *form)
 {
+	int	i;
+
+	i = 0;
 	if (str[0] != '0')
 	{
+	//	while (str[i] == ' ')
+	//		i++;
+	//	str += i;
 		if (form->type == 'o' || form->type == 'O')
 			ft_add_str_begin(str, "0");
 		else if (form->type == 'x')
@@ -26,6 +32,16 @@ static void	ft_h(char *str, t_form *form)
 		else if (form->type == 'X')
 			ft_add_str_begin(str, "0X");
 	}
+/*	if (form->prec > ((int)ft_strlen(str) - 2))
+	{
+		str -= i;
+		str = ft_reverse(str);
+		i = 0;
+		while (str[i] != ' ')
+			i++;
+		str[i] = '\0';
+		str = ft_reverse(str);
+	}**/
 }
 
 void	ft_buffer_x_o(char *str, t_form *form)
@@ -37,7 +53,10 @@ void	ft_buffer_x_o(char *str, t_form *form)
 //avec l'ajout de "0x" ca me fait perdre 2 cases en len.
 //je pense aussi que je ne gere pas bien les priorites entre le min et prec
 
+//	printf("prec : %d", form->prec);
 	s1 = ft_memalloc(form->min);
+	if (form->prec == 0 && str[0] == '0')
+		str[0] = '\0';
 	if (form->is_h == 1)
 		ft_h(str, form);
 	ft_precision(str, form);
@@ -60,5 +79,7 @@ void	ft_buffer_x_o(char *str, t_form *form)
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 		}
 	}
+//	if (form->is_h == 1)
+//		ft_h(str, form);
 	free(s1);
 }
