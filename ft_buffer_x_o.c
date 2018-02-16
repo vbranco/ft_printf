@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:53:24 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 17:43:27 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:00:31 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,21 +64,22 @@ void	ft_buffer_x_o(char *str, t_form *form)
 	{
 		if (form->is_n == 1)
 		{
-		//	printf("1\n");
 			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
 		}
 		else if ((form->is_z == 1 && form->min > form->prec))
 		{
-		//	printf("2\n");
 			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
+			if ((form->type == 'x' || form->type == 'X') && (str[ft_strlen(str) - 2] == 'x' || str[ft_strlen(str) - 2] == 'X'))
+			{
+				str[1] = str[ft_strlen(str) - 2];
+				str[ft_strlen(str) - 2] = str[0];
+			}
 		}
 		else if (form->is_n == 0)
 		{
-		//	printf("3\n");
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 		}
+
 	}
-//	if (form->is_h == 1)
-//		ft_h(str, form);
 	free(s1);
 }
