@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 17:33:55 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 19:53:28 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:32:42 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,8 +34,10 @@ static void	ft_put4wchar(wchar_t wc, char *str)
 	str[3] = (wc & 0x3f) + 0x80;
 }
 
-void		ft_wchar(wchar_t wc, char *str)
+int			ft_wchar(wchar_t wc, char *str)
 {
+	if ((wc < 0 || wc > 0x10ffff) && (wc >= 0xd800 && wc <= 0xdfff))
+		return (-1);
 	if (wc <= 127)
 		str[0] = wc;
 	else if (wc <= 255 && MB_CUR_MAX == 1)
@@ -49,4 +51,7 @@ void		ft_wchar(wchar_t wc, char *str)
 		else if (wc < 0x110000)
 			ft_put4wchar(wc, str);
 	}
+	else
+		return (-1);
+	return (ft_strlen(str));
 }
