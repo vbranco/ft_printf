@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:53:24 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 20:29:32 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 17:06:52 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static void	ft_h(char *str, char *s1, t_form *form)
 
 	i = 0;
 	len = ft_strlen(str);
-	printf("\nlen : %d\n", len);
+//	printf("\nlen : %d\n", len);
 /*	if (form->prec > len)
 	{
 		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
@@ -52,15 +52,15 @@ void	ft_buffer_x_o(char *str, t_form *form)
 	int		len;
 	char	*s1;
 
-//manque gerer les largueurs de champ avec l'ajout de "0x"
-//avec l'ajout de "0x" ca me fait perdre 2 cases en len.
-//je pense aussi que je ne gere pas bien les priorites entre le min et prec
-
-//	printf("prec : %d", form->prec);
 	s1 = ft_memalloc(form->min);
 	if (form->prec == 0 && str[0] == '0')
-		str[0] = '\0';
-	if (form->is_h == 1 && str[0] != '0')
+	{
+		if (form->is_h == 1 && (form->type == 'o' || form->type == 'O'))
+			str[0] = '0';
+		else
+			str[0] = '\0';
+	}
+	if (form->is_h == 1 && str[0] != '0' && str[0] != '\0')
 		ft_h(str, s1, form);
 	ft_precision(str, form);
 	len = ft_strlen(str);

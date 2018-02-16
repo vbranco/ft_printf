@@ -35,6 +35,17 @@ int	main(void)
 	printf(" len = %d\n", ft_printf("test%#.4o", 012));
 
 
+	printf(" len = %d\n", printf("cc%#.4X et %#0012x %#04hX !!", 0xaef, 0xe, (unsigned short)0));
+	printf(" len = %d\n", ft_printf("cc%#.4X et %#0012x %#04hX !!", 0xaef, 0xe, (unsigned short)0));
+
+
+/*	printf(" len = %d\n", printf("toto %###.0o%#.O et %#.1o !", 0, 0, 0));
+	printf(" len = %d\n", ft_printf("toto %###.0o%#.O et %#.1o !", 0, 0, 0));
+*/
+
+
+//	printf(" len = %d\n", printf("bonjour %% bonjour"));
+//	printf(" len = %d\n", ft_printf("bonjour %% bonjour"));
 
 /*
 	printf(" len = %d\n", printf("t %#7.5X%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1));
