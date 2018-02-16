@@ -22,19 +22,29 @@ static void	ft_h(char *str, char *s1, t_form *form)
 
 	i = 0;
 	len = ft_strlen(str);
-//	if (form->min > len)
-//	{
+	printf("\nlen : %d\n", len);
+/*	if (form->prec > len)
+	{
+		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+	}
+*/	if (form->type == 'o' || form->type == 'O')
+	{
 		if (form->prec > len)
-		{
 			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-		}
-		if (form->type == 'o' || form->type == 'O')
-			ft_add_str_begin(str, "0");
-		else if (form->type == 'x')
-			ft_add_str_begin(str, "0x");
-		else if (form->type == 'X')
-			ft_add_str_begin(str, "0X");
-//	}
+		ft_add_str_begin(str, "0");
+	}
+	else if (form->type == 'x')
+	{
+		if (form->prec > len)
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		ft_add_str_begin(str, "0x");
+	}
+	else if (form->type == 'X')
+	{
+		if (form->prec > len)
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		ft_add_str_begin(str, "0X");
+	}
 }
 
 void	ft_buffer_x_o(char *str, t_form *form)
