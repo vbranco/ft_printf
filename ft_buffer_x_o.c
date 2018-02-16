@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:53:24 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 17:06:52 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 17:43:27 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,16 +22,12 @@ static void	ft_h(char *str, char *s1, t_form *form)
 
 	i = 0;
 	len = ft_strlen(str);
-//	printf("\nlen : %d\n", len);
-/*	if (form->prec > len)
-	{
-		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-	}
-*/	if (form->type == 'o' || form->type == 'O')
+	if (form->type == 'o' || form->type == 'O')
 	{
 		if (form->prec > len)
 			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-		ft_add_str_begin(str, "0");
+		if (form->prec != (int)ft_strlen(str) || str[0] != '0')
+			ft_add_str_begin(str, "0");
 	}
 	else if (form->type == 'x')
 	{

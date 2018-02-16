@@ -31,8 +31,13 @@ int	main(void)
 	printf(" len = %d\n", printf("%.x", 12));
 	printf(" len = %d\n", ft_printf("%.x", 12));
 
-*/	printf(" len = %d\n", printf("test%#.4o", 012));
+	printf(" len = %d\n", printf("test%#.4o", 012));
 	printf(" len = %d\n", ft_printf("test%#.4o", 012));
+*/
+
+	printf(" len = %d\n", printf("m%#.9od\nee", 123456789));
+	printf(" len = %d\n", ft_printf("m%#.9od\nee", 123456789));
+
 
 
 	printf(" len = %d\n", printf("cc%#.4X et %#0012x %#04hX !!", 0xaef, 0xe, (unsigned short)0));
