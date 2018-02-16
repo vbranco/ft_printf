@@ -34,6 +34,8 @@ int	main(void)
 */
 
 
+	printf(" len = %d\n", printf("test%#.4o", 012));
+	printf(" len = %d\n", ft_printf("test%#.4o", 012));
 
 
 	printf(" len = %d\n", printf("t %#7.5X%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1));

@@ -15,33 +15,26 @@
 
 //probleme sur buffer
 
-static void	ft_h(char *str, t_form *form)
+static void	ft_h(char *str, char *s1, t_form *form)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	if (str[0] != '0')
-	{
-	//	while (str[i] == ' ')
-	//		i++;
-	//	str += i;
+	len = ft_strlen(str);
+//	if (form->min > len)
+//	{
+		if (form->prec > len)
+		{
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		}
 		if (form->type == 'o' || form->type == 'O')
 			ft_add_str_begin(str, "0");
 		else if (form->type == 'x')
 			ft_add_str_begin(str, "0x");
 		else if (form->type == 'X')
 			ft_add_str_begin(str, "0X");
-	}
-/*	if (form->prec > ((int)ft_strlen(str) - 2))
-	{
-		str -= i;
-		str = ft_reverse(str);
-		i = 0;
-		while (str[i] != ' ')
-			i++;
-		str[i] = '\0';
-		str = ft_reverse(str);
-	}**/
+//	}
 }
 
 void	ft_buffer_x_o(char *str, t_form *form)
@@ -57,8 +50,8 @@ void	ft_buffer_x_o(char *str, t_form *form)
 	s1 = ft_memalloc(form->min);
 	if (form->prec == 0 && str[0] == '0')
 		str[0] = '\0';
-	if (form->is_h == 1)
-		ft_h(str, form);
+	if (form->is_h == 1 && str[0] != '0')
+		ft_h(str, s1, form);
 	ft_precision(str, form);
 	len = ft_strlen(str);
 	if (form->min > len)
