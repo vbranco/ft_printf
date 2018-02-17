@@ -27,7 +27,6 @@ void		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 		ft_wchar(wstr[i], tmp);
 		if ((int)ft_strlen(tmp) > prec && prec > -1)
 		{
-//			printf("ici?\n");
 			ft_strcat(str, "\0");
 			break;
 		}

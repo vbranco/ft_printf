@@ -13,12 +13,26 @@
 
 #include "ft_printf.h"
 
-/*static void	ft_buff(const char *format, char *str)
+static int	ft_buff(const char *format, int *len)//, char *str)
 {
 	int		i;
+	char	*str;
 
 	i = 0;
-}*/
+	while (format[i] != '%' && format[i])
+		i++;
+	str = ft_memalloc(i + 1);
+	i = 0;
+	while (format[i] != '%' && format[i])
+	{
+		str[i] = format[i];
+		i++;
+	}
+	*len += i;
+	write(1, str, ft_strlen(str));
+	free(str);
+	return (i);
+}
 
 int		ft_printf(const char *format, ...)
 {
@@ -39,21 +53,27 @@ int		ft_printf(const char *format, ...)
 			//il faut faire un buffer ici aussi pour
 			//me permettre de gerer les erreurs et du coup
 			//ne pas afficher le texte
-			while (*format != '%' && *format)
+/*			while (*format != '%' && *format)
 			{
 				write(1, format, 1);
 				len++;
 				format++;
 			}
+*/			format += ft_buff(format, &len);//, str);
 			if (*format == '%')
 			{
-				ln = ft_format(format, ap, &size);
-				if (ln == -1)
-					return (-1);
+				if ((ln = ft_format(format, ap, &size)) == -1)
+		//		if (ln == -1)
+				{
+					len = -1;
+					return (len);
+				}
 				else
 					len += ln;
 				format = format + size;
 			}
+			if (len == -1)
+				break;
 		}
 	}
 	return (len);
