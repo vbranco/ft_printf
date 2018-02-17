@@ -48,7 +48,6 @@ static int	ft_p(const char *format, t_form *form)
 {
 	char	*str;
 	int	i;
-	int	len;
 	char	*s1;
 
 	s1 = ft_memalloc(form->min);
@@ -57,18 +56,20 @@ static int	ft_p(const char *format, t_form *form)
 		i++;
 	str = ft_memalloc(form->min + form->prec + 3);
 	ft_strcat(str, "%");
-	len = ft_strlen(str);
 	form->size = i + 2;
-	if (form->min > len)
+	if (form->min > 1)
 	{
 		if (form->is_n == 1)
-			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
+			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - 1)));
 		else if (form->is_z == 1)
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - 1)));
 		else if (form->is_n == 0)
-			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
+			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - 1)));
 	}
-	return (write (1, str, ft_strlen(str)));
+	free(s1);
+	write (1, str, ft_strlen(str));
+	free(str);
+	return (ft_strlen(str));
 }
 
 int		ft_percent(const char *format, t_form *form)

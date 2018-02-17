@@ -17,15 +17,9 @@ int	main(void)
 	printf(" len = %d\n", printf("%lc", 0x4e6));
 	printf(" len = %d\n", ft_printf("%lc", 0x4e6));
 
-	printf(" len = %d\n", printf("%.5s", "coco et titi"));
-	printf(" len = %d\n", ft_printf("%.5s", "coco et titi"));
-
-
-	printf(" len = %d\n", printf("%12%"));
-	printf(" len = %d\n", ft_printf("%12%"));
 */
-	printf(" len = %d\n", printf("titi % +---12.5% et%%%0004% et %+1%"));
-	printf(" len = %d\n", ft_printf("titi % +---12.5% et%%%0004% et %+1%"));
+	printf(" len = %d\n", printf("ahello ca%----4c %1c va %10c%-c ??", '    \0', '\n', (char)564, 0));
+	printf(" len = %d\n", ft_printf("bhello ca%----4c %1c va %10c%-c ??", '    \0', '\n', (char)564, 0));
 
 
 //	sleep(1500);
