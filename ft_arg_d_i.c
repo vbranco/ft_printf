@@ -45,10 +45,8 @@ int		ft_arg_d_i(va_list ap, t_form *form)
 		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
 		ft_my_itoa(nb, str);
 	}
-//	printf("is_z = %d || min = %d\n", form->is_z, form->min);
 	ft_buffer_d_i(str, form);
-	len = ft_strlen(str);
-	write(1, str, len);
+	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);
 }

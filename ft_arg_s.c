@@ -42,8 +42,7 @@ int		ft_arg_s(va_list ap, t_form *form)
 		ft_wstr(wstr, str, form);
 	}
 	ft_buffer_p_c_s(str, form);
-	len = ft_strlen(str);
-	write(1, str, len);
+	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);
 }

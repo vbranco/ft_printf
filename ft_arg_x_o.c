@@ -75,7 +75,7 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 	}
 	if (form->elength == 'l' || form->length == 'j' || form->length == 'z' || form->length == 'l')
 	{
-		if (nb2 > (uintmax_t) max)
+		if (nb2 > (uintmax_t)max)
 		{
 			if (form->type == 'x' || form->type == 'X')
 				ft_convert_base_uintmax(nb2, 16, form, str);
@@ -106,8 +106,7 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 		}
 	}
 	ft_buffer_x_o(str, form);
-	len = ft_strlen(str);
-	write(1, str, len);
+	len = write(1, str,ft_strlen(str));
 	free(str);
 	return (len);
 }

@@ -44,6 +44,23 @@ static void    ft_p_flag(const char *format, t_form *form)
 	}
 }
 
+static void    ft_r_type(const char *format, t_form *form)
+{
+	int     i;
+
+	i = 0;
+	while ((format[i] != 's' && format[i] != 'S' && format[i] != 'p' &&
+		format[i] != 'd' && format[i] != 'D' && format[i] != 'i' &&
+		format[i] != 'o' && format[i] != 'O' && format[i] != 'u' &&
+		format[i] != 'U' && format[i] != 'x' && format[i] != 'X' &&
+		format[i] != 'c' && format[i] != 'C' && format[i] != 'b' &&
+		format[i] != '%') && format[i])
+		i++;
+	if (format[i] != '%')
+		form->type = format[i];
+	form->size = i + 2;
+}
+
 static int	ft_p(const char *format, t_form *form)
 {
 	char	*str;
@@ -75,12 +92,11 @@ static int	ft_p(const char *format, t_form *form)
 int		ft_percent(const char *format, t_form *form)
 {
 	format++;
-	ft_recup_type(format, form);
+	ft_r_type(format, form);
 	ft_p_min(format, form);
 	ft_p_flag(format, form);
 	if (form->type != '\0')
 		return (0);
 	else
 		return (ft_p(format, form));
-
 }

@@ -35,15 +35,9 @@ int		ft_arg_c(va_list ap, t_form *form)
 	}
 	ft_buffer_p_c_s(str, form);
 	if (str[0] == '\0' || str[0] == 0)
-	{
-		write(1, str, 1);
-		len = 1;
-	}
+		len = write(1, "\0", 1);
 	else
-	{
-		len = ft_strlen(str);
-		write(1, str, len);
-	}
+		len = write (1, str, ft_strlen(str));
 	free(str);
 	return (len);
 }

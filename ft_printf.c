@@ -60,6 +60,8 @@ int		ft_printf(const char *format, ...)
 				format++;
 			}
 */			format += ft_buff(format, &len);//, str);
+//			printf("%c", *format);
+//			ft_putchar(*(format+1));
 			if (*format == '%')
 			{
 				if ((ln = ft_format(format, ap, &size)) == -1)
@@ -72,8 +74,6 @@ int		ft_printf(const char *format, ...)
 					len += ln;
 				format = format + size;
 			}
-			if (len == -1)
-				break;
 		}
 	}
 	return (len);
