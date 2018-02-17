@@ -13,11 +13,19 @@
 
 #include "ft_printf.h"
 
+/*static void	ft_buff(const char *format, char *str)
+{
+	int		i;
+
+	i = 0;
+}*/
+
 int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			len;
 	int			size;
+	int			ln;
 
 	size = 0;
 	len = 0; //a supprimer
@@ -28,6 +36,9 @@ int		ft_printf(const char *format, ...)
 	{
 		while (*format)
 		{
+			//il faut faire un buffer ici aussi pour
+			//me permettre de gerer les erreurs et du coup
+			//ne pas afficher le texte
 			while (*format != '%' && *format)
 			{
 				write(1, format, 1);
@@ -36,7 +47,11 @@ int		ft_printf(const char *format, ...)
 			}
 			if (*format == '%')
 			{
-				len += ft_format(format, ap, &size);
+				ln = ft_format(format, ap, &size);
+				if (ln == -1)
+					return (-1);
+				else
+					len += ln;
 				format = format + size;
 			}
 		}

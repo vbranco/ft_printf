@@ -34,7 +34,8 @@ int		ft_format(const char *format, va_list ap, int *size)
 		ft_recup_min(format, &form);
 		ft_recup_prec(format, &form);
 		ft_recup_flag(format, &form);
-		len = ft_args(&form, ap);
+		if ((len = ft_args(&form, ap)) == -1)
+			return (len);
 		*size = form.size;
 	}
 	return (len);

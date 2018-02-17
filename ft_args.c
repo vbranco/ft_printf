@@ -18,42 +18,31 @@ int	ft_args(t_form *form, va_list ap)
 	int	len;
 
 	len = 0;
-	if (form->type == 'c' || (form->type == 'C' && form->length == 'h'))
+	if (form->type == 'c' || form->type == 'C')
 	{
 		len = ft_arg_c(ap, form);
-	//	ft_putstr("LA");
-	}
-	else if (form->type == 'C' || (form->type == 'c' && form->length == 'l'))
-	{
-		len = ft_arg_c(ap, form);
-	//	ft_putstr("LA");
 	}
 	else if (form->type == 's' || form->type == 'S')
 	{
 		len = ft_arg_s(ap, form);
-	//	ft_putstr("LA");
 	}
 	else if (form->type == 'd' || form->type == 'D' || form->type == 'i' ||
 		form->type == 'u' || form->type == 'U')
 	{
 		len = ft_arg_d_i(ap, form);
-	//	ft_putstr("LA");
 	}
 	else if (form->type == 'x' || form->type == 'X' || form->type == 'o' ||
 		form->type == 'O')
 	{
 		len = ft_arg_x_o(ap, form);
-	//	ft_putstr("LA");
 	}
 	else if (form->type == 'p')
 	{
 		len = ft_arg_p(ap, form);
-	//	ft_putstr("LA");
 	}
 	else if (form->type == 'b')
 	{
 		len = ft_arg_b(ap, form);
-	//	ft_putstr("LA");
 	}
 	return (len);
 }
