@@ -22,16 +22,7 @@ void	ft_recup_min(const char *format, t_form *form)
 	{
 		while (format[i] == '+' || format[i] == '-' || format[i] == '#' || format[i] == '0')
 			i++;
-	/*	if (format[i] == '0')
-		{
-			if (format[i + 1] >= '1' || format[i + 1] <= '9')
-			{
-				format += i;
-				form->min = ft_atoi(format);
-				break ;
-			}
-		}
-		else*/ if (format[i] >= '1' || format[i] <= '9')
+		if (format[i] >= '1' || format[i] <= '9')
 		{
 			format += i;
 			form->min = ft_atoi(format);

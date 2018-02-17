@@ -25,6 +25,7 @@ int		ft_format(const char *format, va_list ap, int *size)
 		*size = form.size;
 		return (len);
 	}
+	ft_init_struct(&form);
 	if (*format == '%')
 	{
 		format++;

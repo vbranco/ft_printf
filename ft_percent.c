@@ -2,28 +2,81 @@
 
 #include "ft_printf.h"
 
+static void    ft_p_min(const char *format, t_form *form)
+{
+	int             i;
+
+	i = 0;
+	while (format[i] && (i < form->size))
+	{
+		while (format[i] == '+' || format[i] == '-' || format[i] == '#' || format[i] == '0' || format[i] == ' ')
+			i++;
+		if (format[i] >= '1' || format[i] <= '9')
+		{
+			format += i;
+			form->min = ft_atoi(format);
+			break ;
+		}
+	}
+}
+
+static void    ft_p_flag(const char *format, t_form *form)
+{
+	int     i;
+
+	i = 0;
+	while ((i < form->size - 1) && format[i])
+	{
+		if (format[i] == '#')
+			form->is_h = 1;
+		else if (format[i] == '0')
+		{
+			if (form->prec == -1 && (form->min % 10 !=  0))
+				form->is_z = 1;
+		}
+		else if (format[i] == '-')
+			form->is_n = 1;
+		else if (format[i] == '+')
+			form->is_p = 1;
+		else if (format[i] == ' ')
+			form->is_s = 1;
+		i++;
+	}
+}
+
 static int	ft_p(const char *format, t_form *form)
 {
 	char	*str;
 	int	i;
-//	int	z;
+	int	len;
+	char	*s1;
 
+	s1 = ft_memalloc(form->min);
 	i = 0;
-	while (format[i])
+	while (format[i] != '%' && format[i])
 		i++;
 	str = ft_memalloc(form->min + form->prec + 3);
 	ft_strcat(str, "%");
-	form->size = i;
+	len = ft_strlen(str);
+	form->size = i + 2;
+	if (form->min > len)
+	{
+		if (form->is_n == 1)
+			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
+		else if (form->is_z == 1)
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
+		else if (form->is_n == 0)
+			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
+	}
 	return (write (1, str, ft_strlen(str)));
 }
 
 int		ft_percent(const char *format, t_form *form)
 {
+	format++;
 	ft_recup_type(format, form);
-	ft_recup_length(format, form);
-	ft_recup_min(format, form);
-	ft_recup_prec(format, form);
-	ft_recup_flag(format, form);
+	ft_p_min(format, form);
+	ft_p_flag(format, form);
 	if (form->type != '\0')
 		return (0);
 	else
