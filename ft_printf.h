@@ -39,6 +39,7 @@ int					ft_printf(const char *format, ...);
 ** Parsing
 */
 int					ft_format(const char *format, va_list ap, int *size);
+int					ft_percent(const char *format, t_form *form);
 void				ft_init_struct(t_form *form);
 void				ft_recup_type(const char *format, t_form *form);
 void				ft_recup_flag(const char *format, t_form *form);

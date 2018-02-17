@@ -11,13 +11,18 @@ int	main(void)
 	setlocale(LC_ALL, "");
 
 
-	printf(" len = %d\n", printf("%lc", 0x40501));
+/*	printf(" len = %d\n", printf("%lc", 0x40501));
 	printf(" len = %d\n", ft_printf("%lc", 0x40501));
 
 	printf(" len = %d\n", printf("%lc", 0x4e6));
 	printf(" len = %d\n", ft_printf("%lc", 0x4e6));
 
+	printf(" len = %d\n", printf("%.5s", "coco et titi"));
+	printf(" len = %d\n", ft_printf("%.5s", "coco et titi"));
+*/
 
+	printf(" len = %d\n", printf("% %"));
+	printf(" len = %d\n", ft_printf("% %"));
 
 
 

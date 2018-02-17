@@ -13,14 +13,17 @@
 
 #include "ft_printf.h"
 
-void	ft_precision_s(char *str, t_form *form)
+static void	ft_precision_s(char *str, t_form *form)
 {
 	int		i;
 
 	i = 0;
-	while (i < form->prec)
-		i++;
-	str[i] = '\0';
+	if (form->prec > -1)
+	{
+		while (i < form->prec)
+			i++;
+		str[i] = '\0';
+	}
 }
 
 void	ft_buffer_p_c_s(char *str, t_form *form)
@@ -28,6 +31,7 @@ void	ft_buffer_p_c_s(char *str, t_form *form)
 	char	*s1;
 	int		len;
 
+	ft_precision_s(str, form);
 	len = ft_strlen(str);
 	s1 = ft_memalloc(form->min);
 	if (form->is_n == 1 && form->min > len)

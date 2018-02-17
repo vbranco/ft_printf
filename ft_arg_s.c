@@ -24,8 +24,16 @@ int		ft_arg_s(va_list ap, t_form *form)
 				form->length == 'h'))
 	{
 		tmp = va_arg(ap, char*);
-		str = ft_memalloc(ft_strlen(tmp));
-		ft_strcat(str, tmp);
+		if (tmp == NULL)
+		{
+			str = ft_memalloc(7);
+			ft_add_str_begin(str, "(null)");
+		}
+		else
+		{
+			str = ft_memalloc(ft_strlen(tmp));
+			ft_strcat(str, tmp);
+		}
 	}
 	else
 	{

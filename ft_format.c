@@ -19,14 +19,14 @@ int		ft_format(const char *format, va_list ap, int *size)
 	int		len;
 
 	len = 0;
-	if (*format == '%' && *(format + 1) == '%')
+	ft_init_struct(&form);
+	if ((len = ft_percent(format, &form)) != 0)
 	{
-		ft_putchar('%');
-		format += 2;
+		*size = form.size;
+		return (len);
 	}
 	if (*format == '%')
 	{
-		ft_init_struct(&form);
 		format++;
 		ft_recup_type(format, &form);
 		ft_recup_length(format, &form);
