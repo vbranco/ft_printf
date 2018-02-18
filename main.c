@@ -9,10 +9,18 @@
 int	main(void)
 {
 	setlocale(LC_ALL, "");
+	wchar_t	s[4];
 
+	s[0] = 'S';
+	s[1] = 256;
+	s[2] = 'u';
+	s[3] = '\0';
 
 	printf(" len = %d\n", printf("%d", 42));
 	printf(" len = %d\n", ft_printf("%d", 42));
+
+	printf(" len = %d\n", printf("%.1ls", s));
+	printf(" len = %d\n", ft_printf("%.1ls", s));
 
 /*
 	printf(" len = %d\n", printf("%lc", 0x4e6));

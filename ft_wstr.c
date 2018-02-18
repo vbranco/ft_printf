@@ -25,9 +25,13 @@ int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 	{
 		tmp = ft_memalloc(65);
 		if ((ft_wchar(wstr[i], tmp)) == -1)
+		{
+			free(tmp);
 			return (-1);
+		}
 		if ((int)ft_strlen(tmp) > prec && prec > -1)
 		{
+			free(tmp);
 			ft_strcat(str, "\0");
 			break;
 		}
