@@ -42,6 +42,9 @@ int			ft_arg_b(va_list ap, t_form *form)
 	ft_binaire(str, nb);
 	ft_buffer_b(str, form);
 	len = ft_strlen(str);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
 	write(1, str, len);
 	free(str);
 	return (len);

@@ -36,7 +36,6 @@ static void	ft_put4wchar(wchar_t wc, char *str)
 
 int			ft_wchar(wchar_t wc, char *str)
 {
-//	ft_putendl("ici?");
 	if ((wc < 0 || wc > 0x10ffff) || (wc >= 0xd800 && wc <= 0xdfff))
 		return (-1);
 	if (wc <= 127)

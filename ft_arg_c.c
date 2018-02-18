@@ -29,11 +29,16 @@ int		ft_arg_c(va_list ap, t_form *form)
 	if ((form->type == 'C' && form->length == '\0') || (form->type == 'c' && form->length == 'l'))
 	{
 		ca = (wchar_t)va_arg(ap, wint_t);
-		len = ft_wchar(ca, str);
-		if (len == -1)
-			return (len);
+		if ((ft_wchar(ca, str)) == -1)
+		{
+			free(str);
+			return (-1);
+		}
 	}
 	ft_buffer_p_c_s(str, form);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
 	if (str[0] == '\0' || str[0] == 0)
 		len = write(1, "\0", 1);
 	else

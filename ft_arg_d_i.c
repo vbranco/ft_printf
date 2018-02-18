@@ -46,6 +46,9 @@ int		ft_arg_d_i(va_list ap, t_form *form)
 		ft_my_itoa(nb, str);
 	}
 	ft_buffer_d_i(str, form);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
 	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);

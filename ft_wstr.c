@@ -13,7 +13,7 @@
 
 #include "ft_printf.h"
 
-void		ft_wstr(wchar_t *wstr, char *str, t_form *form)
+int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 {
 	size_t	i;
 	char	*tmp;
@@ -24,7 +24,8 @@ void		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 	while (wstr[i])
 	{
 		tmp = ft_memalloc(65);
-		ft_wchar(wstr[i], tmp);
+		if ((ft_wchar(wstr[i], tmp)) == -1)
+			return (-1);
 		if ((int)ft_strlen(tmp) > prec && prec > -1)
 		{
 			ft_strcat(str, "\0");
@@ -36,4 +37,5 @@ void		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 		i++;
 		free(tmp);
 	}
+	return (0);
 }

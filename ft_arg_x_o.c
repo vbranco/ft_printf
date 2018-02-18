@@ -106,6 +106,9 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 		}
 	}
 	ft_buffer_x_o(str, form);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
 	len = write(1, str,ft_strlen(str));
 	free(str);
 	return (len);

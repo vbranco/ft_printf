@@ -39,9 +39,16 @@ int		ft_arg_s(va_list ap, t_form *form)
 	{
 		wstr = va_arg(ap, wchar_t*);
 		str = ft_memalloc(ft_count_size(wstr) + form->min + 1);
-		ft_wstr(wstr, str, form);
+		if ((ft_wstr(wstr, str, form)) == -1)
+		{
+			free(str);
+			return (-1);
+		}
 	}
 	ft_buffer_p_c_s(str, form);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
 	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);

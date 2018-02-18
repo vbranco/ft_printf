@@ -13,68 +13,65 @@
 
 #include "ft_printf.h"
 
-static int	ft_buff(const char *format, int *len)//, char *str)
+static int	ft_buff(const char *format, int *len, t_form *form)
 {
 	int		i;
-	char	*str;
 
 	i = 0;
 	while (format[i] != '%' && format[i])
 		i++;
-	str = ft_memalloc(i + 1);
+	form->buf = ft_memalloc(i + 1);
 	i = 0;
 	while (format[i] != '%' && format[i])
 	{
-		str[i] = format[i];
+		form->buf[i] = format[i];
 		i++;
 	}
 	*len += i;
-	write(1, str, ft_strlen(str));
-	free(str);
 	return (i);
+}
+
+static int	ft_flag(const char *format, va_list ap, t_form *form)
+{
+	int		size;
+	int		len;
+	int		ln;
+
+	len = 0;
+	size = 0;
+	while (*format)
+	{
+		format += ft_buff(format, &len, form);
+		if (*format == '%')
+		{
+			if ((ln = ft_format(format, ap, &size, form)) == -1)
+				return (-1);
+			else
+				len += ln;
+			format = format + size;
+		}
+	}
+	if (form->buf != NULL)
+	{
+		write(1, form->buf, ft_strlen(form->buf));
+		free(form->buf);
+	}
+	return (len);
 }
 
 int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	int			len;
-	int			size;
-	int			ln;
+	t_form	form;
+	int		len;
 
-	size = 0;
-	len = 0; //a supprimer
-	va_start(ap, format);
 	if (ft_strchr(format, '%') == 0)
 		return (write(1, format, ft_strlen(format)));
 	else
 	{
-		while (*format)
-		{
-			//il faut faire un buffer ici aussi pour
-			//me permettre de gerer les erreurs et du coup
-			//ne pas afficher le texte
-/*			while (*format != '%' && *format)
-			{
-				write(1, format, 1);
-				len++;
-				format++;
-			}
-*/			format += ft_buff(format, &len);//, str);
-//			printf("%c", *format);
-//			ft_putchar(*(format+1));
-			if (*format == '%')
-			{
-				if ((ln = ft_format(format, ap, &size)) == -1)
-		//		if (ln == -1)
-				{
-					len = -1;
-					return (len);
-				}
-				else
-					len += ln;
-				format = format + size;
-			}
-		}
+		va_start(ap, format);
+		len = ft_flag(format, ap, &form);
+		va_end(ap);
+		return (len);
 	}
-	return (len);
 }

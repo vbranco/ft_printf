@@ -22,6 +22,7 @@
 typedef struct		s_form
 {
 	int				size;
+	char			*buf;
 	char			type;
 	char			length;
 	char			elength;
@@ -38,7 +39,7 @@ int					ft_printf(const char *format, ...);
 /*
 ** Parsing
 */
-int					ft_format(const char *format, va_list ap, int *size);
+int					ft_format(const char *format, va_list ap, int *size, t_form *form);
 int					ft_percent(const char *format, t_form *form);
 void				ft_init_struct(t_form *form);
 void				ft_recup_type(const char *format, t_form *form);
@@ -62,7 +63,7 @@ int					ft_arg_b(va_list ap, t_form *form);
 void				ft_convert_base_uintmax(uintmax_t nb, int base, t_form *form, char *str);
 void				ft_convert_base_intmax(intmax_t nb, int base, t_form *form, char *str);
 int					ft_wchar(wchar_t wc, char *str);
-void				ft_wstr(wchar_t *wstr, char *str, t_form *form);
+int					ft_wstr(wchar_t *wstr, char *str, t_form *form);
 int					ft_count_size(wchar_t *wstr);
 void				ft_my_itoa(intmax_t nb, char *tmp);
 void				ft_my_itoa2(uintmax_t nb, char *tmp);

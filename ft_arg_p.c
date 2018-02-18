@@ -27,6 +27,9 @@ int		ft_arg_p(va_list ap, t_form *form)
 	ft_add_str_begin(str, "0x");
 	ft_buffer_p_c_s(str, form);
 	len = ft_strlen(str);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
 	write(1, str, len);
 	free(str);
 	return (len);

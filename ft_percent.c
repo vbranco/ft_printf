@@ -84,6 +84,9 @@ static int	ft_p(const char *format, t_form *form)
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - 1)));
 	}
 	free(s1);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
 	write (1, str, ft_strlen(str));
 	free(str);
 	return (ft_strlen(str));
