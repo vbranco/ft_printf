@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:51:43 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 19:48:24 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 20:00:07 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,7 +45,8 @@ int		ft_arg_s(va_list ap, t_form *form)
 			return (-1);
 		}
 	}
-	ft_buffer_p_c_s(str, form);
+//	printf("%s\n\n", str);
+	ft_buffer_p_s(str, form);
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);
 	form->buf = NULL;

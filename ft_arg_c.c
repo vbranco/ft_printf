@@ -6,14 +6,25 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:22:22 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:32:40 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 20:00:04 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_arg_c(va_list ap, t_form *form)
+static int	ft_test(t_form *form)
+{
+	if ((form->type == 'c' && form->length == '\0') || (form->type == 'C' &&
+				form->length == 'h'))
+		return (1);
+	else if ((form->type == 'C' && form->length == '\0') || (form->type == 'c'
+				&& form->length == 'l'))
+		return (2);
+	return (0);
+}
+
+int			ft_arg_c(va_list ap, t_form *form)
 {
 	char	c;
 	char	*str;
@@ -21,12 +32,12 @@ int		ft_arg_c(va_list ap, t_form *form)
 	int		len;
 
 	str = ft_memalloc(4 + form->min + 1);
-	if ((form->type == 'c' && form->length == '\0') || (form->type == 'C' && form->length == 'h'))
+	if (ft_test(form) == 1)
 	{
 		c = (char)va_arg(ap, int);
 		str[0] = c;
 	}
-	if ((form->type == 'C' && form->length == '\0') || (form->type == 'c' && form->length == 'l'))
+	if (ft_test(form) == 2)
 	{
 		ca = (wchar_t)va_arg(ap, wint_t);
 		if ((ft_wchar(ca, str)) == -1)
@@ -35,14 +46,11 @@ int		ft_arg_c(va_list ap, t_form *form)
 			return (-1);
 		}
 	}
-	ft_buffer_p_c_s(str, form);
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);
 	form->buf = NULL;
-	if (str[0] == '\0' || str[0] == 0)
-		len = write(1, "\0", 1);
-	else
-		len = write (1, str, ft_strlen(str));
+	len = ft_buffer_c(str, form);
+	write(1, str, ft_strlen(str));
 	free(str);
 	return (len);
 }

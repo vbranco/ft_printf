@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:26:50 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 17:26:18 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 19:42:08 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ int		ft_arg_p(va_list ap, t_form *form)
 	str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
 	ft_convert_base_uintmax(nb, 16, form, str);
 	ft_add_str_begin(str, "0x");
-	ft_buffer_p_c_s(str, form);
+	ft_buffer_p_s(str, form);
 	len = ft_strlen(str);
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);

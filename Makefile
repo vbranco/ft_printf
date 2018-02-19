@@ -6,7 +6,7 @@
 #    By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/23 16:47:01 by vbranco      #+#   ##    ##    #+#        #
-#    Updated: 2018/02/14 17:25:23 by vbranco     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/19 19:34:23 by vbranco     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,7 +24,7 @@ ft_args.c ft_recup_flag.c ft_recup_length.c ft_recup_min.c ft_recup_prec.c \
 ft_recup_type.c ft_wstr.c ft_count_size.c ft_my_itoa.c ft_my_itoa2.c\
 ft_size_nb2.c ft_add_str_begin.c\
 ft_add_str_end.c ft_buffer_d_i.c ft_arg_b.c ft_buffer_x_o.c ft_buffer_b.c\
-ft_buffer_p_c_s.c ft_precision.c
+ft_buffer_p_s.c ft_buffer_c.c ft_precision.c
 
 SOURCES     =   $(addprefix ./, $(FILENAMES))
 

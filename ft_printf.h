@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:32:44 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 20:00:13 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,6 +76,7 @@ int					ft_size_nb2(uintmax_t nb);
 void				ft_buffer_d_i(char *str, t_form *form);
 void				ft_buffer_x_o(char *str, t_form *form);
 void				ft_buffer_b(char *str, t_form *form);
-void				ft_buffer_p_c_s(char *str, t_form *form);
+void				ft_buffer_p_s(char *str, t_form *form);
+int					ft_buffer_c(char *str, t_form *form);
 int					ft_precision(char *str, t_form *form);
 #endif
