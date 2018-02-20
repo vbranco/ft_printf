@@ -25,8 +25,20 @@ int	main(void)
 //	printf(" len = %d\n", printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
 //	printf(" len = %d\n", ft_printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
 
-	printf(" len = %d\n", printf("%X", 4294967296));
-	printf(" len = %d\n", ft_printf("%X", 4294967296));
+//	printf(" len = %d\n", printf("%X", 4294967296));
+//	printf(" len = %d\n", ft_printf("%X", 4294967296));
+
+	printf(" len = %d\n", printf("%0+5d", 42));
+	printf(" len = %d\n", ft_printf("%0+5d", 42));
+
+	printf(" len = %d\n", printf("%05d", -42));
+	printf(" len = %d\n", printf("%05d", -42));
+
+	printf(" len = %d\n", printf("%-5d", -42));
+	printf(" len = %d\n", ft_printf("%-5d", -42));
+
+	printf(" len = %d\n", printf("%+d", -42));
+	printf(" len = %d\n", ft_printf("%+d", -42));
 
 //	printf(" len = %d\n", printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
 //	printf(" len = %d\n", ft_printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));

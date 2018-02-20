@@ -6,13 +6,13 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:54:27 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:00:33 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 20:26:46 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/*
 static void	ft_add_signe_neg(char *str, char c)
 {
 	int		len;
@@ -68,15 +68,57 @@ static void	ft_is_neg(char *str, t_form *form)
 		}
 	}
 }
+*/
+//----------------------------------------------------------------------------------------
+//modif du 20/02
+
+static void	ft_signe(char *str, t_form *form)
+{
+	char	*s1;
+	char	c;
+	int		len;
+
+	s1 = ft_memalloc(form->min);
+	c = '\0';
+	len = ft_strlen(str);
+	if ((form->is_n == 1 && str[0] == '-')|| form->is_p == 1)
+	{
+		if (form->is_n == 1 && str[0] == '-')
+			c = '-';
+		else
+			c = '+';
+		if (!ft_strchr(str, '-'))
+				form->min--;
+	}
+	if (form->min > len)
+	{
+		if (form->is_n == 1)
+			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
+		else if (form->is_z == 1)
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
+		else if (form->is_n == 0)
+			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
+	}
+	if (c == '-' && !ft_strchr(str, '-'))
+		ft_add_str_begin(str, "-");
+	else if (c == '+' && !ft_strchr(str, '-'))
+		ft_add_str_begin(str, "+");
+	free(s1);
+}
+
+//---------------------------------------------------------------------------------------
 
 void		ft_buffer_d_i(char *str, t_form *form)
 {
-	char	*s1;
+//	char	*s1;
 	int		len;
 
+//	printf("str : %s\n", str);
 	len = ft_strlen(str);
-	s1 = ft_memalloc(form->min);
-	if (*str == '-')
+//	s1 = ft_memalloc(form->min);
+	if (form->is_s == 1 && form->is_p == 1)
+		form->is_s = 0;
+/*	if (*str == '-')
 		ft_is_neg(str, form);
 	else
 	{
@@ -90,7 +132,7 @@ void		ft_buffer_d_i(char *str, t_form *form)
 			len++;
 		}
 		if (form->is_s == 1 ? form->min-- : form->min > len)
-		{
+	{
 			if (form->is_n == 1)
 				ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
 			else if (form->is_z == 1)
@@ -101,4 +143,5 @@ void		ft_buffer_d_i(char *str, t_form *form)
 	}
 	form->is_s == 1 && str[0] != '-' ? ft_add_str_begin(str, " ") : 0;
 	free(s1);
+*/	ft_signe(str, form);
 }

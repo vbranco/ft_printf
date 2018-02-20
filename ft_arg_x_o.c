@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:28:25 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 20:29:41 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 19:37:53 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,6 +54,12 @@ static int	ft_size_nbo2(uintmax_t nb, t_form *form)
 	return (size + 1);
 }
 
+/*static int	ft_checkmax(t_form *form, long max)
+{
+	if ((form->type == 'x' || form->type == 'X') && form->length == '\0' && )
+		return (write(1, "0", 1));
+}*/
+
 int		ft_arg_x_o(va_list ap, t_form *form)
 {
 	intmax_t	nb;
@@ -63,6 +69,7 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 	int		len;
 
 	max = 4294967295;
+//	ft_checkmax(form, max);
 	if (((form->type == 'o' || form->type == 'X' || form->type == 'x') && (form->elength == 'l' || form->length == 'j' || form->length == 'z')) || ((form->type == 'x' || form->type == 'o' || form->type == 'X') && form->length == 'l'))
 	{
 		nb2 = (unsigned long long)va_arg(ap, unsigned long long);
@@ -92,6 +99,8 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 	}
 	else
 	{
+		if (nb > max && ((form->type == 'x' || form->type == 'X') && (form->length == '\0' || form->length == 'h' || form->elength == 'h')))
+			return (write(1, "0", 1));
 		if (nb < 0 || nb > max)
 		{
 			if (form->type == 'x' || form->type == 'X')

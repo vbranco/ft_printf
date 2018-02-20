@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:53:24 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:00:31 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 19:40:39 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,7 +79,6 @@ void	ft_buffer_x_o(char *str, t_form *form)
 		{
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 		}
-
 	}
 	free(s1);
 }
