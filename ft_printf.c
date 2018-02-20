@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 19:32:33 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 17:46:13 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,6 +55,7 @@ static int	ft_flag(const char *format, va_list ap, t_form *form)
 	{
 		write(1, form->buf, ft_strlen(form->buf));
 		free(form->buf);
+		form->buf = NULL;
 	}
 	return (len);
 }

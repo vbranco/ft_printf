@@ -8,7 +8,7 @@
 
 int	main(void)
 {
-	setlocale(LC_ALL, "");
+//	setlocale(LC_ALL, "");
 	wchar_t	s[4];
 
 	s[0] = 'S';
@@ -16,22 +16,23 @@ int	main(void)
 	s[2] = 'u';
 	s[3] = '\0';
 
-/*	printf(" len = %d\n", printf("%d", 42));
-	printf(" len = %d\n", ft_printf("%d", 42));
+//	printf(" len = %d\n", printf("%d", 42));
+//	printf(" len = %d\n", ft_printf("%d", 42));
 
-	printf(" len = %d\n", printf("%.1ls", s));
-	printf(" len = %d\n", ft_printf("%.1ls", s));
-*/
-	printf(" len = %d\n", printf("ahello ca%----4c %1c va %10c%-c ??", '\0', '\n', (char)564, 0));
-	printf(" len = %d\n", ft_printf("bhello ca%----4c %1c va %10c%-c ??", '\0', '\n', (char)564, 0));
+//	printf(" len = %d\n", printf("%.1ls", s));
+//	printf(" len = %d\n", ft_printf("%.1ls", s));
+
+//	printf(" len = %d\n", printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
+//	printf(" len = %d\n", ft_printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
+
+	printf(" len = %d\n", printf("%X", 4294967296));
+	printf(" len = %d\n", ft_printf("%X", 4294967296));
 
 //	printf(" len = %d\n", printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
 //	printf(" len = %d\n", ft_printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
 
 
 
-//	printf(" len = %d\n", printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
-//	printf(" len = %d\n", ft_printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
 
 
 //	printf(" len = %d\n", printf("%6C et coco %C titi %C tyty", 3250, 0xd800, 'u'));
