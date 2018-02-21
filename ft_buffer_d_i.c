@@ -12,19 +12,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-static void	ft_add_signe_neg(char *str, char c)
-{
-	int		len;
-
-	len = ft_strlen(str);
-	while (len > 0)
-	{
-		str[len] = str[len - 1];
-		len--;
-	}
-	str[0] = c;
-}
 
 static void	ft_modif_str(char *str)
 {
@@ -38,70 +25,126 @@ static void	ft_modif_str(char *str)
 	}
 }
 
-static void	ft_is_neg(char *str, t_form *form)
+//----------------------------------------------------------------------------------------
+//modif du 20/02
+
+static int		ft_space(char *str, t_form *form)
+{
+	if (form->is_s == 1 && str[0] != '-')
+	{
+		ft_add_str_begin(str, " ");
+		return (1);
+	}
+	return (0);
+}
+
+static void	ft_prec(char *str, t_form *form)
 {
 	int		len;
-	char	*s1;
+	int		i;
+	char		*s1;
 
-	s1 = ft_memalloc(form->min);
-	if (form->min > (int)ft_strlen(str) || form->prec > (int)ft_strlen(str))
-		ft_modif_str(str);
-	if (form->prec > (int)ft_strlen(str))
+	i = 0;
+	s1 = NULL;
+	len = ft_strlen(str);
+	if (form->prec == 0 && str[0] == '0')
+		str[0] = '\0';
+	if (form->prec > len)
 	{
-		len = ft_precision(str, form);
-		ft_add_signe_neg(str, '-');
+		s1 = ft_memalloc(form->prec);
+		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+	}
+	free(s1);
+}
+
+static void	ft_neg(char *str, t_form *form)
+{
+	char	*s1;
+	int		len;
+
+	s1 = NULL;
+	ft_modif_str(str);
+	len = ft_strlen(str);
+	if (form->prec > len)
+	{
+		s1 = ft_memalloc(form->prec);
+		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		free(s1);
 	}
 	len = ft_strlen(str);
 	if (form->min > len)
 	{
+		len += ft_space(str, form);
+		len++;
+		s1 = ft_memalloc(form->min);
 		if (form->is_n == 1)
-			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
-		else if (form->is_z == 1 || form->prec > -1)
 		{
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len - 1)));
-			ft_add_signe_neg(str, '-');
+			ft_add_str_begin(str, "-");
+			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
+		}
+		else if (form->is_z == 1)
+		{
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
+			ft_add_str_begin(str, "-");
 		}
 		else if (form->is_n == 0)
 		{
-			ft_add_signe_neg(str, '-');
-			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len - 1)));
+			ft_add_str_begin(str, "-");
+			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 		}
+		free(s1);
 	}
+	else
+		ft_add_str_begin(str, "-");
 }
-*/
-//----------------------------------------------------------------------------------------
-//modif du 20/02
 
 static void	ft_signe(char *str, t_form *form)
 {
 	char	*s1;
-	char	c;
+	char	c[2];
 	int		len;
 
 	s1 = ft_memalloc(form->min);
-	c = '\0';
+	c[0] = '\0';
+	c[1] = '\0';
+	if (str[0] == '-')
+		ft_neg(str, form);
+	else
+		ft_prec(str, form);
 	len = ft_strlen(str);
-	if ((form->is_n == 1 && str[0] == '-')|| form->is_p == 1)
+	if ((form->is_n == 1 && str[0] == '-') || form->is_p == 1)
 	{
 		if (form->is_n == 1 && str[0] == '-')
-			c = '-';
+			c[0] = '-';
 		else
-			c = '+';
+			c[0] = '+';
 		if (!ft_strchr(str, '-'))
 				form->min--;
 	}
+//	len = ft_strlen(str);
 	if (form->min > len)
 	{
 		if (form->is_n == 1)
+		{
+			ft_add_str_begin(str, c);
 			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
+		}
 		else if (form->is_z == 1)
+		{
 			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
+			ft_add_str_begin(str, c);
+		}
 		else if (form->is_n == 0)
+		{
+			ft_add_str_begin(str, c);
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
+		}
 	}
-	if (c == '-' && !ft_strchr(str, '-'))
+	else
+		ft_space(str, form);
+	if (c[0] == '-' && !ft_strchr(str, '-'))
 		ft_add_str_begin(str, "-");
-	else if (c == '+' && !ft_strchr(str, '-'))
+	else if (c[0] == '+' && !ft_strchr(str, '-') && !ft_strchr(str, '+'))
 		ft_add_str_begin(str, "+");
 	free(s1);
 }
@@ -110,38 +153,12 @@ static void	ft_signe(char *str, t_form *form)
 
 void		ft_buffer_d_i(char *str, t_form *form)
 {
-//	char	*s1;
 	int		len;
 
-//	printf("str : %s\n", str);
 	len = ft_strlen(str);
-//	s1 = ft_memalloc(form->min);
 	if (form->is_s == 1 && form->is_p == 1)
 		form->is_s = 0;
-/*	if (*str == '-')
-		ft_is_neg(str, form);
-	else
-	{
-		if (form->prec > len)
-			len = ft_precision(str, form);
-		else if (form->prec == 0 && ft_atoi(str) == 0)
-			str[0] = '\0';
-		if (form->is_p == 1 && *str != '-')
-		{
-			ft_add_str_begin(str, "+");
-			len++;
-		}
-		if (form->is_s == 1 ? form->min-- : form->min > len)
-	{
-			if (form->is_n == 1)
-				ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
-			else if (form->is_z == 1)
-				ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
-			else if (form->is_n == 0)
-				ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
-		}
-	}
-	form->is_s == 1 && str[0] != '-' ? ft_add_str_begin(str, " ") : 0;
-	free(s1);
-*/	ft_signe(str, form);
+	if (form->is_z == 1 && form->is_n == 1)
+		form->is_z = 0;
+	ft_signe(str, form);
 }

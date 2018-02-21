@@ -28,17 +28,51 @@ int	main(void)
 //	printf(" len = %d\n", printf("%X", 4294967296));
 //	printf(" len = %d\n", ft_printf("%X", 4294967296));
 
-	printf(" len = %d\n", printf("%0+5d", 42));
-	printf(" len = %d\n", ft_printf("%0+5d", 42));
 
-	printf(" len = %d\n", printf("%05d", -42));
-	printf(" len = %d\n", printf("%05d", -42));
+	printf(" len = %d\n", printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24, (short)-2345));
+	printf(" len = %d\n\n", ft_printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24, (short)-2345));
+
+
+	printf(" len = %d\n", printf("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256));
+	printf(" len = %d\n\n", ft_printf("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256));
+
+
+
+	printf(" len = %d\n", printf("% 10.5d", 4242));
+	printf(" len = %d\n\n", ft_printf("% 10.5d", 4242));
+
+	printf(" len = %d\n", printf("%+12.5d", 140));
+	printf(" len = %d\n\n", ft_printf("%+12.5d", 140));
+
+	printf(" len = %d\n", printf("%5d", -42));
+	printf(" len = %d\n\n", ft_printf("%5d", -42));
+
+	printf(" len = %d\n", printf("%0+5d", -42));
+	printf(" len = %d\n\n", ft_printf("%0+5d", -42));
+
+	printf(" len = %d\n", printf("%-05d", -42));
+	printf(" len = %d\n\n", ft_printf("%-05d", -42));
 
 	printf(" len = %d\n", printf("%-5d", -42));
-	printf(" len = %d\n", ft_printf("%-5d", -42));
+	printf(" len = %d\n\n", ft_printf("%-5d", -42));
 
 	printf(" len = %d\n", printf("%+d", -42));
-	printf(" len = %d\n", ft_printf("%+d", -42));
+	printf(" len = %d\n\n", ft_printf("%+d", -42));
+
+	printf(" len = %d\n", printf("% d", -42));
+	printf(" len = %d\n\n", ft_printf("% d", -42));
+
+	printf(" len = %d\n", printf("% .0d", 0));
+	printf(" len = %d\n\n", ft_printf("% .0d", 0));
+
+	printf(" len = %d\n", printf("% d", 0));
+	printf(" len = %d\n\n", ft_printf("% d", 0));
+
+	printf(" len = %d\n", printf("%.5d", -421));
+	printf(" len = %d\n\n", ft_printf("%.5d", -421));
+
+
+
 
 //	printf(" len = %d\n", printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
 //	printf(" len = %d\n", ft_printf("toto et %02u coco %-5lu mimi", 19, (unsigned long)-20));
