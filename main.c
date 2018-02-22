@@ -28,13 +28,16 @@ int	main(void)
 //	printf(" len = %d\n", printf("%X", 4294967296));
 //	printf(" len = %d\n", ft_printf("%X", 4294967296));
 
+	printf(" len = %d\n", printf("%+u", 4294967295));
+	printf(" len = %d\n", ft_printf("%+u", 4294967295));
+
 
 	printf(" len = %d\n", printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24, (short)-2345));
 	printf(" len = %d\n\n", ft_printf("% 20.12ld et % 05D% 4.8hi !", 0x11ffaa147, 24, (short)-2345));
 
 
-	printf(" len = %d\n", printf("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256));
-	printf(" len = %d\n\n", ft_printf("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256));
+//	printf(" len = %d\n", printf("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256));
+//	printf(" len = %d\n\n", ft_printf("%-+-12.7Dt%0 4i %04.2% et %lc titi", 125, 124, 256));
 
 
 

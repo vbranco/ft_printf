@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:54:27 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 20:26:46 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/22 17:02:06 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,9 +24,6 @@ static void	ft_modif_str(char *str)
 		i++;
 	}
 }
-
-//----------------------------------------------------------------------------------------
-//modif du 20/02
 
 static int		ft_space(char *str, t_form *form)
 {
@@ -74,7 +71,6 @@ static void	ft_neg(char *str, t_form *form)
 	len = ft_strlen(str);
 	if (form->min > len)
 	{
-		len += ft_space(str, form);
 		len++;
 		s1 = ft_memalloc(form->min);
 		if (form->is_n == 1)
@@ -121,7 +117,6 @@ static void	ft_signe(char *str, t_form *form)
 		if (!ft_strchr(str, '-'))
 				form->min--;
 	}
-//	len = ft_strlen(str);
 	if (form->min > len)
 	{
 		if (form->is_n == 1)
@@ -131,8 +126,11 @@ static void	ft_signe(char *str, t_form *form)
 		}
 		else if (form->is_z == 1)
 		{
+			if (form->is_s == 1 && str[0] != '-')
+				len++;
 			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
 			ft_add_str_begin(str, c);
+			ft_space(str, form);
 		}
 		else if (form->is_n == 0)
 		{
@@ -149,8 +147,6 @@ static void	ft_signe(char *str, t_form *form)
 	free(s1);
 }
 
-//---------------------------------------------------------------------------------------
-
 void		ft_buffer_d_i(char *str, t_form *form)
 {
 	int		len;
@@ -160,5 +156,12 @@ void		ft_buffer_d_i(char *str, t_form *form)
 		form->is_s = 0;
 	if (form->is_z == 1 && form->is_n == 1)
 		form->is_z = 0;
+	if (form->type == 'u' || form->type == 'U')
+	{
+		if (form->is_s == 1)
+			form->is_s = 0;
+		if (form->is_p == 1)
+			form->is_p = 0;
+	}
 	ft_signe(str, form);
 }
