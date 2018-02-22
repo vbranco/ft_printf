@@ -6,19 +6,34 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:51:43 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 20:26:52 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/22 18:24:38 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_arg_s(va_list ap, t_form *form)
+static int	ft_print(char *str, t_form *form)
+{
+	//verifier les leaks car free ailleurs que le malloc
+	int		len;
+
+	len = 0;
+	ft_buffer_p_s(str, form);
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
+	len = write(1, str, ft_strlen(str));
+	free(str);//ceci deconne sur teste mixed de curqui
+	return (len);
+}
+
+int			ft_arg_s(va_list ap, t_form *form)
 {
 	char	*str;
 	char	*tmp;
 	wchar_t	*wstr;
-	int		len = 0;
+//	int		len = 0;
 
 	if ((form->type == 's' && form->length == '\0') || (form->type == 'S' &&
 				form->length == 'h'))
@@ -38,18 +53,27 @@ int		ft_arg_s(va_list ap, t_form *form)
 	else
 	{
 		wstr = va_arg(ap, wchar_t*);
-		str = ft_memalloc(ft_count_size(wstr) + form->min + 1);
-		if ((ft_wstr(wstr, str, form)) == -1)
+		if (wstr == NULL)
 		{
-			free(str);
-			return (-1);
+			str = ft_memalloc(7);
+			ft_add_str_begin(str, "(null)");
+		}
+		else
+		{
+			str = ft_memalloc(ft_count_size(wstr) + form->min + 1);
+			if ((ft_wstr(wstr, str, form)) == -1)
+			{
+				free(str);
+				return (-1);
+			}
 		}
 	}
-	ft_buffer_p_s(str, form);
+/*	ft_buffer_p_s(str, form);
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);
 	form->buf = NULL;
 	len = write(1, str, ft_strlen(str));
-	free(str);//ceci deconne sur teste mixed
-	return (len);
+	free(str);//ceci deconne sur teste mixed de curqui
+	return (len);*/
+	return (ft_print(str, form));
 }

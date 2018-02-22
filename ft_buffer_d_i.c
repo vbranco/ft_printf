@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:54:27 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/22 17:02:06 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/22 18:31:16 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ static void	ft_modif_str(char *str)
 	}
 }
 
-static int		ft_space(char *str, t_form *form)
+static int	ft_space(char *str, t_form *form)
 {
 	if (form->is_s == 1 && str[0] != '-')
 	{

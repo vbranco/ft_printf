@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 20:26:50 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/22 17:41:37 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,15 @@ static int	ft_buff(const char *format, int *len, t_form *form)
 		form->buf[i] = format[i];
 		i++;
 	}
-	*len += i;
+/*	if (form->buf[0] == '%')
+	{
+		printf("ici\n");
+//		form->buf[0] = '\0';
+//		*len = 0;
+		i = 2;
+	}
+	else
+*/		*len += i;
 	return (i);
 }
 

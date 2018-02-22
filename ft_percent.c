@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/19 17:16:00 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 17:16:12 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/22 17:41:41 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,7 +106,12 @@ static int	ft_p(const char *format, t_form *form)
 int		ft_percent(const char *format, t_form *form)
 {
 	format++;
-	ft_r_type(format, form);
+/*	if (*format == '\0')
+	{
+		form->size = 1;
+		return (1);
+	}
+*/	ft_r_type(format, form);
 	ft_p_min(format, form);
 	ft_p_flag(format, form);
 	if (form->type != '\0')
