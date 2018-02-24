@@ -1,6 +1,5 @@
 #!/bin/sh
 
 rm a.out
-make && gcc main.c libftprintf.a
-clear
+make && gcc main.c libftprintf.a && clear
 ./a.out

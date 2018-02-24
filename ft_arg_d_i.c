@@ -23,7 +23,12 @@ int		ft_arg_d_i(va_list ap, t_form *form)
 	if ((form->type == 'd' || form->type == 'i') && form->length != 'l' &&
 			form->elength != 'l')
 	{
-		nb = (int)va_arg(ap, int);
+		if (form->length == 'h' && form->elength == '\0')
+			nb = (short int)va_arg(ap, int);
+		else if (form->elength == 'h')
+			nb = (char)va_arg(ap, int);
+		else
+			nb = (int)va_arg(ap, int);
 		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
 		ft_my_itoa(nb, str);
 	}
@@ -36,6 +41,12 @@ int		ft_arg_d_i(va_list ap, t_form *form)
 	else if (form->type == 'u' && form->length == 'l')
 	{
 		nb2 = (unsigned long)va_arg(ap, unsigned long);
+		str = ft_memalloc(ft_size_nb2(nb2) + form->min + form->prec + 2);
+		ft_my_itoa2(nb2, str);
+	}
+	else if (form->type == 'u' && form->length == '\0')
+	{
+		nb2 = (unsigned int)va_arg(ap, int);
 		str = ft_memalloc(ft_size_nb2(nb2) + form->min + form->prec + 2);
 		ft_my_itoa2(nb2, str);
 	}

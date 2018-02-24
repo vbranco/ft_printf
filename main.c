@@ -75,6 +75,19 @@ int	main(void)
 	printf(" len = %d\n", printf("%0#10.0x %0#x", 12345, 0));
 	printf(" len = %d\n\n", ft_printf("%0#10.0x %0#x", 12345, 0));
 
+	printf(" len = %d\n", printf("%hd", 32768));
+	printf(" len = %d\n\n", ft_printf("%hd", 32768));
+
+	printf(" len = %d\n", printf("%u", -1));
+	printf(" len = %d\n\n", ft_printf("%u", -1));
+
+	printf(" len = %d\n", printf("%u", 4294967296));
+	printf(" len = %d\n\n", ft_printf("%u", 4294967296));
+
+
+
+
+
 
 
 
