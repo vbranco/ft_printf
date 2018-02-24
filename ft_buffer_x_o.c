@@ -12,74 +12,20 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-static void	ft_h(char *str, char *s1, t_form *form)
+
+static int	ft_zero(char *str)
 {
-	int	i;
-	int	len;
+	size_t	i;
 
 	i = 0;
-	len = ft_strlen(str);
-	if (form->type == 'o' || form->type == 'O')
+	while (str[i])
 	{
-		if (form->prec > len)
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-		if (form->prec != (int)ft_strlen(str) || str[0] != '0')
-			ft_add_str_begin(str, "0");
+		if (str[i] != '0')
+			return (0);
+		i++;
 	}
-	else if (form->type == 'x')
-	{
-		if (form->prec > len)
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-		ft_add_str_begin(str, "0x");
-	}
-	else if (form->type == 'X')
-	{
-		if (form->prec > len)
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-		ft_add_str_begin(str, "0X");
-	}
+	return(1);
 }
-
-void	ft_buffer_x_o(char *str, t_form *form)
-{
-	int		len;
-	char	*s1;
-
-	s1 = ft_memalloc(form->min);
-	if (form->prec == 0 && str[0] == '0')
-	{
-		if (form->is_h == 1 && (form->type == 'o' || form->type == 'O'))
-			str[0] = '0';
-		else
-			str[0] = '\0';
-	}
-	if (form->is_h == 1 && str[0] != '0' && str[0] != '\0')
-		ft_h(str, s1, form);
-	ft_precision(str, form);
-	len = ft_strlen(str);
-	if (form->min > len)
-	{
-		if (form->is_n == 1)
-		{
-			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
-		}
-		else if ((form->is_z == 1 && form->min > form->prec))
-		{
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
-			if ((form->type == 'x' || form->type == 'X') && (str[ft_strlen(str) - 2] == 'x' || str[ft_strlen(str) - 2] == 'X'))
-			{
-				str[1] = str[ft_strlen(str) - 2];
-				str[ft_strlen(str) - 2] = str[0];
-			}
-		}
-		else if (form->is_n == 0)
-		{
-			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
-		}
-	}
-	free(s1);
-}*/
 
 static int	ft_space(char *str, t_form *form)
 {
@@ -91,7 +37,7 @@ static int	ft_space(char *str, t_form *form)
 	return (0);
 }
 
-static void	ft_prec(char *str, t_form *form)
+static void	ft_prec(char *str, char *c, t_form *form)
 {
 	int		len;
 	int		i;
@@ -101,11 +47,18 @@ static void	ft_prec(char *str, t_form *form)
 	s1 = NULL;
 	len = ft_strlen(str);
 	if (form->prec == 0 && str[0] == '0')
-		str[0] = '\0';
+	{
+		if (form->is_h == 1 && (form->type == 'o' || form->type == 'O'))
+			str[0] = '0';
+		else
+			str[0] = '\0';
+	}
 	if (form->prec > len)
 	{
 		s1 = ft_memalloc(form->prec);
 		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		if ((form->type == 'x' || form->type == 'X') && form->is_h == 1 && !ft_zero(str))
+			ft_add_str_begin(str, c);
 	}
 	free(s1);
 }
@@ -130,42 +83,39 @@ void		ft_buffer_x_o(char *str, t_form *form)
 		else
 			c[1] = 'X';
 	}
-	ft_prec(str, form);
+	ft_prec(str, c, form);
 	s1 = ft_memalloc(form->min);
 	len = ft_strlen(str);
 	if (form->is_h == 1)
-		form->min -= 2;
+	{
+		if ((form->type == 'x' || form->type == 'X') && !ft_zero(str))
+			form->min -= 2;
+		else
+			if (str[0] != '0')
+				form->min--;
+	}
 	if (form->min > len)
 	{
 		if (form->is_n == 1)
 		{
-			if (form->is_h == 1)
-			{
+			if (form->is_h == 1 && (size_t)form->prec > ft_strlen(str))
 				ft_add_str_begin(str, c);
-				len--;
-			}
 			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
 		}
 		else if (form->is_z == 1)
 		{
 			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
-			if (form->is_h == 1)
+			if (form->is_h == 1 && !ft_zero(str))
 				ft_add_str_begin(str, c);
 			ft_space(str, form);
 		}
 		else if (form->is_n == 0)
 		{
-	//		printf("str : %s\n", str);
-			if (form->is_h == 1)
-			{
-				len--;
+			if (form->is_h == 1 && str[0] != '0')
 				ft_add_str_begin(str, c);
-			}
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 		}
 	}
-	else if (form->is_h == 1 && str[0] != '0')
-	{
+	else if (form->is_h == 1 && (str[0] != '0' && form->prec != 0))
 		ft_add_str_begin(str, c);
-	}
 }

@@ -59,13 +59,21 @@ int	main(void)
 
 	printf(" len = %d\n", printf("test%#.4o et %02o %0#14.0o!!", 012, 036, 12587499));
 	printf(" len = %d\n\n", ft_printf("test%#.4o et %02o %0#14.0o!!", 012, 036, 12587499));
-*/
+
 	printf(" len = %d\n", printf("t%04.2o%#2oet %#-8.3o titi", 0, 0, 0));
 	printf(" len = %d\n\n", ft_printf("t%04.2o%#2oet %#-8.3o titi", 0, 0, 0));
+*/
+	printf(" len = %d\n", printf("t %#7.5X%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1));
+	printf(" len = %d\n\n", ft_printf("t %#7.5X%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1));
 
+	printf(" len = %d\n", printf("cc%#.4X et %#0012x %#04hX !!", 0xaef, 0xe, (unsigned short)0));
+	printf(" len = %d\n\n", ft_printf("cc%#.4X et %#0012x %#04hX !!", 0xaef, 0xe, (unsigned short)0));
 
+	printf(" len = %d\n", printf("toto %##.0xet %#.X%###.1x", 0, 0, 0));
+	printf(" len = %d\n\n", ft_printf("toto %##.0xet %#.X%###.1x", 0, 0, 0));
 
-
+	printf(" len = %d\n", printf("%0#10.0x %0#x", 12345, 0));
+	printf(" len = %d\n\n", ft_printf("%0#10.0x %0#x", 12345, 0));
 
 
 
