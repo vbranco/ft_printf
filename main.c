@@ -62,7 +62,7 @@ int	main(void)
 
 	printf(" len = %d\n", printf("t%04.2o%#2oet %#-8.3o titi", 0, 0, 0));
 	printf(" len = %d\n\n", ft_printf("t%04.2o%#2oet %#-8.3o titi", 0, 0, 0));
-*/
+
 	printf(" len = %d\n", printf("t %#7.5X%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1));
 	printf(" len = %d\n\n", ft_printf("t %#7.5X%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1));
 
@@ -84,8 +84,30 @@ int	main(void)
 	printf(" len = %d\n", printf("%u", 4294967296));
 	printf(" len = %d\n\n", ft_printf("%u", 4294967296));
 
+	printf(" len = %d\n", printf("%D", 0xff11ff11ff88));
+	printf(" len = %d\n\n", ft_printf("%D", 0xff11ff11ff88));
+
+	printf(" len = %d\n", printf("%U", 4294967296));
+	printf(" len = %d\n\n", ft_printf("%U", 4294967296));
+
+	printf(" len = %d\n", printf("%lld", -9223372036854775808));
+	printf(" len = %d\n\n", ft_printf("%lld", -9223372036854775808));
+
+	printf(" len = %d\n", printf("%jd", -9223372036854775808));
+	printf(" len = %d\n\n", ft_printf("%jd", -9223372036854775808));
+
+	printf(" len = %d\n", printf("%2c", 0));
+	printf(" len = %d\n\n", ft_printf("%2c", 0));
 
 
+	printf(" len = %d\n", printf("%x", -42));
+	printf(" len = %d\n\n", ft_printf("%x", -42));
+
+	printf(" len = %d\n", printf("%X", -42));
+	printf(" len = %d\n\n", ft_printf("%X", -42));
+*/
+	printf(" len = %d\n", printf("%O", LONG_MAX));
+	printf(" len = %d\n\n", ft_printf("%O", LONG_MAX));
 
 
 

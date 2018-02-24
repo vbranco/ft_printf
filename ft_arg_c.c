@@ -51,6 +51,8 @@ int			ft_arg_c(va_list ap, t_form *form)
 	form->buf = NULL;
 	len = ft_buffer_c(str, form);
 	write(1, str, ft_strlen(str));
+	if (form->zero == 1)
+		write(1, "\0", 1);
 	free(str);
 	return (len);
 }

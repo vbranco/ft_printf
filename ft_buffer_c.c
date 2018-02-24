@@ -32,17 +32,14 @@ int		ft_buffer_c(char *str, t_form *form)
 	{
 		if (str[0] == '\0')
 		{
+			form->zero = 1;
 			ln++;
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len - ln)));
-			write(1, "\0", 1);
 		}
 		else
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 	}
 	else if (str[0] == '\0')
-	{
 		ln = write(1, "\0", 1);
-	}
-//	printf("len : %lu\n", ft_strlen(str) + ln);
 	return (ft_strlen(str) + ln);
 }

@@ -33,6 +33,7 @@ typedef struct		s_form
 	int				is_s;
 	int				min;
 	int				prec;
+	int				zero;
 }					t_form;
 
 int					ft_printf(const char *format, ...);

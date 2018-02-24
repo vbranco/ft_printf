@@ -20,19 +20,45 @@ int		ft_arg_d_i(va_list ap, t_form *form)
 	char				*str;
 	int					len;
 
-	if ((form->type == 'd' || form->type == 'i') && form->length != 'l' &&
-			form->elength != 'l')
+	if (form->type == 'd' || form->type == 'i' || form->type == 'D')
 	{
 		if (form->length == 'h' && form->elength == '\0')
 			nb = (short int)va_arg(ap, int);
 		else if (form->elength == 'h')
 			nb = (char)va_arg(ap, int);
+		else if (form->length == 'l' && form->elength == '\0')
+			nb = (long)va_arg(ap, long);
+		else if (form->elength == 'l' || form->type == 'D')
+			nb = (long long)va_arg(ap, long long);
+		else if (form->length == 'j' && form->elength == '\0')
+			nb = (intmax_t)va_arg(ap, intmax_t);
+		else if (form->length == 'z'&& form->elength == '\0')
+			nb = (size_t)va_arg(ap, size_t);
 		else
 			nb = (int)va_arg(ap, int);
-		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
+		str = ft_memalloc(ft_size_nb2(nb) + form->min + form->prec + 2);
 		ft_my_itoa(nb, str);
 	}
-	else if ((form->type == 'u' && (form->length == 'z' || (form->length == 'l' && form->elength == 'l'))))
+	else// if (form->type == 'u')
+	{
+		if (form->length == 'h' && form->elength == '\0' && form->type == 'u')
+			nb2 = (short unsigned int)va_arg(ap, int);
+		else if (form->elength == 'h' && form->type == 'u')
+			nb2 = (unsigned char)va_arg(ap, int);
+		else if (form->length == 'l' && form->elength == '\0')
+			nb2 = (unsigned long)va_arg(ap, long);
+		else if (form->elength == 'l' || form->type == 'U')
+			nb2 = (unsigned long long)va_arg(ap, long long);
+		else if (form->length == 'j' && form->elength == '\0')
+			nb2 = (uintmax_t)va_arg(ap, uintmax_t);
+		else if (form->length == 'z'&& form->elength == '\0')
+			nb2 = (size_t)va_arg(ap, size_t);
+		else
+			nb2 = (unsigned int)va_arg(ap, int);
+		str = ft_memalloc(ft_size_nb2(nb2) + form->min + form->prec + 2);
+		ft_my_itoa2(nb2, str);
+	}
+/*	else if ((form->type == 'u' && (form->length == 'z' || (form->length == 'l' && form->elength == 'l'))))
 	{
 		nb2 = (unsigned long long)va_arg(ap, unsigned long long);
 		str = ft_memalloc(ft_size_nb2(nb2) + form->min + form->prec + 2);
@@ -56,7 +82,7 @@ int		ft_arg_d_i(va_list ap, t_form *form)
 		str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 2);
 		ft_my_itoa(nb, str);
 	}
-	ft_buffer_d_i(str, form);
+*/	ft_buffer_d_i(str, form);
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);
 	form->buf = NULL;
