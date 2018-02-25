@@ -13,6 +13,45 @@
 
 #include "ft_printf.h"
 
+static void	ft_buffer_p(char *str, t_form *form)
+{
+	int		len;
+	char		*s1;
+
+	s1 = NULL;
+	(void)form;
+	if (str[0] == '0' && form->prec == 0)
+	{
+		form->zero = 1;
+		str[0] = '\0';
+	}
+	len = ft_strlen(str);
+	if (form->prec > len)
+	{
+		s1 = ft_memalloc(form->prec);
+		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		free(s1);
+	}
+	if (form->is_z == 0)
+		ft_add_str_begin(str, "0x");
+	len = ft_strlen(str);
+	if (form->min > len || form->is_z == 1)
+	{
+		s1 = ft_memalloc(form->min);
+		if (form->is_n == 1)
+			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
+		else if (form->is_z == 1)
+		{
+			if (form->min > len)
+				ft_add_str_begin(str, ft_memset(s1, '0', (form->min - (len + 2))));
+			ft_add_str_begin(str, "0x");
+		}
+		else if (form->is_n == 0)
+			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
+		free(s1);
+	}
+}
+
 int		ft_arg_p(va_list ap, t_form *form)
 {
 	char		*str;
@@ -24,8 +63,7 @@ int		ft_arg_p(va_list ap, t_form *form)
 	nb = (long)ptr;
 	str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
 	ft_convert_base_uintmax(nb, 16, form, str);
-	ft_add_str_begin(str, "0x");
-	ft_buffer_p_s(str, form);
+	ft_buffer_p(str, form);
 	len = ft_strlen(str);
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);

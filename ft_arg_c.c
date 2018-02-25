@@ -16,10 +16,10 @@
 static int	ft_test(t_form *form)
 {
 	if ((form->type == 'c' && form->length == '\0') || (form->type == 'C' &&
-				form->length == 'h'))
+				form->length == 'h' && form->elength == '\0'))
 		return (1);
 	else if ((form->type == 'C' && form->length == '\0') || (form->type == 'c'
-				&& form->length == 'l'))
+				&& form->length == 'l') || (form->type == 'C' && form->elength == 'h'))
 		return (2);
 	return (0);
 }

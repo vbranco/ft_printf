@@ -19,7 +19,7 @@ static int	ft_print(char *str, t_form *form)
 	int		len;
 
 	len = 0;
-	ft_buffer_p_s(str, form);
+	ft_buffer_s(str, form);
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);
 	form->buf = NULL;
@@ -28,15 +28,28 @@ static int	ft_print(char *str, t_form *form)
 	return (len);
 }
 
+static int		ft_verif(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] > 126)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int			ft_arg_s(va_list ap, t_form *form)
 {
 	char	*str;
 	char	*tmp;
 	wchar_t	*wstr;
-//	int		len = 0;
 
 	if ((form->type == 's' && form->length == '\0') || (form->type == 'S' &&
-				form->length == 'h'))
+				form->length == 'h' && form->elength == '\0'))
 	{
 		tmp = va_arg(ap, char*);
 		if (tmp == NULL)
@@ -47,7 +60,10 @@ int			ft_arg_s(va_list ap, t_form *form)
 		else
 		{
 			str = ft_memalloc(ft_strlen(tmp));
-			ft_strcat(str, tmp);
+			if (ft_verif(tmp) == 0)
+				return (-1);
+			else
+				ft_strcat(str, tmp);
 		}
 	}
 	else
@@ -68,12 +84,5 @@ int			ft_arg_s(va_list ap, t_form *form)
 			}
 		}
 	}
-/*	ft_buffer_p_s(str, form);
-	write(1, form->buf, ft_strlen(form->buf));
-	free(form->buf);
-	form->buf = NULL;
-	len = write(1, str, ft_strlen(str));
-	free(str);//ceci deconne sur teste mixed de curqui
-	return (len);*/
 	return (ft_print(str, form));
 }

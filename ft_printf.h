@@ -77,7 +77,7 @@ int					ft_size_nb2(uintmax_t nb);
 void				ft_buffer_d_i(char *str, t_form *form);
 void				ft_buffer_x_o(char *str, t_form *form);
 void				ft_buffer_b(char *str, t_form *form);
-void				ft_buffer_p_s(char *str, t_form *form);
+void				ft_buffer_s(char *str, t_form *form);
 int					ft_buffer_c(char *str, t_form *form);
 int					ft_precision(char *str, t_form *form);
 #endif

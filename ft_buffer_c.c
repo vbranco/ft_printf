@@ -13,6 +13,13 @@
 
 #include "ft_printf.h"
 
+static int	ft_zero(char *str)
+{
+	if (str[0] == '\0')
+		return (1);
+	return (0);
+}
+
 int		ft_buffer_c(char *str, t_form *form)
 {
 	int		len;
@@ -22,11 +29,25 @@ int		ft_buffer_c(char *str, t_form *form)
 	len = ft_strlen(str);
 	s1 = ft_memalloc(form->min);
 	ln = 0;
-	if (form->is_n == 1 && form->min > len)
+	if ((form->is_n == 1 && form->min > len) || (form->is_z == 1 && form->min > len))
 	{
-		if (str[0] == '\0')
-			ln = write(1, "\0", 1);
-		ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len - ln)));
+		if (form->is_n == 1)
+		{
+			if (ft_zero(str))
+				ln = write(1, "\0", 1);
+			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len - ln)));
+		}
+		else if (form->is_z == 1)
+		{
+			if (ft_zero(str))
+			{
+				form->zero = 1;
+				ln = 1;
+				ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len - ln)));
+			}
+			else
+				ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len - ln)));
+		}
 	}
 	else if (form->is_n == 0 && form->min > len)
 	{
