@@ -1,23 +1,14 @@
-# **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    Makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2017/11/23 16:47:01 by vbranco      #+#   ##    ##    #+#        #
-#    Updated: 2018/02/19 19:34:23 by vbranco     ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
-# **************************************************************************** #
 
-NAME        =   libftprintf.a 
 
-LIB_DIR     =   ./lib
 
-HEADER      =   ft_printf.h
 
-FILENAMES   =   ft_arg_c.c ft_arg_d_i.c ft_arg_p.c ft_arg_s.c ft_arg_x_o.c \
+NAME = libftprintf.a
+
+FLAGS = -Wall -Wextra -Werror
+
+HEADER = ft_printf.h ./libft/libft.h
+
+SRC = ft_arg_c.c ft_arg_d_i.c ft_arg_p.c ft_arg_s.c ft_arg_x_o.c \
 ft_convert_base_uintmax.c ft_convert_base_intmax.c ft_format.c ft_wchar.c \
 ft_init_struct.c ft_printf.c ft_percent.c\
 ft_args.c ft_recup_flag.c ft_recup_length.c ft_recup_min.c ft_recup_prec.c \
@@ -26,43 +17,28 @@ ft_size_nb2.c ft_add_str_begin.c\
 ft_add_str_end.c ft_buffer_d_i.c ft_arg_b.c ft_buffer_x_o.c ft_buffer_b.c\
 ft_buffer_s.c ft_buffer_c.c
 
-SOURCES     =   $(addprefix ./, $(FILENAMES))
+LIBSRC = ft_strchr.c ft_strcpy.c ft_memset.c ft_size_nb.c ft_reverse.c\
+ft_isdigit.c ft_atoi.c ft_strlen.c ft_strcat.c\
+ft_memalloc.c \
 
-OBJECTS     =   $(addprefix build/, $(FILENAMES:.c=.o))
+LIBOBJS = $(addprefix ./libft/, $(LIBSRC:.c=.o))
 
-L_FT        =   ./libft
+LIBSRCS = $(addprefix ./libft/, $(LIBSRC))
 
-LIB_LNK     =   -L $(L_FT) -l ft
-
-LIB_INC     =   -I $(L_FT)/libft.h
-
-FLAGS	    =  -Wall -Wextra -Werror
-
-.PHONY: all clean fclean re
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJ) $(LIBOBJS)
+	ar -rc $@ $^
+
+%.o: %.c
+	gcc -c $< -o $@ $(FLAGS)
+
 clean:
-		rm -rf build/
-		@$(MAKE) -C $(L_FT) clean
+	/bin/rm -f $(OBJ) $(LIBOBJS) ft_printf.h.gch ./libft/libft.h.gch
 
 fclean: clean
-	    @echo "\033[31m"
-		rm -f $(NAME)
-		@$(MAKE) -C $(L_FT) fclean
+	/bin/rm -f $(NAME)
 
-re:
-	    @$(MAKE) fclean
-		@$(MAKE) all
-
-build:
-	    @echo "\033[35m"
-		mkdir build/
-
-$(NAME): $(OBJECTS)
-	    @$(MAKE) -C $(L_FT)
-		@echo "\033[32m"
-		libtool -v -static -o $@ $^ libft/libft.a
-
-build/%.o: ./%.c | build
-	    gcc $(FLAGS) $(LIB_INC) -I $(HEADER) -c $< -o $@
+re: fclean all
