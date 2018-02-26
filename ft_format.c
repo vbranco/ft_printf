@@ -13,6 +13,19 @@
 
 #include "ft_printf.h"
 
+static void	ft_verif_wild(t_form *form)
+{
+	if (form->min < 0)
+	{
+		form->min *= -1;
+		form->is_n = 1;
+	}
+	if (form->prec < -1)
+	{
+		form->prec = -1;
+	}
+}
+
 int		ft_format(const char *format, va_list ap, int *size, t_form *form)
 {
 	int		len;
@@ -30,9 +43,10 @@ int		ft_format(const char *format, va_list ap, int *size, t_form *form)
 		format++;
 		ft_recup_type(format, form);
 		ft_recup_length(format, form);
-		ft_recup_min(format, form);
-		ft_recup_prec(format, form);
+		ft_recup_min(format, form, ap);
+		ft_recup_prec(format, form, ap);
 		ft_recup_flag(format, form);
+		ft_verif_wild(form);
 		if ((len = (ft_args(form, ap))) == -1)
 			return (-1);
 		*size = form->size;

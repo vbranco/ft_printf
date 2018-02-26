@@ -12,8 +12,19 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_recup_min(const char *format, t_form *form)
+/*
+static int	ft_wildcard(const char *str, int start, int end)
+{
+	while ((start < end) && str[start])
+	{
+		if (str[start] == '*')
+			return (1);
+		start++;
+	}
+	return (0);
+}
+*/
+void		ft_recup_min(const char *format, t_form *form, va_list ap)
 {
 	int		i;
 
@@ -22,11 +33,17 @@ void	ft_recup_min(const char *format, t_form *form)
 	{
 		while (format[i] == '+' || format[i] == '-' || format[i] == '#' || format[i] == '0')
 			i++;
-		if (format[i] >= '1' || format[i] <= '9')
+//		if (ft_wildcard(format, i , form->size))
+		if ((format[i] >= '1' || format[i] <= '9') && format[i] != '*')
 		{
 			format += i;
 			form->min = ft_atoi(format);
-			break ;
 		}
+		else if (format[i] == '*')
+		{
+			format += i;
+			form->min = (int)va_arg(ap, int);
+		}
+		break;
 	}
 }

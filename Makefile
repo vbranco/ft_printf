@@ -36,21 +36,25 @@ LIBOBJS = $(addprefix ./libft/, $(LIBSRC:.c=.o))
 
 LIBSRCS = $(addprefix ./libft/, $(LIBSRC))
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(addprefix build/, $(SRC:.c=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBOBJS)
 	@echo "\033[34m"
 	ar -rc $@ $^
+build: 
+	@echo "\033[32m"
+	mkdir build/
 
-%.o: %.c
+build/%.o: ./%.c | build
 	@echo "\033[32m"
 	gcc -c $< -o $@ $(FLAGS)
 
 clean:
 	@echo "\033[31m"
-	/bin/rm -f $(OBJ) $(LIBOBJS) ft_printf.h.gch ./libft/libft.h.gch ./libft/libft.a
+	/bin/rm -rf build/
+	/bin/rm -f $(LIBOBJS) ft_printf.h.gch ./libft/libft.h.gch ./libft/libft.a
 
 fclean: clean
 	/bin/rm -f $(NAME)

@@ -46,8 +46,8 @@ void				ft_init_struct(t_form *form);
 void				ft_recup_type(const char *format, t_form *form);
 void				ft_recup_flag(const char *format, t_form *form);
 void				ft_recup_length(const char *format, t_form *form);
-void				ft_recup_min(const char *format, t_form *form);
-void				ft_recup_prec(const char *format, t_form *form);
+void				ft_recup_min(const char *format, t_form *form, va_list ap);
+void				ft_recup_prec(const char *format, t_form *form, va_list ap);
 /*
 ** Recup type
 */

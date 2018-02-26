@@ -13,7 +13,7 @@
 
 #include "ft_printf.h"
 
-void	ft_recup_prec(const char *format, t_form *form)
+void	ft_recup_prec(const char *format, t_form *form, va_list ap)
 {
 	int		i;
 
@@ -23,7 +23,10 @@ void	ft_recup_prec(const char *format, t_form *form)
 		if (format[i] == '.')
 		{
 			format += i + 1;
-			form->prec = ft_atoi(format);
+			if (*format == '*')
+				form->prec = (int)va_arg(ap, int);
+			else
+				form->prec = ft_atoi(format);
 			break ;
 		}
 		i++;
