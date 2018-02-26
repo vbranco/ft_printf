@@ -47,7 +47,7 @@ $(NAME): $(OBJ) $(LIBOBJS)
 	gcc -c $< -o $@ $(FLAGS)
 
 clean:
-	/bin/rm -f $(OBJ) $(LIBOBJS) ft_printf.h.gch ./libft/libft.h.gch
+	/bin/rm -f $(OBJ) $(LIBOBJS) ft_printf.h.gch ./libft/libft.h.gch ./libft/libft.a
 
 fclean: clean
 	/bin/rm -f $(NAME)
