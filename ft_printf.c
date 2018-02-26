@@ -27,15 +27,7 @@ static int	ft_buff(const char *format, int *len, t_form *form)
 		form->buf[i] = format[i];
 		i++;
 	}
-/*	if (form->buf[0] == '%')
-	{
-		printf("ici\n");
-//		form->buf[0] = '\0';
-//		*len = 0;
-		i = 2;
-	}
-	else
-*/		*len += i;
+	*len += i;
 	return (i);
 }
 

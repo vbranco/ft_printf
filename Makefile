@@ -41,12 +41,15 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBOBJS)
+	@echo "\033[34m"
 	ar -rc $@ $^
 
 %.o: %.c
+	@echo "\033[32m"
 	gcc -c $< -o $@ $(FLAGS)
 
 clean:
+	@echo "\033[31m"
 	/bin/rm -f $(OBJ) $(LIBOBJS) ft_printf.h.gch ./libft/libft.h.gch ./libft/libft.a
 
 fclean: clean
