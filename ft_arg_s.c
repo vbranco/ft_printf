@@ -15,7 +15,6 @@
 
 static int	ft_print(char *str, t_form *form)
 {
-	//verifier les leaks car free ailleurs que le malloc
 	int		len;
 
 	len = 0;
@@ -24,7 +23,7 @@ static int	ft_print(char *str, t_form *form)
 	free(form->buf);
 	form->buf = NULL;
 	len = write(1, str, ft_strlen(str));
-	free(str);//ceci deconne sur teste mixed de curqui
+	free(str);
 	return (len);
 }
 
@@ -59,9 +58,12 @@ int			ft_arg_s(va_list ap, t_form *form)
 		}
 		else
 		{
-			str = ft_memalloc(ft_strlen(tmp));
+			str = ft_memalloc(ft_strlen(tmp) + form->min + form->prec + 2);
 			if (ft_verif(tmp) == 0)
+			{
+				free(str);
 				return (-1);
+			}
 			else
 				ft_strcat(str, tmp);
 		}

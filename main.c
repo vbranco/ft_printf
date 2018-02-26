@@ -52,7 +52,7 @@ int	main(void)
 
 	printf(" len = %d\n", printf("{%05p}"));
 	printf(" len = %d\n\n", ft_printf("{%05p}"));
-*/
+
 
 	printf(" len = %d\n", printf("{%05.Z}", 0));
 	printf(" len = %d\n\n", ft_printf("{%05.Z}", 0));
@@ -65,9 +65,9 @@ int	main(void)
 
 	printf(" len = %d\n", printf("{%10R}"));
 	printf(" len = %d\n\n", ft_printf("{%10R}"));
-
-//	printf(" len = %d\n", printf());
-//	printf(" len = %d\n\n", ft_printf());
+*/
+	printf(" len = %d\n", printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
+	printf(" len = %d\n\n", ft_printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
 
 
 
