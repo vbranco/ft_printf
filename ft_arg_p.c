@@ -13,28 +13,11 @@
 
 #include "ft_printf.h"
 
-static void	ft_buffer_p(char *str, t_form *form)
+static void	ft_min(char *str, t_form *form, int len)
 {
-	int		len;
-	char		*s1;
+	char	*s1;
 
 	s1 = NULL;
-	(void)form;
-	if (str[0] == '0' && form->prec == 0)
-	{
-		form->zero = 1;
-		str[0] = '\0';
-	}
-	len = ft_strlen(str);
-	if (form->prec > len)
-	{
-		s1 = ft_memalloc(form->prec);
-		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-		free(s1);
-	}
-	if (form->is_z == 0)
-		ft_add_str_begin(str, "0x");
-	len = ft_strlen(str);
 	if (form->min > len || form->is_z == 1)
 	{
 		s1 = ft_memalloc(form->min);
@@ -50,6 +33,30 @@ static void	ft_buffer_p(char *str, t_form *form)
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 		free(s1);
 	}
+}
+
+static void	ft_buffer_p(char *str, t_form *form)
+{
+	int		len;
+	char		*s1;
+
+	s1 = NULL;
+	if (str[0] == '0' && form->prec == 0)
+	{
+		form->zero = 1;
+		str[0] = '\0';
+	}
+	len = ft_strlen(str);
+	if (form->prec > len)
+	{
+		s1 = ft_memalloc(form->prec);
+		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		free(s1);
+	}
+	if (form->is_z == 0)
+		ft_add_str_begin(str, "0x");
+	len = ft_strlen(str);
+	ft_min(str, form, len);
 }
 
 int		ft_arg_p(va_list ap, t_form *form)

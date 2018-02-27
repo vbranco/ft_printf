@@ -24,12 +24,27 @@ static int	ft_test(t_form *form)
 	return (0);
 }
 
+static int	ft_print(char *str, t_form *form)
+{
+	int		len;
+
+	len = 0;
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
+	len = ft_buffer_c(str, form);
+	write(1, str, ft_strlen(str));
+	if (form->zero == 1)
+		write(1, "\0", 1);
+	free(str);
+	return (len);
+}
+
 int			ft_arg_c(va_list ap, t_form *form)
 {
 	char	c;
 	char	*str;
 	wchar_t	ca;
-	int		len;
 
 	str = ft_memalloc(4 + form->min + 1);
 	if (ft_test(form) == 1)
@@ -46,13 +61,5 @@ int			ft_arg_c(va_list ap, t_form *form)
 			return (-1);
 		}
 	}
-	write(1, form->buf, ft_strlen(form->buf));
-	free(form->buf);
-	form->buf = NULL;
-	len = ft_buffer_c(str, form);
-	write(1, str, ft_strlen(str));
-	if (form->zero == 1)
-		write(1, "\0", 1);
-	free(str);
-	return (len);
+	return (ft_print(str, form));
 }
