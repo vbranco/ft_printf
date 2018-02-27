@@ -15,7 +15,7 @@ ft_args.c ft_recup_flag.c ft_recup_length.c ft_recup_min.c ft_recup_prec.c \
 ft_recup_type.c ft_wstr.c ft_count_size.c ft_my_itoa.c ft_my_itoa2.c\
 ft_size_nb2.c ft_add_str_begin.c\
 ft_add_str_end.c ft_buffer_d_i.c ft_arg_b.c ft_buffer_x_o.c ft_buffer_b.c\
-ft_buffer_s.c ft_buffer_c.c ft_d_neg.c
+ft_buffer_s.c ft_buffer_c.c ft_d_neg.c ft_d_prec.c
 
 LIBSRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \

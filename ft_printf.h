@@ -81,4 +81,5 @@ void				ft_buffer_s(char *str, t_form *form);
 int					ft_buffer_c(char *str, t_form *form);
 int					ft_precision(char *str, t_form *form);
 void				ft_d_neg(char *str, t_form *form);
+void				ft_d_prec(char *str, t_form *form);
 #endif

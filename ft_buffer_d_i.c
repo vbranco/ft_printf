@@ -23,38 +23,40 @@ static int	ft_space(char *str, t_form *form)
 	return (0);
 }
 
-static void	ft_prec(char *str, t_form *form)
+static void	ft_min(char *str, char *c, t_form *form, int len)
 {
-	int		len;
-	int		i;
-	char		*s1;
+	char	*s1;
 
-	i = 0;
-	s1 = NULL;
-	len = ft_strlen(str);
-	if (form->prec == 0 && str[0] == '0')
-		str[0] = '\0';
-	if (form->prec > len)
+	s1 = ft_memalloc(form->min);
+	if (form->is_n == 1)
 	{
-		s1 = ft_memalloc(form->prec);
-		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
+		ft_add_str_begin(str, c);
+		ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
+	}
+	else if (form->is_z == 1)
+	{
+		if (form->is_s == 1 && str[0] != '-')
+			len++;
+		ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
+		ft_add_str_begin(str, c);
+		ft_space(str, form);
+	}
+	else if (form->is_n == 0)
+	{
+		ft_add_str_begin(str, c);
+		ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
 	}
 	free(s1);
 }
 
 static void	ft_signe(char *str, t_form *form)
 {
-	char	*s1;
 	char	c[2];
 	int		len;
 
-	s1 = ft_memalloc(form->min);
 	c[0] = '\0';
 	c[1] = '\0';
-	if (str[0] == '-')
-		ft_d_neg(str, form);
-	else
-		ft_prec(str, form);
+	str[0] == '-' ? ft_d_neg(str, form) : ft_d_prec(str, form);
 	len = ft_strlen(str);
 	if ((form->is_n == 1 && str[0] == '-') || form->is_p == 1)
 	{
@@ -66,33 +68,13 @@ static void	ft_signe(char *str, t_form *form)
 				form->min--;
 	}
 	if (form->min > len)
-	{
-		if (form->is_n == 1)
-		{
-			ft_add_str_begin(str, c);
-			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
-		}
-		else if (form->is_z == 1)
-		{
-			if (form->is_s == 1 && str[0] != '-')
-				len++;
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
-			ft_add_str_begin(str, c);
-			ft_space(str, form);
-		}
-		else if (form->is_n == 0)
-		{
-			ft_add_str_begin(str, c);
-			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
-		}
-	}
+		ft_min(str, c, form, len);
 	else
 		ft_space(str, form);
 	if (c[0] == '-' && !ft_strchr(str, '-'))
 		ft_add_str_begin(str, "-");
 	else if (c[0] == '+' && !ft_strchr(str, '-') && !ft_strchr(str, '+'))
 		ft_add_str_begin(str, "+");
-	free(s1);
 }
 
 void		ft_buffer_d_i(char *str, t_form *form)
