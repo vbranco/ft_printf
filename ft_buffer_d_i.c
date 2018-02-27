@@ -13,18 +13,6 @@
 
 #include "ft_printf.h"
 
-static void	ft_modif_str(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		str[i] = str[i + 1];
-		i++;
-	}
-}
-
 static int	ft_space(char *str, t_form *form)
 {
 	if (form->is_s == 1 && str[0] != '-')
@@ -54,46 +42,6 @@ static void	ft_prec(char *str, t_form *form)
 	free(s1);
 }
 
-static void	ft_neg(char *str, t_form *form)
-{
-	char	*s1;
-	int		len;
-
-	s1 = NULL;
-	ft_modif_str(str);
-	len = ft_strlen(str);
-	if (form->prec > len)
-	{
-		s1 = ft_memalloc(form->prec);
-		ft_add_str_begin(str, ft_memset(s1, '0', (form->prec - len)));
-		free(s1);
-	}
-	len = ft_strlen(str);
-	if (form->min > len)
-	{
-		len++;
-		s1 = ft_memalloc(form->min);
-		if (form->is_n == 1)
-		{
-			ft_add_str_begin(str, "-");
-			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len)));
-		}
-		else if (form->is_z == 1)
-		{
-			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len)));
-			ft_add_str_begin(str, "-");
-		}
-		else if (form->is_n == 0)
-		{
-			ft_add_str_begin(str, "-");
-			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - len)));
-		}
-		free(s1);
-	}
-	else
-		ft_add_str_begin(str, "-");
-}
-
 static void	ft_signe(char *str, t_form *form)
 {
 	char	*s1;
@@ -104,7 +52,7 @@ static void	ft_signe(char *str, t_form *form)
 	c[0] = '\0';
 	c[1] = '\0';
 	if (str[0] == '-')
-		ft_neg(str, form);
+		ft_d_neg(str, form);
 	else
 		ft_prec(str, form);
 	len = ft_strlen(str);

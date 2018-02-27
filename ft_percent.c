@@ -106,12 +106,7 @@ static int	ft_p(const char *format, t_form *form)
 int		ft_percent(const char *format, t_form *form)
 {
 	format++;
-/*	if (*format == '\0')
-	{
-		form->size = 1;
-		return (1);
-	}
-*/	ft_r_type(format, form);
+	ft_r_type(format, form);
 	ft_p_min(format, form);
 	ft_p_flag(format, form);
 	if (form->type != '\0')

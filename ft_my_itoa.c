@@ -13,48 +13,56 @@
 
 #include "ft_printf.h"
 
-#include <stdio.h>
+static void	ft_uintmax(uintmax_t n, intmax_t nb, char *s)
+{
+	size_t	i;
 
-void	ft_my_itoa(intmax_t nb, char *tmp)
+	i = 0;
+	if (nb < 0)
+	{
+		s[i] = '-';
+		i++;
+	}
+	while (n > 9)
+	{
+		s[i] = ((n % 10) + '0');
+		n /= 10;
+		i++;
+	}
+	s[i] = ((n % 10) + '0');
+}
+
+static void	ft_intmax(intmax_t nb, char *s)
+{
+	size_t	i;
+
+	i = 0;
+	if (nb < 0)
+	{
+		s[i] = '-';
+		nb *= -1;
+		i++;
+	}
+	while (nb > 9)
+	{
+		s[i] = ((nb % 10) + '0');
+		nb /= 10;
+		i++;
+	}
+	s[i] = ((nb % 10) + '0');
+}
+
+void		ft_my_itoa(intmax_t nb, char *tmp)
 {
 	uintmax_t	n;
 	char		*s;
-	size_t		i;
 
-	i = 0;
 	n = (uintmax_t)nb;
 	s = ft_memalloc(ft_size_nb2(nb) + 1);
 	if (nb < 0 && nb < -9223372036854775807)
-	{
-		if (nb < 0)
-		{
-			s[i] = '-';
-			i++;
-		}
-		while (n > 9)
-		{
-			s[i] = ((n % 10) + '0');
-			n /= 10;
-			i++;
-		}
-		s[i] = ((n % 10) + '0');
-	}
+		ft_uintmax(n, nb, s);
 	else
-	{
-		if (nb < 0)
-		{
-			s[i] = '-';
-			nb *= -1;
-			i++;
-		}
-		while (nb > 9)
-		{
-			s[i] = ((nb % 10) + '0');
-			nb /= 10;
-			i++;
-		}
-		s[i] = ((nb % 10) + '0');
-	}
+		ft_intmax(nb, s);
 	s = ft_reverse(s);
 	ft_strcat(tmp, s);
 	free(s);

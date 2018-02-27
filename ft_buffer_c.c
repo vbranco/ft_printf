@@ -20,6 +20,27 @@ static int	ft_zero(char *str)
 	return (0);
 }
 
+static void	ft_is_n_or_z(char *str, char *s1, t_form *form, int len, int *ln)
+{
+	if (form->is_n == 1)
+	{
+		if (ft_zero(str))
+			*ln = write(1, "\0", 1);
+		ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len - *ln)));
+	}
+	else if (form->is_z == 1)
+	{
+		if (ft_zero(str))
+		{
+			form->zero = 1;
+			*ln = 1;
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len - *ln)));
+		}
+		else
+			ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len - *ln)));
+	}
+}
+
 int		ft_buffer_c(char *str, t_form *form)
 {
 	int		len;
@@ -30,25 +51,7 @@ int		ft_buffer_c(char *str, t_form *form)
 	s1 = ft_memalloc(form->min);
 	ln = 0;
 	if ((form->is_n == 1 && form->min > len) || (form->is_z == 1 && form->min > len))
-	{
-		if (form->is_n == 1)
-		{
-			if (ft_zero(str))
-				ln = write(1, "\0", 1);
-			ft_add_str_end(str, ft_memset(s1, ' ', (form->min - len - ln)));
-		}
-		else if (form->is_z == 1)
-		{
-			if (ft_zero(str))
-			{
-				form->zero = 1;
-				ln = 1;
-				ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len - ln)));
-			}
-			else
-				ft_add_str_begin(str, ft_memset(s1, '0', (form->min - len - ln)));
-		}
-	}
+		ft_is_n_or_z(str, s1, form, len, &ln);
 	else if (form->is_n == 0 && form->min > len)
 	{
 		if (str[0] == '\0')
