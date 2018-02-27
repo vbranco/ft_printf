@@ -12,18 +12,20 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
+
 static int	ft_wildcard(const char *str, int start, int end)
 {
 	while ((start < end) && str[start])
 	{
 		if (str[start] == '*')
 			return (1);
+		if (str[start] == '.')
+			return (0);
 		start++;
 	}
 	return (0);
 }
-*/
+
 void		ft_recup_min(const char *format, t_form *form, va_list ap)
 {
 	int		i;
@@ -33,16 +35,40 @@ void		ft_recup_min(const char *format, t_form *form, va_list ap)
 	{
 		while (format[i] == '+' || format[i] == '-' || format[i] == '#' || format[i] == '0')
 			i++;
-//		if (ft_wildcard(format, i , form->size))
-		if ((format[i] >= '1' || format[i] <= '9') && format[i] != '*')
+		if (ft_wildcard(format, i , form->size))
 		{
-			format += i;
-			form->min = ft_atoi(format);
+			if (format[i] == '*')
+			{
+				i++;
+				if (format[i] >= '1' && format[i] <= '9')
+				{
+					format += i;
+					form->min = (int)va_arg(ap, int);
+					form->min = ft_atoi(format);
+				}
+				else
+				{
+					format += i;
+					form->min = (int)va_arg(ap, int);
+				}
+			}
+			else
+			{
+				while (format[i] >= '1' && format[i] <= '9')
+					i++;
+				format += i;
+				form->min = (int)va_arg(ap, int);
+			}
+			break;
 		}
-		else if (format[i] == '*')
+		else
 		{
-			format += i;
-			form->min = (int)va_arg(ap, int);
+			if (format[i] >= '1' || format[i] <= '9')
+			{
+				format += i;
+				form->min = ft_atoi(format);
+				break;
+			}
 		}
 		break;
 	}

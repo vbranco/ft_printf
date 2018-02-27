@@ -21,9 +21,9 @@ static void	ft_verif_wild(t_form *form)
 		form->is_n = 1;
 	}
 	if (form->prec < -1)
-	{
 		form->prec = -1;
-	}
+	if (form->prec > -1)
+		form->is_z = 0;
 }
 
 int		ft_format(const char *format, va_list ap, int *size, t_form *form)
