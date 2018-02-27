@@ -1,0 +1,4 @@
+make
+
+rm a.out
+gcc main.c libftprintf.a && clear && ./a.out
