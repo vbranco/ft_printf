@@ -1,47 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_wstr.c                                        .::    .:/ .      .::   */
+/*   ft_zero.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/24 18:44:46 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 19:09:22 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/28 17:33:33 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/28 19:08:48 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
+int			ft_zero(char *str)
 {
 	size_t	i;
-	char	*tmp;
-	int		prec;
 
-	prec = form->prec;
 	i = 0;
-	while (wstr[i])
+	while (str[i])
 	{
-		tmp = ft_memalloc(65);
-		if ((ft_wchar(wstr[i], tmp)) == -1)
-		{
-			if ((int)i == form->prec)
-				break ;
-			free(tmp);
-			return (-1);
-		}
-		if ((int)ft_strlen(tmp) > prec && prec > -1)
-		{
-			free(tmp);
-			ft_strcat(str, "\0");
-			break ;
-		}
-		else
-			ft_strcat(str, tmp);
-		prec--;
+		if (str[i] != '0')
+			return (0);
 		i++;
-		free(tmp);
 	}
-	return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 20:07:34 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/22 17:41:37 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:01:12 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,9 +60,9 @@ static int	ft_flag(const char *format, va_list ap, t_form *form)
 	return (len);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
-	va_list		ap;
+	va_list	ap;
 	t_form	form;
 	int		len;
 

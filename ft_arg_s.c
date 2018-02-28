@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:51:43 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/22 18:24:38 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 19:45:50 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ static int	ft_print(char *str, t_form *form)
 	return (len);
 }
 
-static int		ft_verif(char *str)
+static int	ft_verif(char *str)
 {
 	size_t	i;
 
@@ -88,3 +88,13 @@ int			ft_arg_s(va_list ap, t_form *form)
 	}
 	return (ft_print(str, form));
 }
+
+ft_2(char *str
+
+free(str);
+
+ft_1()
+char *str
+
+ft_(str)
+free(str);

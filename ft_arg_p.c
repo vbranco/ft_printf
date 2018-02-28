@@ -6,16 +6,16 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:26:50 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 19:42:08 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:03:55 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_min(char *str, t_form *form, int len)
+static void		ft_min(char *str, t_form *form, int len)
 {
-	char	*s1;
+	char		*s1;
 
 	s1 = NULL;
 	if (form->min > len || form->is_z == 1)
@@ -26,7 +26,8 @@ static void	ft_min(char *str, t_form *form, int len)
 		else if (form->is_z == 1)
 		{
 			if (form->min > len)
-				ft_add_str_begin(str, ft_memset(s1, '0', (form->min - (len + 2))));
+				ft_add_str_begin(str, ft_memset(s1, '0',
+							(form->min - (len + 2))));
 			ft_add_str_begin(str, "0x");
 		}
 		else if (form->is_n == 0)
@@ -35,9 +36,9 @@ static void	ft_min(char *str, t_form *form, int len)
 	}
 }
 
-static void	ft_buffer_p(char *str, t_form *form)
+static void		ft_buffer_p(char *str, t_form *form)
 {
-	int		len;
+	int			len;
 	char		*s1;
 
 	s1 = NULL;
@@ -59,7 +60,7 @@ static void	ft_buffer_p(char *str, t_form *form)
 	ft_min(str, form, len);
 }
 
-int		ft_arg_p(va_list ap, t_form *form)
+int				ft_arg_p(va_list ap, t_form *form)
 {
 	char		*str;
 	void		*ptr;

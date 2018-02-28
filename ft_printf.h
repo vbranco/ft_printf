@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/12 19:37:01 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 20:00:13 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 19:05:50 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,8 @@ int					ft_printf(const char *format, ...);
 /*
 ** Parsing
 */
-int					ft_format(const char *format, va_list ap, int *size, t_form *form);
+int					ft_format(const char *format, va_list ap, int *size,
+		t_form *form);
 int					ft_percent(const char *format, t_form *form);
 void				ft_init_struct(t_form *form);
 void				ft_recup_type(const char *format, t_form *form);
@@ -61,8 +62,10 @@ int					ft_arg_b(va_list ap, t_form *form);
 /*
 ** fonctions de modif pour recuperer une chaine de caracteres
 */
-void				ft_convert_base_uintmax(uintmax_t nb, int base, t_form *form, char *str);
-void				ft_convert_base_intmax(intmax_t nb, int base, t_form *form, char *str);
+void				ft_convert_base_uintmax(uintmax_t nb, int base,
+		t_form *form, char *str);
+void				ft_convert_base_intmax(intmax_t nb, int base,
+		t_form *form, char *str);
 int					ft_wchar(wchar_t wc, char *str);
 int					ft_wstr(wchar_t *wstr, char *str, t_form *form);
 int					ft_count_size(wchar_t *wstr);
@@ -82,4 +85,7 @@ int					ft_buffer_c(char *str, t_form *form);
 int					ft_precision(char *str, t_form *form);
 void				ft_d_neg(char *str, t_form *form);
 void				ft_d_prec(char *str, t_form *form);
+int					ft_zero(char *str);
+void				ft_x_prec(char *str, char *c, t_form *form);
+void				ft_p_min(const char *format, t_form *form);
 #endif

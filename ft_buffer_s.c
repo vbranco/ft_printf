@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_buffer_s.c                                    .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/02/28 17:07:04 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/28 17:07:23 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static void	ft_precision_s(char *str, t_form *form)
@@ -13,7 +26,7 @@ static void	ft_precision_s(char *str, t_form *form)
 	}
 }
 
-void	ft_buffer_s(char *str, t_form *form)
+void		ft_buffer_s(char *str, t_form *form)
 {
 	char	*s1;
 	int		len;

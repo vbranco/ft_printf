@@ -6,34 +6,16 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/19 17:16:00 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/22 17:41:41 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 19:07:18 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void    ft_p_min(const char *format, t_form *form)
+static void		ft_p_flag(const char *format, t_form *form)
 {
-	int             i;
-
-	i = 0;
-	while (format[i] && (i < form->size))
-	{
-		while (format[i] == '+' || format[i] == '-' || format[i] == '#' || format[i] == '0' || format[i] == ' ')
-			i++;
-		if (format[i] >= '1' || format[i] <= '9')
-		{
-			format += i;
-			form->min = ft_atoi(format);
-			break ;
-		}
-	}
-}
-
-static void    ft_p_flag(const char *format, t_form *form)
-{
-	int     i;
+	int			i;
 
 	i = 0;
 	while ((i < form->size - 1) && format[i])
@@ -42,7 +24,7 @@ static void    ft_p_flag(const char *format, t_form *form)
 			form->is_h = 1;
 		else if (format[i] == '0')
 		{
-			if (form->prec == -1 && (form->min % 10 !=  0))
+			if (form->prec == -1 && (form->min % 10 != 0))
 				form->is_z = 1;
 		}
 		else if (format[i] == '-')
@@ -55,9 +37,9 @@ static void    ft_p_flag(const char *format, t_form *form)
 	}
 }
 
-static void    ft_r_type(const char *format, t_form *form)
+static void		ft_r_type(const char *format, t_form *form)
 {
-	int     i;
+	int			i;
 
 	i = 0;
 	while ((format[i] != 's' && format[i] != 'S' && format[i] != 'p' &&
@@ -72,11 +54,19 @@ static void    ft_r_type(const char *format, t_form *form)
 	form->size = i + 2;
 }
 
-static int	ft_p(const char *format, t_form *form)
+static void		ft_print(char *str, t_form *form)
 {
-	char	*str;
-	int	i;
-	char	*s1;
+	write(1, form->buf, ft_strlen(form->buf));
+	free(form->buf);
+	form->buf = NULL;
+	write(1, str, ft_strlen(str));
+}
+
+static int		ft_p(const char *format, t_form *form)
+{
+	char		*str;
+	int			i;
+	char		*s1;
 
 	s1 = ft_memalloc(form->min);
 	i = 0;
@@ -95,15 +85,12 @@ static int	ft_p(const char *format, t_form *form)
 			ft_add_str_begin(str, ft_memset(s1, ' ', (form->min - 1)));
 	}
 	free(s1);
-	write(1, form->buf, ft_strlen(form->buf));
-	free(form->buf);
-	form->buf = NULL;
-	write (1, str, ft_strlen(str));
+	ft_print(str, form);
 	free(str);
 	return (ft_strlen(str));
 }
 
-int		ft_percent(const char *format, t_form *form)
+int				ft_percent(const char *format, t_form *form)
 {
 	format++;
 	ft_r_type(format, form);

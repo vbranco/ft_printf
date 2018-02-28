@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/15 17:19:56 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 19:34:43 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 16:57:06 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,9 +29,9 @@ static int	ft_stop(const char *format, t_form *form)
 	return (0);
 }
 
-void	ft_recup_flag(const char *format, t_form *form)
+void		ft_recup_flag(const char *format, t_form *form)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while ((i < form->size - 1) && format[i])

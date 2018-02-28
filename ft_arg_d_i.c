@@ -6,16 +6,16 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:45:58 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 20:26:48 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:06:51 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print(char *str, t_form *form)
+static int		ft_print(char *str, t_form *form)
 {
-	int	len;
+	int			len;
 
 	len = 0;
 	ft_buffer_d_i(str, form);
@@ -27,7 +27,7 @@ static int	ft_print(char *str, t_form *form)
 	return (len);
 }
 
-static void	ft_d_i(intmax_t *nb, t_form *form, va_list ap)
+static void		ft_d_i(intmax_t *nb, t_form *form, va_list ap)
 {
 	if (form->length == 'h' && form->elength == '\0' && form->type == 'd')
 		*nb = (short int)va_arg(ap, int);
@@ -39,13 +39,13 @@ static void	ft_d_i(intmax_t *nb, t_form *form, va_list ap)
 		*nb = (long long)va_arg(ap, long long);
 	else if (form->length == 'j' && form->elength == '\0')
 		*nb = (intmax_t)va_arg(ap, intmax_t);
-	else if (form->length == 'z'&& form->elength == '\0')
+	else if (form->length == 'z' && form->elength == '\0')
 		*nb = (size_t)va_arg(ap, size_t);
 	else
 		*nb = (int)va_arg(ap, int);
 }
 
-static void	ft_u(uintmax_t *nb2, t_form *form, va_list ap)
+static void		ft_u(uintmax_t *nb2, t_form *form, va_list ap)
 {
 	if (form->length == 'h' && form->elength == '\0' && form->type == 'u')
 		*nb2 = (short unsigned int)va_arg(ap, int);
@@ -57,17 +57,17 @@ static void	ft_u(uintmax_t *nb2, t_form *form, va_list ap)
 		*nb2 = (unsigned long long)va_arg(ap, long long);
 	else if (form->length == 'j' && form->elength == '\0')
 		*nb2 = (uintmax_t)va_arg(ap, uintmax_t);
-	else if (form->length == 'z'&& form->elength == '\0')
+	else if (form->length == 'z' && form->elength == '\0')
 		*nb2 = (size_t)va_arg(ap, size_t);
 	else
 		*nb2 = (unsigned int)va_arg(ap, int);
 }
 
-int		ft_arg_d_i(va_list ap, t_form *form)
+int				ft_arg_d_i(va_list ap, t_form *form)
 {
-	intmax_t			nb;
-	uintmax_t			nb2;
-	char				*str;
+	intmax_t	nb;
+	uintmax_t	nb2;
+	char		*str;
 
 	if (form->type == 'd' || form->type == 'i' || form->type == 'D')
 	{

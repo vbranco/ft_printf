@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 16:54:27 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/22 18:31:16 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:29:21 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,7 +65,7 @@ static void	ft_signe(char *str, t_form *form)
 		else
 			c[0] = '+';
 		if (!ft_strchr(str, '-'))
-				form->min--;
+			form->min--;
 	}
 	if (form->min > len)
 		ft_min(str, c, form, len);

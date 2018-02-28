@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/14 17:23:07 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 17:53:41 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:15:23 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,8 @@ static void	ft_modif(int nb, char *tmp, t_form *form)
 	free(s);
 }
 
-void		ft_convert_base_uintmax(uintmax_t nb, int base, t_form *form, char *str)
+void		ft_convert_base_uintmax(uintmax_t nb, int base, t_form *form,
+		char *str)
 {
 	char		*tmp;
 	uintmax_t	reste;

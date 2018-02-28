@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/15 17:22:45 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/22 17:41:39 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:13:34 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ static void	ft_verif_wild(t_form *form)
 		form->is_z = 0;
 }
 
-int		ft_format(const char *format, va_list ap, int *size, t_form *form)
+int			ft_format(const char *format, va_list ap, int *size, t_form *form)
 {
 	int		len;
 

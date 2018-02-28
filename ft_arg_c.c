@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:22:22 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 20:00:04 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 16:49:39 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,8 @@ static int	ft_test(t_form *form)
 				form->length == 'h' && form->elength == '\0'))
 		return (1);
 	else if ((form->type == 'C' && form->length == '\0') || (form->type == 'c'
-				&& form->length == 'l') || (form->type == 'C' && form->elength == 'h'))
+				&& form->length == 'l') || (form->type == 'C' &&
+					form->elength == 'h'))
 		return (2);
 	return (0);
 }

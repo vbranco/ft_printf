@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_d_neg.c                                       .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/02/28 17:01:59 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/28 17:02:23 by vbranco     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void     ft_modif_str(char *str)
+static void	ft_modif_str(char *str)
 {
-	int             i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -38,8 +51,8 @@ static void	ft_min(char *str, t_form *form, int len)
 
 void		ft_d_neg(char *str, t_form *form)
 {
-	char    *s1;
-	int             len;
+	char	*s1;
+	int		len;
 
 	s1 = NULL;
 	ft_modif_str(str);

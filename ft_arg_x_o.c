@@ -6,17 +6,17 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:28:25 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 19:37:53 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:23:26 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_size_nbo2(uintmax_t nb, t_form *form)
+static int		ft_size_nbo2(uintmax_t nb, t_form *form)
 {
-	int		size;
-	int		div;
+	int			size;
+	int			div;
 
 	size = 0;
 	if (form->type == 'o')
@@ -31,7 +31,7 @@ static int	ft_size_nbo2(uintmax_t nb, t_form *form)
 	return (size + 1);
 }
 
-static void	ft_x(uintmax_t *nb, t_form *form, va_list ap)
+static void		ft_x(uintmax_t *nb, t_form *form, va_list ap)
 {
 	if (form->length == 'h' && form->elength == 'h')
 		*nb = (unsigned char)va_arg(ap, int);
@@ -49,7 +49,7 @@ static void	ft_x(uintmax_t *nb, t_form *form, va_list ap)
 		*nb = (unsigned int)va_arg(ap, long);
 }
 
-static void	ft_o(uintmax_t *nb, t_form *form, va_list ap)
+static void		ft_o(uintmax_t *nb, t_form *form, va_list ap)
 {
 	if (form->length == 'h' && form->elength == 'h' && form->type == 'o')
 		*nb = (unsigned char)va_arg(ap, int);
@@ -65,14 +65,13 @@ static void	ft_o(uintmax_t *nb, t_form *form, va_list ap)
 		*nb = (size_t)va_arg(ap, size_t);
 	else
 		*nb = (unsigned int)va_arg(ap, long);
-
 }
 
-int		ft_arg_x_o(va_list ap, t_form *form)
+int				ft_arg_x_o(va_list ap, t_form *form)
 {
 	uintmax_t	nb;
 	char		*str;
-	int		len;
+	int			len;
 
 	if (form->type == 'x' || form->type == 'X')
 		ft_x(&nb, form, ap);
@@ -87,7 +86,7 @@ int		ft_arg_x_o(va_list ap, t_form *form)
 	write(1, form->buf, ft_strlen(form->buf));
 	free(form->buf);
 	form->buf = NULL;
-	len = write(1, str,ft_strlen(str));
+	len = write(1, str, ft_strlen(str));
 	free(str);
 	return (len);
 }

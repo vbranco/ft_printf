@@ -70,7 +70,7 @@ int	main(void)
 	printf(" len = %d\n\n", ft_printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "coco"));
 */
 
-
+/*
 	printf(" len = %d\n", printf("%*d", 5, 42));
 	printf(" len = %d\n\n", ft_printf("%*d", 5, 42));
 
@@ -125,6 +125,12 @@ int	main(void)
 
 	printf(" len = %d\n", printf("{%05.*d}", -15, 42));
 	printf(" len = %d\n\n", ft_printf("{%05.*d}", -15, 42));
+*/
+	printf(" len = %d\n", printf("%.4ls", L"我是一只猫。"));
+	printf(" len = %d\n\n", ft_printf("%.4ls", L"我是一只猫。"));
+
+	printf(" len = %d\n", printf("%15.4ls", L"我是一只猫。"));
+	printf(" len = %d\n\n", ft_printf("%15.4ls", L"我是一只猫。"));
 
 
 

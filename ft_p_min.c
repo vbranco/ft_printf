@@ -1,47 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_wstr.c                                        .::    .:/ .      .::   */
+/*   ft_p_min.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/24 18:44:46 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 19:09:22 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/28 19:03:46 by vbranco      #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/28 19:05:53 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
+void		ft_p_min(const char *format, t_form *form)
 {
-	size_t	i;
-	char	*tmp;
-	int		prec;
+	int		i;
 
-	prec = form->prec;
 	i = 0;
-	while (wstr[i])
+	while (format[i] && (i < form->size))
 	{
-		tmp = ft_memalloc(65);
-		if ((ft_wchar(wstr[i], tmp)) == -1)
+		while (format[i] == '+' || format[i] == '-' || format[i] == '#' ||
+				format[i] == '0' || format[i] == ' ')
+			i++;
+		if (format[i] >= '1' || format[i] <= '9')
 		{
-			if ((int)i == form->prec)
-				break ;
-			free(tmp);
-			return (-1);
-		}
-		if ((int)ft_strlen(tmp) > prec && prec > -1)
-		{
-			free(tmp);
-			ft_strcat(str, "\0");
+			format += i;
+			form->min = ft_atoi(format);
 			break ;
 		}
-		else
-			ft_strcat(str, tmp);
-		prec--;
-		i++;
-		free(tmp);
 	}
-	return (0);
 }
