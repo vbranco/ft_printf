@@ -13,19 +13,37 @@
 
 #include "ft_printf.h"
 
+static int	ft_size(wchar_t c)
+{
+	if (c <= 127)
+		return (1);
+	else if (c < 0x800)
+		return (2);
+	else if (c < 0x10000)
+		return (3);
+	else
+		return (4);
+}
+
 int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 {
 	size_t	i;
 	char	*tmp;
 	int		prec;
+	int		size;
 
+	size = 0;
 	prec = form->prec;
 	i = 0;
 	while (wstr[i])
 	{
 		tmp = ft_memalloc(65);
+		size += ft_size(wstr[i]);//modifier les 2 lignes pour passer curqui_test
+		if (size > form->prec && form->prec > -1)
+			break ;
 		if ((ft_wchar(wstr[i], tmp)) == -1)
 		{
+
 			if ((int)i == form->prec)
 				break ;
 			free(tmp);

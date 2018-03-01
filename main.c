@@ -12,7 +12,7 @@ int	main(void)
 	wchar_t	s[4];
 
 	s[0] = 'S';
-	s[1] = 256;
+	s[1] = 254;
 	s[2] = 'u';
 	s[3] = '\0';
 
@@ -126,16 +126,27 @@ int	main(void)
 	printf(" len = %d\n", printf("{%05.*d}", -15, 42));
 	printf(" len = %d\n\n", ft_printf("{%05.*d}", -15, 42));
 */
-	printf(" len = %d\n", printf("%.4ls", L"我是一只猫。"));
+/*	printf(" len = %d\n", printf("%.4ls", L"我是一只猫。"));
 	printf(" len = %d\n\n", ft_printf("%.4ls", L"我是一只猫。"));
 
 	printf(" len = %d\n", printf("%15.4ls", L"我是一只猫。"));
 	printf(" len = %d\n\n", ft_printf("%15.4ls", L"我是一只猫。"));
+*/
 
+	printf(" len = %d\n", printf("%.2ls",s));
+	printf(" len = %d\n\n", ft_printf("%.2ls",s));
 
+	printf(" len = %d\n", printf("{%05.c}", 0));
+	printf(" len = %d\n\n", ft_printf("{%05.c}", 0));
 
+	printf(" len = %d\n", printf("{%05.s}", 0));
+	printf(" len = %d\n\n", ft_printf("{%05.s}", 0));
 
+	printf(" len = %d\n", printf("{%05.Z}", 0));
+	printf(" len = %d\n\n", ft_printf("{%05.Z}", 0));
 
+	printf(" len = %d\n", printf("{%05.S}", L"42 c est cool"));
+	printf(" len = %d\n\n", ft_printf("{%05.S}", L"42 c est cool"));
 
 
 

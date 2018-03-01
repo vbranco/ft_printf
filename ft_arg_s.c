@@ -34,7 +34,7 @@ static int	ft_verif(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] > 126)
+		if (str[i] > 127)
 			return (0);
 		i++;
 	}

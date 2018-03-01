@@ -1,4 +1,4 @@
-make
+#!/bin/sh
 
 rm a.out
-gcc main.c libftprintf.a && clear && ./a.out
+make && gcc main.c libftprintf.a && clear && ./a.out
