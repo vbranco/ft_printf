@@ -27,47 +27,33 @@ static int	ft_print(char *str, t_form *form)
 	return (len);
 }
 
-static int	ft_verif(char *str)
+static char		*ft_s(t_form *form, va_list ap)
 {
-	size_t	i;
+	char	*tmp;
+	char	*str;
 
-	i = 0;
-	while (str[i])
+	tmp = va_arg(ap, char*);
+	if (tmp == NULL)
 	{
-		if (str[i] > 127)
-			return (0);
-		i++;
+		str = ft_memalloc(7);
+		ft_add_str_begin(str, "(null)");
 	}
-	return (1);
+	else
+	{
+		str = ft_memalloc(ft_strlen(tmp) + form->min + form->prec + 2);
+		ft_strcat(str, tmp);
+	}
+	return (str);
 }
 
 int			ft_arg_s(va_list ap, t_form *form)
 {
 	char	*str;
-	char	*tmp;
 	wchar_t	*wstr;
 
 	if ((form->type == 's' && form->length == '\0') || (form->type == 'S' &&
 				form->length == 'h' && form->elength == '\0'))
-	{
-		tmp = va_arg(ap, char*);
-		if (tmp == NULL)
-		{
-			str = ft_memalloc(7);
-			ft_add_str_begin(str, "(null)");
-		}
-		else
-		{
-			str = ft_memalloc(ft_strlen(tmp) + form->min + form->prec + 2);
-			if (ft_verif(tmp) == 0)
-			{
-				free(str);
-				return (-1);
-			}
-			else
-				ft_strcat(str, tmp);
-		}
-	}
+		str = ft_s(form, ap);
 	else
 	{
 		wstr = va_arg(ap, wchar_t*);

@@ -29,18 +29,16 @@ int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 {
 	size_t	i;
 	char	*tmp;
-	int		prec;
 	int		size;
 
 	size = 0;
-	prec = form->prec;
 	i = 0;
 	while (wstr[i])
 	{
-		tmp = ft_memalloc(65);
-		size += ft_size(wstr[i]);//modifier les 2 lignes pour passer curqui_test
-		if (size > form->prec && form->prec > -1)
+		size += ft_size(wstr[i]);
+		if (size > form->prec && form->prec > -1 && MB_CUR_MAX != 1)
 			break ;
+		tmp = ft_memalloc(65);
 		if ((ft_wchar(wstr[i], tmp)) == -1)
 		{
 
@@ -49,15 +47,7 @@ int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 			free(tmp);
 			return (-1);
 		}
-		if ((int)ft_strlen(tmp) > prec && prec > -1)
-		{
-			free(tmp);
-			ft_strcat(str, "\0");
-			break ;
-		}
-		else
-			ft_strcat(str, tmp);
-		prec--;
+		ft_strcat(str, tmp);
 		i++;
 		free(tmp);
 	}

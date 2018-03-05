@@ -69,5 +69,6 @@ int			ft_buffer_c(char *str, t_form *form)
 	}
 	else if (str[0] == '\0')
 		ln = write(1, "\0", 1);
+	free(s1);
 	return (ft_strlen(str) + ln);
 }
