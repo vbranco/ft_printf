@@ -35,7 +35,7 @@ static char		*ft_s(t_form *form, va_list ap)
 	tmp = va_arg(ap, char*);
 	if (tmp == NULL)
 	{
-		str = ft_memalloc(7);
+		str = ft_memalloc(7 + form->min);
 		ft_add_str_begin(str, "(null)");
 	}
 	else
@@ -59,7 +59,7 @@ int			ft_arg_s(va_list ap, t_form *form)
 		wstr = va_arg(ap, wchar_t*);
 		if (wstr == NULL)
 		{
-			str = ft_memalloc(7);
+			str = ft_memalloc(7 + form->min);
 			ft_add_str_begin(str, "(null)");
 		}
 		else

@@ -148,7 +148,7 @@ int	main(void)
 	printf(" len = %d\n", printf("{%05.S}", L"42 c est cool"));
 	printf(" len = %d\n\n", ft_printf("{%05.S}", L"42 c est cool"));
  */
-	ft_printf("\n");
+/*	ft_printf("\n");
 	ft_printf("%%\n");
 	ft_printf("%d\n", 42);
 	ft_printf("%d%d\n", 42, 41);
@@ -178,10 +178,16 @@ int	main(void)
 	ft_printf("%s%s\n", "test", "test");
 	ft_printf("%s%s%s\n", "test", "test", "test");
 	ft_printf("%C\n", 15000);
+*/
+//	printf("len = %d\n", printf("%p %5p %.2p %.15p %.15p", 5, 4896548, 15694, 0, -1));
+//	printf("len = %d\n\n", ft_printf("%p %5p %.2p %.15p %.15p", 5, 4896548, 15694, 0, -1));
 
+	printf("len = %d\n", printf("%50.3s", NULL));
+	printf("len = %d\n\n", ft_printf("%50.3s", NULL));
 
+	printf("len = %d\n", printf("%n"));
+	printf("len = %d\n\n", ft_printf("%n"));
 
-
-	sleep(1500);
+//	sleep(1500);
 	return (0);
 }

@@ -68,8 +68,8 @@ int				ft_arg_p(va_list ap, t_form *form)
 	int			len;
 
 	ptr = va_arg(ap, void*);
-	nb = (long)ptr;
-	str = ft_memalloc(ft_size_nb(nb) + form->min + 1);
+	nb = (unsigned long)ptr;
+	str = ft_memalloc(ft_size_nb(nb) + form->min + form->prec + 3);
 	ft_convert_base_uintmax(nb, 16, form, str);
 	ft_buffer_p(str, form);
 	len = ft_strlen(str);
