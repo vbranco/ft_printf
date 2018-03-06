@@ -46,6 +46,13 @@ static char		*ft_s(t_form *form, va_list ap)
 	return (str);
 }
 
+static void		ft_free(char *str, t_form *form)
+{
+			free(str);
+			free(form->buf);
+			form->buf = NULL;
+}
+
 int			ft_arg_s(va_list ap, t_form *form)
 {
 	char	*str;
@@ -67,7 +74,7 @@ int			ft_arg_s(va_list ap, t_form *form)
 			str = ft_memalloc(ft_count_size(wstr) + form->min + 1);
 			if ((ft_wstr(wstr, str, form)) == -1)
 			{
-				free(str);
+				ft_free(str, form);
 				return (-1);
 			}
 		}

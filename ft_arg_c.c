@@ -41,6 +41,13 @@ static int	ft_print(char *str, t_form *form)
 	return (len);
 }
 
+static void		ft_free(char *str, t_form *form)
+{
+			free(str);
+			free(form->buf);
+			form->buf = NULL;
+}
+
 int			ft_arg_c(va_list ap, t_form *form)
 {
 	char	c;
@@ -58,7 +65,7 @@ int			ft_arg_c(va_list ap, t_form *form)
 		ca = (wchar_t)va_arg(ap, wint_t);
 		if ((ft_wchar(ca, str)) == -1)
 		{
-			free(str);
+			ft_free(str, form);
 			return (-1);
 		}
 	}
