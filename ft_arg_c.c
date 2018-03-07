@@ -6,14 +6,14 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 19:22:22 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 16:49:39 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 15:53:05 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_test(t_form *form)
+static int		ft_test(t_form *form)
 {
 	if ((form->type == 'c' && form->length == '\0') || (form->type == 'C' &&
 				form->length == 'h' && form->elength == '\0'))
@@ -25,7 +25,7 @@ static int	ft_test(t_form *form)
 	return (0);
 }
 
-static int	ft_print(char *str, t_form *form)
+static int		ft_print(char *str, t_form *form)
 {
 	int		len;
 
@@ -43,12 +43,12 @@ static int	ft_print(char *str, t_form *form)
 
 static void		ft_free(char *str, t_form *form)
 {
-			free(str);
-			free(form->buf);
-			form->buf = NULL;
+	free(str);
+	free(form->buf);
+	form->buf = NULL;
 }
 
-int			ft_arg_c(va_list ap, t_form *form)
+int				ft_arg_c(va_list ap, t_form *form)
 {
 	char	c;
 	char	*str;

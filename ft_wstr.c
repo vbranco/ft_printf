@@ -6,7 +6,7 @@
 /*   By: vbranco <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 18:44:46 by vbranco      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 19:09:22 by vbranco     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 15:54:46 by vbranco     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ static int	ft_size(wchar_t c)
 		return (4);
 }
 
-int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
+int			ft_wstr(wchar_t *wstr, char *str, t_form *form)
 {
 	size_t	i;
 	char	*tmp;
@@ -41,7 +41,6 @@ int		ft_wstr(wchar_t *wstr, char *str, t_form *form)
 		tmp = ft_memalloc(65);
 		if ((ft_wchar(wstr[i], tmp)) == -1)
 		{
-
 			if ((int)i == form->prec)
 				break ;
 			free(tmp);
